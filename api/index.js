@@ -33,7 +33,7 @@ async function createProducts() {
 
 // una vez que tengamos la base de datos, habría que hacer un sync y el listening mostrarlo luego del then. Así:
 // // Syncing all the models at once.
- conn.sync({ force: false }).then(() => {
+ conn.sync({ alter: true }).then(() => {
      server.listen(3001, () => {
        console.log('Server listening at 3001'); // eslint-disable-line no-console
      });

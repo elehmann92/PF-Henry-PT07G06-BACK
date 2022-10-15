@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
             allowNull:true,
         },
         condition:{
-            type:DataTypes.ENUM("Como nuevo", "Usado", "Claros signos de uso"),
+            type:DataTypes.STRING,
         },
         image:{
             type:DataTypes.STRING,
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
             allowNull:false,
         },
         status:{
-            type: DataTypes.ENUM("Publicado", "En pausa", "Eliminado", "Vendido"),
+            type: DataTypes.STRING,
         }
     },{timestamps: false});
 };
