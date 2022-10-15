@@ -1,5 +1,4 @@
-{
-    "categories": [
+[
     {
         "id": 1,
         "name" : "Baño"
@@ -84,4 +83,4 @@
         "id": 21,
         "name" : "Plomería"
     }  
-]}
+]

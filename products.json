@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name":"Microondas",
+        "price":25000,
+        "description":"Vendo microondas, está en muy buen estado, tiene un medio uso de menos de 1 año! Calidad muy buena!",
+        "condition":"Claros signos de uso",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Microwave_2022.jpg/800px-Microwave_2022.jpg",
+        "owner": 1,
+        "status":"Publicado"
+
+    }, 
+    {
+        "id":2,
+        "name":"Teléfono",
+        "price":10000,
+        "description":"Teléfono muy poco usado",
+        "condition":"Como nuevo",
+        "image":"https://helios-i.mashable.com/imagery/articles/07rvAHiXL4HbknW06ueFJot/hero-image.fill.size_1248x702.v1657736399.jpg",
+        "owner":1,
+        "status":"En pausa"
+    }
+]
