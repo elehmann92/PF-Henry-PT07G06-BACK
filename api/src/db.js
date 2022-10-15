@@ -29,6 +29,8 @@ fs.readdirSync(path.join(__dirname, '/models'))
  const { Product , Category} = sequelize.models;
 
  //Relaciones entre las bases de datos
+ Product.belongsToMany(Category, {through: "product_category"})
+ Category.belongsToMany(Product, {through: "product_category"})
 
  module.exports = {
     ...sequelize.models,
