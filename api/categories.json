@@ -83,5 +83,13 @@
     {
         "id": 21,
         "name" : "Plomería"
+    },  
+    {
+        "id": 22,
+        "name" : "Indumentaria"
+    },  
+    {
+        "id": 23,
+        "name" : "Bicicletas"
     }  
 ]}
