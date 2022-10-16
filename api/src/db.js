@@ -33,6 +33,7 @@ fs.readdirSync(path.join(__dirname, '/models'))
  Category.belongsToMany(Product, {through: "product_category"})
 
  module.exports = {
-    ...sequelize.models,
+    Product,
+    Category,
     conn: sequelize,
  }
