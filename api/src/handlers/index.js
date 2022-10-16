@@ -8,6 +8,7 @@ async function getProductDb() {
 
 async function getProductsWithCategories() {
   return await Product.findAll({
+    order: ['id'],
     include: {
       model: Category,
       through: {
@@ -44,9 +45,18 @@ async function searchByQuery(name) {
   return result;
 }
 
+function newProductBodyIsValid(newProduct) {
+    const {name, price, description, condition, image, categories = []} = newProduct
+    if (!name || !price || !description || !condition || !image || !categories.length) {
+        throw new Error ("Name, price, description, condition, image and category are required fields.")
+    }
+    return true
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
   getProductById,
   searchByQuery,
+  newProductBodyIsValid
 };
