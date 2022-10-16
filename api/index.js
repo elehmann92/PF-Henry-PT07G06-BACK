@@ -5,29 +5,27 @@ const dataP = require('./products.json')
 
 // funcion para setear los datos iniciales a la tabla Categories
 async function creatTypes() {
-  let categoriesDb = await Category.findAll()
-  if(categoriesDb.length===0) {
-       data.categories.forEach(el => Category.create({id: el.id, name: el.name}))
-  }
-}
+  data.categories.forEach(el => 
+    Category.findOrCreate({where: {id: el.id, name: el.name}}))
+};
 
 async function createProducts() {
-  let productsDb = await Product.findAll()
-  if(productsDb.length===0) {
-    dataP.products.forEach(async el => {const newP = await Product.create({
-      id: el.id,
-      name: el.name,
-      price: el.price,
-      description: el.description,
-      condition: el.condition,
-      image: el.image,
-      owner: el.owner,
-      status: el.status
-    })
+  dataP.products.forEach(async el => 
+    {const [entry , created] = await Product.findOrCreate({where: {
+    id: el.id,
+    name: el.name,
+    price: el.price,
+    description: el.description,
+    condition: el.condition,
+    image: el.image,
+    owner: el.owner,
+    status: el.status
+    }})
+    if(created){
     el.categories.forEach(async el => {id = await Category.findAll({where: {name : el} });
-    newP.setCategories(id[0].dataValues.id)
-    })
-})}};
+    entry.setCategories(id[0].dataValues.id)
+    })}
+})};
 
 //server.listen(3001, ()=>{console.log('%s listening at 3001')})
 
