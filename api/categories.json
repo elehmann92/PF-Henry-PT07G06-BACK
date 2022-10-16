@@ -91,5 +91,13 @@
     {
         "id": 23,
         "name" : "Bicicletas"
+    },
+    {
+        "id": 24,
+        "name" : "Juegos"
+    },  
+    {
+        "id": 25,
+        "name" : "Calzado"
     }  
 ]}
