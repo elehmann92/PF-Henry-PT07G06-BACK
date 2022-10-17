@@ -53,10 +53,27 @@ function newProductBodyIsValid(newProduct) {
     return true
 }
 
+async function createProduct(newProduct) {
+  const {name, price, description, condition, image, categories = []} = newProduct
+  console.log(name)
+  const owner = 1
+  const newP = await Product.create({
+    name: name,
+    price: price,
+    description: description,
+    condition: condition,
+    image: image,
+    owner: owner,
+    status: "Publicado"
+  })
+  newP.setCategories(categories)
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
   getProductById,
   searchByQuery,
-  newProductBodyIsValid
+  newProductBodyIsValid,
+  createProduct
 };
