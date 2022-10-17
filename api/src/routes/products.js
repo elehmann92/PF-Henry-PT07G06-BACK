@@ -1,8 +1,10 @@
 const { Router } = require("express");
+const { restart } = require("nodemon");
 const {
   searchByQuery,
   getProductsWithCategories,
   getProductById,
+  createProduct
 } = require("../handlers");
 
 const router = Router();
@@ -30,6 +32,16 @@ router
       res.json(product.toJSON());
     } catch (error) {
       res.status(404).json(null);
+    }
+  })
+  
+  .post("/", async (req,res) => {
+    const data = req.body
+    try {
+      const newProduct = await createProduct(data)
+      res.status(201).json(`${data.name} successfully created`)
+    } catch (error) {
+      res.status(404).json(error.message)
     }
   });
 

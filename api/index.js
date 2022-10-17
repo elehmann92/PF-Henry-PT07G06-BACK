@@ -6,13 +6,12 @@ const dataP = require('./products.json')
 // funcion para setear los datos iniciales a la tabla Categories
 async function creatTypes() {
   data.categories.forEach(el => 
-    Category.findOrCreate({where: {id: el.id, name: el.name}}))
+    Category.findOrCreate({where: {name: el.name}}))
 };
 
 async function createProducts() {
   dataP.products.forEach(async el => 
     {const [entry , created] = await Product.findOrCreate({where: {
-    id: el.id,
     name: el.name,
     price: el.price,
     description: el.description,
