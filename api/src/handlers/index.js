@@ -28,11 +28,17 @@ async function getProductById(id) {
   return product;
 }
 
-async function searchByQuery(name) {
+async function searchByQuery(where) {
   const result = await Product.findAll({
     where: {
       name: {
-        [Op.iLike]: "%" + name + "%",
+        [Op.iLike]: "%" + where.name + "%",
+      },
+      condition: {
+        [Op.iLike]: "%" + where.condition + "%",
+      },
+      status: {
+        [Op.iLike]: "%" + where.status + "%",
       },
     },
     include: {

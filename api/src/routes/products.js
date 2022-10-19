@@ -4,17 +4,22 @@ const {
   searchByQuery,
   getProductsWithCategories,
   getProductById,
-  createProduct
+  createProduct,
 } = require("../handlers");
 
 const router = Router();
 
 router
   .get("/", async (req, res) => {
-    const { name } = req.query;
+    const { name = "", status = "", condition = "" } = req.query;
+    const where = {
+      name,
+      status,
+      condition,
+    };
     try {
-      if (name) {
-        const queryResult = await searchByQuery(name);
+      if (name || status || condition) {
+        const queryResult = await searchByQuery(where);
         return res.json(queryResult);
       }
 
@@ -34,14 +39,14 @@ router
       res.status(404).json(null);
     }
   })
-  
-  .post("/", async (req,res) => {
-    const data = req.body
+
+  .post("/", async (req, res) => {
+    const data = req.body;
     try {
-      const newProduct = await createProduct(data)
-      res.status(201).json(`${data.name} successfully created`)
+      const newProduct = await createProduct(data);
+      res.status(201).json(`${data.name} successfully created`);
     } catch (error) {
-      res.status(404).json(error.message)
+      res.status(404).json(error.message);
     }
   });
 
