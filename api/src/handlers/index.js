@@ -119,6 +119,25 @@ async function createProduct(newProduct) {
   newP.setCategories(categories);
 }
 
+async function findProductAndCategories(id, categories) {
+  if (!Array.isArray(categories) || !categories.length) {
+    throw new Error("Request body must contain an array with categories IDs");
+  }
+
+  const productToModify = await getProductById(id);
+  if (!productToModify) throw new Error("Product not Found");
+
+  const categoriesToModify = await Category.findAll({
+    where: {
+      id: categories,
+    },
+  });
+  if (!categoriesToModify.length)
+    throw new Error("No categories where found");
+
+  return { productToModify, categoriesToModify };
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
@@ -126,4 +145,5 @@ module.exports = {
   searchByQuery,
   newProductBodyIsValid,
   createProduct,
+  findProductAndCategories
 };
