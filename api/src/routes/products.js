@@ -74,6 +74,7 @@ router
   })
 
   .put("/addcategories/:id", async (req, res) => {
+    // ** param id refers to product id **
     const { id } = req.params;
     const { categories } = req.body;
     try {
@@ -85,6 +86,23 @@ router
     } catch (error) {
       res.status(400).json(error.message);
     }
-  });
+  })
+  
+  .delete("/removecategories/:id", async (req, res) => {
+    // ** param id refers to product id **
+    const { id } = req.params;
+    const { categories } = req.body;
+    try {
+      const { productToModify, categoriesToModify } =
+        await findProductAndCategories(id, categories);
+
+      const updated = productToModify.removeCategories(categoriesToModify);
+      res.json(updated);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  })
+
+
 
 module.exports = router;

@@ -133,7 +133,7 @@ async function findProductAndCategories(id, categories) {
     },
   });
   if (!categoriesToModify.length)
-    throw new Error("No categories where found to add");
+    throw new Error("No categories where found");
 
   return { productToModify, categoriesToModify };
 }
