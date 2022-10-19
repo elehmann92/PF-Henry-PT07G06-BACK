@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { restart } = require("nodemon");
+
 const {
   searchByQuery,
   getProductsWithCategories,
@@ -44,7 +44,7 @@ router
   .post("/", async (req, res) => {
     const data = req.body;
     try {
-      newProductBodyIsValid(data)
+      newProductBodyIsValid(data);
       const newProduct = await createProduct(data);
       res.status(201).json(`${data.name} successfully created`);
     } catch (error) {
@@ -52,9 +52,24 @@ router
     }
   })
 
-  // .put('/:id', async (req, res) => {
-  //   const {id} = req.params;
-    
-  // })
+  .put("/:id", async (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+    try {
+      if (!body || !Object.keys(body).length) {
+        throw new Error("No data provided. Nothing to update");
+      }
+      const productToUpdate = await getProductById(id);
+      if (!productToUpdate)
+        return res.status(404).json("No product matches the provided id");
+
+      const updated = productToUpdate.set(body);
+      await productToUpdate.save();
+
+      res.status(200).json(updated);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  });
 
 module.exports = router;
