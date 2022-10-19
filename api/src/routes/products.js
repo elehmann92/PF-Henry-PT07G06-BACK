@@ -6,6 +6,7 @@ const {
   getProductById,
   createProduct,
   newProductBodyIsValid,
+  findProductAndCategories,
 } = require("../handlers");
 
 const router = Router();
@@ -67,6 +68,20 @@ router
       await productToUpdate.save();
 
       res.status(200).json(updated);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  })
+
+  .put("/addcategories/:id", async (req, res) => {
+    const { id } = req.params;
+    const { categories } = req.body;
+    try {
+      const { productToModify, categoriesToModify } =
+        await findProductAndCategories(id, categories);
+
+      const updated = productToModify.addCategories(categoriesToModify);
+      res.json(updated);
     } catch (error) {
       res.status(400).json(error.message);
     }
