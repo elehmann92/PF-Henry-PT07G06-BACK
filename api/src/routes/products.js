@@ -5,6 +5,7 @@ const {
   getProductsWithCategories,
   getProductById,
   createProduct,
+  newProductBodyIsValid,
 } = require("../handlers");
 
 const router = Router();
@@ -43,11 +44,17 @@ router
   .post("/", async (req, res) => {
     const data = req.body;
     try {
+      newProductBodyIsValid(data)
       const newProduct = await createProduct(data);
       res.status(201).json(`${data.name} successfully created`);
     } catch (error) {
-      res.status(404).json(error.message);
+      res.status(400).json(error.message);
     }
-  });
+  })
+
+  // .put('/:id', async (req, res) => {
+  //   const {id} = req.params;
+    
+  // })
 
 module.exports = router;

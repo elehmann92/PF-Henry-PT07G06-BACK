@@ -2,13 +2,16 @@ const axios = require("axios");
 const { Op } = require("sequelize");
 const { Category, Product } = require("../db");
 
+const upperCasedConditions = ["USADO", "COMO NUEVO", "CLAROS SIGNOS DE USO"];
+const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
+
 async function getProductDb() {
   return await Product.findAll();
 }
 
 async function getProductsWithCategories() {
   return await Product.findAll({
-    order: ['id'],
+    order: ["id"],
     include: {
       model: Category,
       through: {
@@ -51,18 +54,59 @@ async function searchByQuery(where) {
   return result;
 }
 
+function optionIsValid(validOptions, option) {
+  if (
+    typeof option === "string" &&
+    !validOptions.includes(option.toUpperCase())
+  ) {
+    throw new Error(
+      `Options available are one of these: ${validOptions.join(", ")}`
+    );
+  } else return true;
+}
+
+function newProductFieldsAreComplete(name, price, description, condition, image, categories) {
+  if (
+    !name ||
+    !price ||
+    !description ||
+    !condition ||
+    !image ||
+    !categories.length
+  ) {
+    throw new Error(
+      "Name, price, description, condition, image and category are required fields."
+    );
+  } else return true
+}
+
 function newProductBodyIsValid(newProduct) {
-    const {name, price, description, condition, image, categories = []} = newProduct
-    if (!name || !price || !description || !condition || !image || !categories.length) {
-        throw new Error ("Name, price, description, condition, image and category are required fields.")
-    }
-    return true
+  const {
+    name,
+    price,
+    description,
+    condition,
+    image,
+    categories = [],
+  } = newProduct;
+
+  newProductFieldsAreComplete(name, price, description, condition, image, categories)
+  optionIsValid(upperCasedConditions, condition);
+
+  return true;
 }
 
 async function createProduct(newProduct) {
-  const {name, price, description, condition, image, categories = []} = newProduct
-  console.log(name)
-  const owner = 1
+  const {
+    name,
+    price,
+    description,
+    condition,
+    image,
+    categories = [],
+  } = newProduct;
+  console.log(name);
+  const owner = 1;
   const newP = await Product.create({
     name: name,
     price: price,
@@ -70,9 +114,9 @@ async function createProduct(newProduct) {
     condition: condition,
     image: image,
     owner: owner,
-    status: "Publicado"
-  })
-  newP.setCategories(categories)
+    status: "Publicado",
+  });
+  newP.setCategories(categories);
 }
 
 module.exports = {
@@ -81,5 +125,5 @@ module.exports = {
   getProductById,
   searchByQuery,
   newProductBodyIsValid,
-  createProduct
+  createProduct,
 };
