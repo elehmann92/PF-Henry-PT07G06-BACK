@@ -1,9 +1,23 @@
 const axios = require("axios");
 const { Op } = require("sequelize");
-const { Category, Product } = require("../db");
+const { Category, Product, User } = require("../db");
 
 const upperCasedConditions = ["USADO", "COMO NUEVO", "CLAROS SIGNOS DE USO"];
 const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
+
+async function getUsersDb() {
+  return await User.findAll({
+    order: ["id"],
+    include: {
+      model: Product,
+      as: "productsOwner",
+    },
+  });
+}
+
+async function getUserById(id) {
+  return await User.findByPk(id);
+}
 
 async function getProductDb() {
   return await Product.findAll();
@@ -25,7 +39,7 @@ async function getProductById(id) {
   const product = await Product.findByPk(id, {
     include: {
       model: Category,
-      through: { attributes: [] },
+      // through: { attributes: [] },
     },
   });
   return product;
@@ -65,7 +79,14 @@ function optionIsValid(validOptions, option) {
   } else return true;
 }
 
-function newProductFieldsAreComplete(name, price, description, condition, image, categories) {
+function newProductFieldsAreComplete(
+  name,
+  price,
+  description,
+  condition,
+  image,
+  categories
+) {
   if (
     !name ||
     !price ||
@@ -77,7 +98,7 @@ function newProductFieldsAreComplete(name, price, description, condition, image,
     throw new Error(
       "Name, price, description, condition, image and category are required fields."
     );
-  } else return true
+  } else return true;
 }
 
 function newProductBodyIsValid(newProduct) {
@@ -90,7 +111,14 @@ function newProductBodyIsValid(newProduct) {
     categories = [],
   } = newProduct;
 
-  newProductFieldsAreComplete(name, price, description, condition, image, categories)
+  newProductFieldsAreComplete(
+    name,
+    price,
+    description,
+    condition,
+    image,
+    categories
+  );
   optionIsValid(upperCasedConditions, condition);
 
   return true;
@@ -132,8 +160,7 @@ async function findProductAndCategories(id, categories) {
       id: categories,
     },
   });
-  if (!categoriesToModify.length)
-    throw new Error("No categories where found");
+  if (!categoriesToModify.length) throw new Error("No categories where found");
 
   return { productToModify, categoriesToModify };
 }
@@ -145,5 +172,7 @@ module.exports = {
   searchByQuery,
   newProductBodyIsValid,
   createProduct,
-  findProductAndCategories
+  findProductAndCategories,
+  getUsersDb,
+  getUserById,
 };

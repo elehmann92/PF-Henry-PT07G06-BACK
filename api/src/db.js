@@ -30,7 +30,7 @@ fs.readdirSync(path.join(__dirname, '/models'))
  const { Product , Category, User} = sequelize.models;
 
  //Relaciones entre usuarios y productos
-User.hasMany(Product, {as: "products", foreignKey: "ownerId"})
+User.hasMany(Product, {as: "productsOwner", foreignKey: "ownerId"})
 Product.belongsTo(User, {as: "owner"})
 
  //Relaciones entre productos y categorias
