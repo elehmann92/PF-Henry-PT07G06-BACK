@@ -1,10 +1,29 @@
 const server = require('./src/app.js')
-const {conn , Category, Product} = require('./src/db.js')
+const {conn , Category, Product, User} = require('./src/db.js')
 const data = require('./categories.json')
 const dataP = require('./products.json')
+const dataU = require('./users.json')
 
 // funcion para setear los datos iniciales a la tabla Categories
-async function creatTypes() {
+async function createUsers() {
+  dataU.users.forEach(el =>
+    User.findOrCreate({where:{
+      name: el.username,
+      password: el.password,
+      image: el.image,
+      emailAddress: el.emailAddress,
+      homeAddress: el.homeAddress,
+      region: el.region,
+      city: el.city,
+      phoneNumber: el.phoneNumber,
+      lastTransaction: el.lastTransaction
+    }}) 
+    )
+
+}
+
+
+async function creatCategories() {
   data.categories.forEach(el => 
     Category.findOrCreate({where: {name: el.name}}))
 };
@@ -17,7 +36,7 @@ async function createProducts() {
     description: el.description,
     condition: el.condition,
     image: el.image,
-    owner: el.owner,
+    ownerId: el.owner,
     status: el.status
     }})
     if(created){
@@ -26,15 +45,13 @@ async function createProducts() {
     })}
 })};
 
-//server.listen(3001, ()=>{console.log('%s listening at 3001')})
-
-// una vez que tengamos la base de datos, habría que hacer un sync y el listening mostrarlo luego del then. Así:
 // // Syncing all the models at once.
  conn.sync({ alter: true }).then(() => {
      server.listen(3001, () => {
        console.log('Server listening at 3001'); // eslint-disable-line no-console
      });
 })
-.then(() => creatTypes())
+.then(() => createUsers())
+.then(() => creatCategories())
 .then(() => createProducts());
   

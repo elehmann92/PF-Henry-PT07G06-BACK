@@ -2,6 +2,7 @@ require('dotenv').config();
 const {Sequelize} = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { userInfo } = require('os');
 const {
     DB_USER, DB_PASSWORD, DB_HOST
 } = process.env;
@@ -26,14 +27,19 @@ fs.readdirSync(path.join(__dirname, '/models'))
  let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase()+entry[0].slice(1), entry[1]]);
  sequelize.models = Object.fromEntries(capsEntries);
 
- const { Product , Category} = sequelize.models;
+ const { Product , Category, User} = sequelize.models;
 
- //Relaciones entre las bases de datos
+ //Relaciones entre usuarios y productos
+User.hasMany(Product, {as: "productsOwner", foreignKey: "ownerId"})
+Product.belongsTo(User, {as: "owner"})
+
+ //Relaciones entre productos y categorias
  Product.belongsToMany(Category, {through: "product_category"})
  Category.belongsToMany(Product, {through: "product_category"})
 
  module.exports = {
     Product,
     Category,
+    User,
     conn: sequelize,
  }
