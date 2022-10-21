@@ -1,7 +1,7 @@
 const data = require('./categories.json')
 const dataP = require('./products.json')
 const dataU = require('./users.json')
-const {Category, Product, User, Cart} = require('../src/db.js')
+const {Category, Product, User} = require('../src/db.js')
 
 // funcion para setear los datos iniciales a la tabla Categories
 async function createUsers() {
@@ -17,7 +17,7 @@ async function createUsers() {
       phoneNumber: el.phoneNumber,
       lastTransaction: el.lastTransaction
     }})
-    if(created) { await entry.createCartUser() }
+    if(created) { await entry.createCartUser(); await entry.createFavoritesUser() }
 })
 };
 

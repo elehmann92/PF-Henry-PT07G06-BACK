@@ -147,7 +147,7 @@ async function createProduct(newProduct) {
     description: description,
     condition: condition,
     image: image,
-    owner: owner,
+    ownerId: owner,
     status: "Publicado",
   });
   newP.setCategories(categories);
