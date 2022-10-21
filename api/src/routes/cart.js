@@ -35,6 +35,7 @@ router
       res.status(400).json(error.message);
     }
   })
+  
   .delete("/removeProductFromCart/:cartId/:productId", async (req, res) => {
     const { cartId, productId } = req.params;
     try {
@@ -42,6 +43,17 @@ router
 
       await cartToAddTo.removeProduct(productId);
       res.json("Successfully removed");
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  })
+
+  .delete("/clearCart/:cartId", async (req, res) => {
+    const { cartId } = req.params;
+    try {
+      const cartToClear = await getCartById(cartId);
+      await cartToClear.setProducts([]);
+      res.json(`Cart ${cartId} successfully cleared`);
     } catch (error) {
       res.status(400).json(error.message);
     }
