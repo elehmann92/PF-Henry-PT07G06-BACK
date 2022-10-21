@@ -27,13 +27,29 @@ fs.readdirSync(path.join(__dirname, '/models'))
  let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase()+entry[0].slice(1), entry[1]]);
  sequelize.models = Object.fromEntries(capsEntries);
 
- const { Product , Category, User} = sequelize.models;
+ const { Product , Category, User, Cart, Favorites} = sequelize.models;
 
- //Relaciones entre usuarios y productos
+ //Relaciones entre usuarios y carts 1-1
+ User.hasOne(Cart, {as:'cartUser', foreignKey:"cartUserId"})
+ Cart.belongsTo(User, {as: 'cartUser'} )
+
+ //Relaciones entre usuarios y favoritos 1-1
+ User.hasOne(Favorites, {as:'favoritesUser', foreignKey:"favoritesUserId"})
+ Favorites.belongsTo(User, {as: 'favoritesUser'} )
+
+ //Relaciones entre usuarios y productos 1-N
 User.hasMany(Product, {as: "productsOwner", foreignKey: "ownerId"})
 Product.belongsTo(User, {as: "owner"})
 
- //Relaciones entre productos y categorias
+//Relaciones entre productos y cart N-N
+Product.belongsToMany(Cart, {through: "cart_product"})
+Cart.belongsToMany(Product, {through: "cart_product"})
+
+//Relaciones entre productos y cart N-N
+Product.belongsToMany(Favorites, {through: "favorites_product"})
+Favorites.belongsToMany(Product, {through: "favorites_product"})
+
+ //Relaciones entre productos y categorias N-N
  Product.belongsToMany(Category, {through: "product_category"})
  Category.belongsToMany(Product, {through: "product_category"})
 
@@ -41,5 +57,7 @@ Product.belongsTo(User, {as: "owner"})
     Product,
     Category,
     User,
+    Cart,
+    Favorites,
     conn: sequelize,
  }
