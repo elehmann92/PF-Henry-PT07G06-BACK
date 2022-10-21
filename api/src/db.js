@@ -58,5 +58,6 @@ Favorites.belongsToMany(Product, {through: "favorites_product"})
     Category,
     User,
     Cart,
+    Favorites,
     conn: sequelize,
  }
