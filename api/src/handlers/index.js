@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Op } = require("sequelize");
-const { Category, Product, User } = require("../db");
+const { Category, Product, User, Cart } = require("../db");
 
 const upperCasedConditions = ["USADO", "COMO NUEVO", "CLAROS SIGNOS DE USO"];
 const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
@@ -8,10 +8,16 @@ const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
 async function getUsersDb() {
   return await User.findAll({
     order: ["id"],
-    include: {
-      model: Product,
-      as: "productsOwner",
-    },
+    include: [
+      {
+        model: Cart,
+        as: "cartUser",
+      },
+      {
+        model: Product,
+        as: "productsOwner",
+      },
+    ],
   });
 }
 
@@ -165,6 +171,44 @@ async function findProductAndCategories(id, categories) {
   return { productToModify, categoriesToModify };
 }
 
+async function getCartsDb() {
+  return await Cart.findAll({
+    include: {
+      model: Product,
+      through:{
+        attributes: []
+      }
+    },
+    
+  });
+};
+
+async function getCartById(id) {
+ return await Cart.findByPk(id, {
+    include: {
+      model: Product,
+      through:{
+        attributes: []
+      }
+    },
+  });
+}
+
+async function findCartAndProduct(cartId, productId) {
+  if (!cartId || !productId) throw new Error("Missing Fields");
+
+  const cartToAddTo = await getCartById(cartId);
+  if (!cartToAddTo)
+    throw new Error("No cart was found matching the provided ID");
+  // console.log(cartToAddTo.toJSON())
+
+  const productToAdd = await getProductById(productId);
+  if (!productToAdd)
+    throw new Error("No Product was found matching the provided ID");
+  
+  return {cartToAddTo, productToAdd}
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
@@ -175,4 +219,7 @@ module.exports = {
   findProductAndCategories,
   getUsersDb,
   getUserById,
+  getCartsDb,
+  getCartById,
+  findCartAndProduct
 };
