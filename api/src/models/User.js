@@ -41,14 +41,6 @@ class User extends Model{}
                 type:DataTypes.STRING,
                 allowNull: false,
             },
-            cart:{
-                type: DataTypes.ARRAY(DataTypes.INTEGER),
-                allowNull: true,   
-            },
-            favoruites:{
-                type: DataTypes.ARRAY(DataTypes.INTEGER),
-                allowNull:true,
-            },
             lastTransaction:{
                 type: DataTypes.STRING,
                 allowNull:true,
