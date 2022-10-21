@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Op } = require("sequelize");
-const { Category, Product, User, Cart } = require("../db");
+const { Category, Product, User, Cart, Favorites } = require("../db");
 
 const upperCasedConditions = ["USADO", "COMO NUEVO", "CLAROS SIGNOS DE USO"];
 const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
@@ -17,12 +17,46 @@ async function getUsersDb() {
         model: Product,
         as: "productsOwner",
       },
+      {
+        model: Favorites,
+        as: "favoritesUser",
+      },
     ],
   });
 }
 
 async function getUserById(id) {
-  return await User.findByPk(id);
+  if (!id) throw new Error("Missing ID");
+  const user = await User.findByPk(id, {
+    include: [
+      {
+        model: Product,
+        as: "productsOwner",
+      },
+      {
+        model: Cart,
+        as: "cartUser",
+        include: {
+          model: Product,
+          through:{
+            attributes: []
+          }
+        }
+      },
+      {
+        model: Favorites,
+        as: "favoritesUser",
+        include: {
+          model: Product,
+          through:{
+            attributes: []
+          }
+        }
+      },
+    ],
+  });
+  if (!user) throw new Error("No user matches the provided ID");
+  return user;
 }
 
 async function getProductDb() {
@@ -42,12 +76,16 @@ async function getProductsWithCategories() {
 }
 
 async function getProductById(id) {
+  if (!id) throw new Error('Missing ID')
   const product = await Product.findByPk(id, {
     include: {
       model: Category,
       // through: { attributes: [] },
     },
   });
+
+  if (!product) throw new Error('No product matches the provided ID')
+
   return product;
 }
 
@@ -175,38 +213,72 @@ async function getCartsDb() {
   return await Cart.findAll({
     include: {
       model: Product,
-      through:{
-        attributes: []
-      }
-    },
-    
-  });
-};
-
-async function getCartById(id) {
- return await Cart.findByPk(id, {
-    include: {
-      model: Product,
-      through:{
-        attributes: []
-      }
+      through: {
+        attributes: [],
+      },
     },
   });
 }
 
+async function getCartById(id) {
+  if (!id) throw new Error("Missing Id");
+  const cart = await Cart.findByPk(id, {
+    include: {
+      model: Product,
+      through: {
+        attributes: [],
+      },
+    },
+  });
+
+  if (!cart) throw new Error("No Cart matches the provided ID");
+
+  return cart;
+}
+
 async function findCartAndProduct(cartId, productId) {
-  if (!cartId || !productId) throw new Error("Missing Fields");
 
   const cartToAddTo = await getCartById(cartId);
-  if (!cartToAddTo)
-    throw new Error("No cart was found matching the provided ID");
-  // console.log(cartToAddTo.toJSON())
 
   const productToAdd = await getProductById(productId);
-  if (!productToAdd)
-    throw new Error("No Product was found matching the provided ID");
-  
-  return {cartToAddTo, productToAdd}
+
+  return { cartToAddTo, productToAdd };
+}
+
+async function getFavoritesDb() {
+  return await Favorites.findAll({
+    include: {
+      model: Product,
+      through: {
+        attributes: [],
+      },
+    },
+  });
+}
+
+async function getFavoritesById(id) {
+  if (!id) throw new Error("Missing Id");
+  const favList = await Favorites.findByPk(id, {
+    include: {
+      model: Product,
+      through: {
+        attributes: [],
+      },
+    },
+  });
+
+  if (!favList) throw new Error("No Fav List matches the provided id");
+
+  return favList;
+}
+
+async function findFavoritesAndProduct(favListId, productId) {
+
+  const favListToAddTo = await getFavoritesById(favListId);
+
+  const productToAdd = await getProductById(productId);
+
+  return { favListToAddTo, productToAdd };
 }
 
 module.exports = {
@@ -221,5 +293,8 @@ module.exports = {
   getUserById,
   getCartsDb,
   getCartById,
-  findCartAndProduct
+  findCartAndProduct,
+  getFavoritesById,
+  getFavoritesDb,
+  findFavoritesAndProduct,
 };
