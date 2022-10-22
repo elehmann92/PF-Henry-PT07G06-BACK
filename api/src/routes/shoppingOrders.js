@@ -5,22 +5,22 @@ const { getCartById } = require("../handlers");
 const router = Router();
 
 router
-  .post("/:userId", async (req, res) => {
+  .post("/:cartId", async (req, res) => {
     try {
-      const {userId} = req.params  
-      const newTransaction = await Transaction.create({userId: userId, state: 'pending'})
-      const cart = await getCartById(userId)
+      const {cartId} = req.params  
+      const newShoppingOrder = await ShoppingOrder.create({cartId: cartId, state: 'pending'})
+      const cart = await getCartById(cartId)
 
       cart.dataValues.products.forEach(el => {
-        ShoppingOrder.create({
+        Transaction.create({
           state:'pending' , 
           sellerId: el.ownerId , 
           productId: el.id , 
-          transactionId: newTransaction.id, 
-          buyerId: userId})
+          shoppingOrderId: newShoppingOrder.id, 
+          buyerId: cartId})
       });
       await cart.setProducts([])
-      res.json(newTransaction);
+      res.json(newShoppingOrder);
     } catch (error) {
       res.status(404).json(error.message);
     }

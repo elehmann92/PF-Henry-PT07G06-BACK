@@ -14,10 +14,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      sellerId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
+
     },
     { sequelize, modelName: "shoppingOrder"}
   );
