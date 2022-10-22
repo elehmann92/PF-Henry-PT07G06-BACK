@@ -304,7 +304,7 @@ async function getShoppingOrderListWithDetails() {
       model: Transaction,
       as: "transactionList",
     },
-    attributes: { exclude: ["createdAt", "updatedAt"] },
+    // attributes: { exclude: ["createdAt", "updatedAt"] },
   });
 }
 
