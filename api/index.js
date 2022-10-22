@@ -52,7 +52,7 @@ async function createProducts() {
        console.log('Server listening'); // eslint-disable-line no-console
      });
 })
-// .then(() => createUsers())
-// .then(() => creatCategories())
-// .then(() => createProducts());
+.then(() => createUsers())
+.then(() => creatCategories())
+.then(() => createProducts());
   
