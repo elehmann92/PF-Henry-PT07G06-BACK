@@ -27,7 +27,9 @@ router
   .put("/addProductToCart/:cartId/:productId", async (req, res) => {
     const { cartId, productId } = req.params;
     try {
-      const { cartToAddTo } = await findCartAndProduct(cartId, productId);
+      const { cartToAddTo, productToAdd } = await findCartAndProduct(cartId, productId);
+
+      if (productToAdd.toJSON()?.status !== "Publicado") throw new Error('Selected product is not available for purchasing at the moment')
 
       await cartToAddTo.addProduct(productId);
       res.json("Successfully added");
