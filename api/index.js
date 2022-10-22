@@ -3,6 +3,7 @@ const {conn , Category, Product, User} = require('./src/db.js')
 const data = require('./categories.json')
 const dataP = require('./products.json')
 const dataU = require('./users.json')
+const {PORT}= require('./src/config')
 
 // funcion para setear los datos iniciales a la tabla Categories
 async function createUsers() {
@@ -47,11 +48,11 @@ async function createProducts() {
 
 // // Syncing all the models at once.
  conn.sync({ alter: true }).then(() => {
-     server.listen(3001, () => {
-       console.log('Server listening at 3001'); // eslint-disable-line no-console
+     server.listen(PORT, () => {
+       console.log('Server listening'); // eslint-disable-line no-console
      });
 })
-.then(() => createUsers())
-.then(() => creatCategories())
-.then(() => createProducts());
+// .then(() => createUsers())
+// .then(() => creatCategories())
+// .then(() => createProducts());
   
