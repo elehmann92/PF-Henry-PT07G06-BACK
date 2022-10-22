@@ -4,6 +4,7 @@ const categoriesRouter = require("./categories");
 const usersRouter = require("./users");
 const cartRouter = require("./cart");
 const favoritesRouter = require("./favorites");
+const shoppingOrdersRouter = require("./shoppingOrders")
 
 const router = Router();
 
@@ -12,5 +13,6 @@ router.use("/categories", categoriesRouter);
 router.use("/users", usersRouter);
 router.use("/cart", cartRouter);
 router.use("/favorites", favoritesRouter);
+router.use("/shoppingOrders", shoppingOrdersRouter);
 
 module.exports = router;
