@@ -76,6 +76,17 @@
         "region" : "Córdoba",
         "phoneNumber" : "5493584861971",
         "lastTransaction" : "Pedrox20-0"
+    },
+    {
+        "username": "General",
+        "password" : "DB-Pf-6-henry",
+        "image" : "",
+        "emailAddress" : "juiraMarket@gmail.com",
+        "homeAddress" : "Faustino Allende 754",
+        "city" : "Ciudad de Córdoba",
+        "region" : "Córdoba",
+        "phoneNumber" : "5493584862514",
+        "lastTransaction" : "General-0"
     }
 ]}
 

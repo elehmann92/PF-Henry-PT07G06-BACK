@@ -33,8 +33,6 @@ router
       }
 
       const userToUpdate = await getUserById(id);
-      if (!userToUpdate)
-        return res.status(404).json("No user matches the provided id");
 
       const updated = userToUpdate.set(body);
       await userToUpdate.save();
