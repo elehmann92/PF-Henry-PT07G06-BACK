@@ -15,11 +15,12 @@ class PaymentService {
         },
       ],
       back_urls: {
-        success: "https://localhost",
-        failure: "http://www.failure.com",
-        pending: "http://www.pending.com",
+        success: "https://google.com",
+        failure: "https://google.com",
+        pending: "https://google.com",
       },
-      notifications_url: "https://www.your-site.com/ipn",
+      notification_url: "https://pf-henry-pt07g06-back-production.up.railway.app/payment/response",
+      
     };
     const payment = await axios.post(url, body, {
       headers: {

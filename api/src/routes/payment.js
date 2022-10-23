@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Cart, Product } = require("../db");
+const { Cart, Product, Category } = require("../db");
 const { getCartsDb, getCartById, findCartAndProduct } = require("../handlers");
 
 const router = Router();
@@ -13,10 +13,10 @@ router.get("/", async (req, res) => {
   PaymentInstance.getPaymentLink(req, res);
 });
 
-router.get("/succes", async (req, res) => {
-  console.log("entro succes")
- 
-  res.send("exitos")
+router.post("/response", async (req, res) => {
+  console.log("entro succes",req.body)
+  Category.create({name: "MercadoLibre"}) 
+  res.send(req.body)
 });
 
 
