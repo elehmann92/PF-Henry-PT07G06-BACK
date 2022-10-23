@@ -1,4 +1,5 @@
 const server = require('./src/app.js')
+const {PORT}= require('./src/config')
 
 const {conn} = require('./src/db.js')
 const {createUsers, creatCategories, createProducts} = require('./dbSetup/idex')
