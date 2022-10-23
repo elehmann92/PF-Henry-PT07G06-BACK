@@ -17,7 +17,7 @@ async function createUsers() {
       phoneNumber: el.phoneNumber,
       lastTransaction: el.lastTransaction
     }})
-    if(created) { await entry.createCartUser(); await entry.createFavoritesUser() }
+    if(created) { await entry.createCartUser({total: 0}); await entry.createFavoritesUser() }
 })
 };
 

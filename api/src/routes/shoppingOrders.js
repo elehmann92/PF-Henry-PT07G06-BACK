@@ -23,6 +23,8 @@ router.post("/:cartId", async (req, res) => {
     const newShoppingOrder = await ShoppingOrder.create({
       cartId: cartId,
       state: "pending",
+      total: cartJSON.total,
+      paymentReceived: false
     });
 
     cartJSON.products.forEach(async (el) => {
@@ -32,6 +34,7 @@ router.post("/:cartId", async (req, res) => {
         productId: el.id,
         shoppingOrderId: newShoppingOrder.id,
         buyerId: cartJSON.cartUserId,
+        total: el.price
       });
       await updateProduct(el.id, {
         status: "No Disponible",
