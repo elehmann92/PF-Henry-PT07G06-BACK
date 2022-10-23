@@ -1,5 +1,4 @@
-import axios from "axios";
-
+const axios = require("axios")
 class PaymentService {
   async createPayment() {
     const url = "https://api.mercadopago.com/checkout/preferences";
@@ -11,12 +10,12 @@ class PaymentService {
           description: "Dummy description",
           picture_url: "http://www.myapp.com/myimage.jpg",
           category_id: "cat123",
-          quatity: 1,
+          quantity: 1,
           unit_price: 10,
         },
       ],
       back_urls: {
-        success: "https://www.success.com",
+        success: "https://localhost",
         failure: "http://www.failure.com",
         pending: "http://www.pending.com",
       },
@@ -31,3 +30,4 @@ class PaymentService {
     return payment.data;
   }
 }
+module.exports = PaymentService
