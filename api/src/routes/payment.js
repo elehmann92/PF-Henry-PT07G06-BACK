@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
 router.post("/response", async (req, res) => {
   console.log("entro succes",req.body)
-  console.log("PRUEBA DE RESPUESTA")
+  console.log("RESCATO EL ID ", req.body?.data?.id || "no lo encontre")
   
   res.send(req.body)
 });
