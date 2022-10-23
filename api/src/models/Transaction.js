@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
+      total: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
     },
     { sequelize, modelName: "transaction"}
   );

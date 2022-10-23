@@ -14,7 +14,14 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-
+      total: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      paymentReceived: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+      }
     },
     { sequelize, modelName: "shoppingOrder"}
   );

@@ -31,7 +31,12 @@ router
 
       if (productToAdd.toJSON()?.status !== "Publicado") throw new Error('Selected product is not available for purchasing at the moment')
 
+      const exists = await cartToAddTo.hasProducts(productToAdd)
+      if (exists) throw new Error('Product already exists in cart')
+
       await cartToAddTo.addProduct(productId);
+      const price = productToAdd.toJSON().price
+      await cartToAddTo.update({total:  cartToAddTo.toJSON().total + price});
       res.json("Successfully added");
     } catch (error) {
       res.status(400).json(error.message);
@@ -41,9 +46,14 @@ router
   .delete("/removeProductFromCart/:cartId/:productId", async (req, res) => {
     const { cartId, productId } = req.params;
     try {
-      const { cartToAddTo } = await findCartAndProduct(cartId, productId);
-
+      const { cartToAddTo , productToAdd} = await findCartAndProduct(cartId, productId);
+      
+      const exists = await cartToAddTo.hasProducts(productToAdd)
+      if (!exists) throw new Error('Product wasn`t found in cart')
+      
       await cartToAddTo.removeProduct(productId);
+      const price = productToAdd.toJSON().price
+      await cartToAddTo.update({total:  cartToAddTo.toJSON().total - price})
       res.json("Successfully removed");
     } catch (error) {
       res.status(400).json(error.message);
