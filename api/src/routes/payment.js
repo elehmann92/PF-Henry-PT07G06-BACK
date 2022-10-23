@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
 
 router.post("/response", async (req, res) => {
   console.log("entro succes",req.body)
+  console.log("ENTRO 2!")
   // Category.create({name: "MercadoLibre"}) 
   res.send(req.body)
 });
