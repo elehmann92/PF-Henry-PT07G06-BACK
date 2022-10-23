@@ -10,6 +10,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true
       },
+      total: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      }
     },
     { sequelize, modelName: "cart", timestamps: false }
   );
