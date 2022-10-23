@@ -32,6 +32,8 @@ router
       if (productToAdd.toJSON()?.status !== "Publicado") throw new Error('Selected product is not available for purchasing at the moment')
 
       await cartToAddTo.addProduct(productId);
+      const price = productToAdd.toJSON().price
+      await cartToAddTo.update({total:  cartToAddTo.toJSON().total + price});
       res.json("Successfully added");
     } catch (error) {
       res.status(400).json(error.message);
