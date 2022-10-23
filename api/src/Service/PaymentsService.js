@@ -30,8 +30,7 @@ class PaymentService {
         failure: "https://google.com",
         pending: "https://google.com",
       },
-      notification_url: "https://pf-henry-pt07g06-back-production.up.railway.app/payment/response",
-      
+      auto_return: "approved",       
     };
 
     const payment = await axios.post(url, body, {
