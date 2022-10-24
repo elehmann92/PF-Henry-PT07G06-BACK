@@ -56,6 +56,7 @@ class PaymentService {
         failure: "https://google.com",
         pending: "https://google.com",
       },
+      notification_url: "pf-henry-pt07g06-back-production.up.railway.app/payment/response",
       auto_return: "all",       
     };
 
