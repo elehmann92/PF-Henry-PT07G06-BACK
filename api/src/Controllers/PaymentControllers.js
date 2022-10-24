@@ -10,11 +10,11 @@ class PaymentController {
         const payment = await this.subscriptionService.createPayment(id);
 
         if(payment) {
-          const collectorId = payment.collector_id
+          const preference_id = payment.id
   
           const shoppingOrder = await ShoppingOrder.findByPk(id)
-          if(collectorId) {
-            await shoppingOrder.update({collector_id: collectorId})
+          if(preference_id) {
+            await shoppingOrder.update({preference_id: preference_id})
             await shoppingOrder.save()
           }
         }

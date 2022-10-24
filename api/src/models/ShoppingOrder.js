@@ -26,8 +26,8 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: true
       },
-      collector_id: {
-        type: DataTypes.INTEGER,
+      preference_id: {
+        type: DataTypes.STRING,
         allowNull: true
       },
       merchant_id: {
