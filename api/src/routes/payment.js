@@ -15,12 +15,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/response", async (req, res) => {
-  const body = req.body
+  // const body = req.body
 
-  if(body.resource) {
-    const resource = await axios.get(body.resource)
-    console.log(resource.data)
-  }
+  // if(body.resource) {
+  //   const resource = await axios.get(body.resource)
+  //   console.log(resource.data)
+  // }
 
   console.log("entro succes",req.body)
   console.log("RESCATO EL ID ", req.body?.data?.id || "no lo encontre")
