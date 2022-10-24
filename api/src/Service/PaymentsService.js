@@ -30,7 +30,7 @@ class PaymentService {
         failure: "https://google.com",
         pending: "https://google.com",
       },
-      auto_return: "approved",       
+      auto_return: "all",       
     };
 
     const payment = await axios.post(url, body, {
