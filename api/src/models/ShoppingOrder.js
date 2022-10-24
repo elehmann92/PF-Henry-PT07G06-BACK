@@ -22,8 +22,16 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false
       },
-      MpTransactionId: {
-        type: DataTypes.STRING,
+      payment_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      },
+      collector_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      },
+      merchant_id: {
+        type: DataTypes.INTEGER,
         allowNull: true
       },
     },
