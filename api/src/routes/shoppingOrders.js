@@ -41,6 +41,7 @@ router.post("/:cartId", async (req, res) => {
       });
     });
     await cart.setProducts([]);
+    await cart.update({total: 0});
     res.json(newShoppingOrder);
   } catch (error) {
     res.status(404).json(error.message);
