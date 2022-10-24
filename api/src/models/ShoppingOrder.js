@@ -21,7 +21,11 @@ module.exports = (sequelize) => {
       paymentReceived: {
         type: DataTypes.BOOLEAN,
         allowNull: false
-      }
+      },
+      MpTransactionId: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
     },
     { sequelize, modelName: "shoppingOrder"}
   );
