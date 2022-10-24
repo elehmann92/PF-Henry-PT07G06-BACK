@@ -8,9 +8,10 @@ const PaymentService = require("../Service/PaymentsService");
 const PaymentInstance = new PaymentController(new PaymentService());
 
 router.get("/", async (req, res) => {
-  console.log("entro")
+  const id = req.query.id
   
-  PaymentInstance.getPaymentLink(req, res);
+  
+  PaymentInstance.getPaymentLink(req, res,id);
 });
 
 router.post("/response", async (req, res) => {

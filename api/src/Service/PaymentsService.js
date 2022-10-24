@@ -1,15 +1,41 @@
 const axios = require("axios")
-class PaymentService {
-  async createPayment() {
+const {ShoppingOrder, Transaction, Product} = require("../db");
 
-    const items = [
+class PaymentService {
+  async createPayment(id) {
+
+    console.log(id)
+
+    const products = await ShoppingOrder.findByPk(id , {include: {
+      model: Transaction, 
+      as:"transactionList",
+      include: {
+        model: Product,
+        as: "product"
+      } 
+    }})
+
+    const productsList = products.toJSON().transactionList
+
+    const items = productsList.map( el => {return {
+      title: el.product.name,
+      quantity: 1,
+      unit_price: el.total,
+      id: el.productId,
+      description : el.product.description,
+      currencyId: "ARS",
+      picture_url: el.product.image,
+    }});
+
+
+    /*const items = [
       {
         title: "Iphone 11",
         description: "Teléfono Iphone 11 con 1 año de uso. Excelentes condiciones. En caja original.",
         picture_url: "http://www.vicionet.com/Vel/418-large_default/apple-iphone-11-128gb-.jpg",
         category_id: "Tecnología",
         quantity: 1,
-        unit_price: 2000,
+        unit_price: 1000,
       },
       {
         title: "Pelota Adidas",
@@ -17,9 +43,9 @@ class PaymentService {
         picture_url: "https://http2.mlstatic.com/D_NQ_NP_818059-MLA32029904978_082019-O.jpg",
         category_id: "Aire Libre",
         quantity: 1,
-        unit_price: 1500,
+        unit_price: 100,
       }
-    ]
+    ]*/
 
     const url = "https://api.mercadopago.com/checkout/preferences";
 
@@ -39,7 +65,7 @@ class PaymentService {
         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
       },
     });
-    return payment.data;
+    return await payment.data;
   }
 }
 module.exports = PaymentService
