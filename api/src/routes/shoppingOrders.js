@@ -39,7 +39,7 @@ router.post("/:cartId", async (req, res) => {
     });
 
     cartJSON.products.forEach(async (el) => {
-      Transaction.create({
+      await Transaction.create({
         state: "pending",
         sellerId: el.ownerId,
         productId: el.id,
