@@ -14,60 +14,60 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/response", async (req, res) => {
-  const { topic, action } = req.body;
+  // const { topic, action } = req.body;
 
-  try {
-    if (topic === "merchant_order") {
-      const merchantOrder = await axios.get(req.body.resource, {
-        headers: {
-          "Content-Type": "aplication/json",
-          Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-        },
-      });
+  // try {
+  //   if (topic === "merchant_order") {
+  //     const merchantOrder = await axios.get(req.body.resource, {
+  //       headers: {
+  //         "Content-Type": "aplication/json",
+  //         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+  //       },
+  //     });
 
-      if (!merchantOrder) throw new Error("No merchant order was found");
+  //     if (!merchantOrder) throw new Error("No merchant order was found");
 
-      const shoppingOrder = await ShoppingOrder.findOne({
-        where: {
-          preference_id: merchantOrder.data.preference_id,
-        },
-      });
+  //     const shoppingOrder = await ShoppingOrder.findOne({
+  //       where: {
+  //         preference_id: merchantOrder.data.preference_id,
+  //       },
+  //     });
 
-      if (!shoppingOrder) throw new Error("No shopping order was found");
+  //     if (!shoppingOrder) throw new Error("No shopping order was found");
 
-      const updated = await shoppingOrder.update({
-        merchant_id: merchantOrder.data.id,
-      });
-      return res.json(updated)
-    }
+  //     const updated = await shoppingOrder.update({
+  //       merchant_id: merchantOrder.data.id,
+  //     });
+  //     return res.json(updated)
+  //   }
 
-    // if (action === "payment.updated") {
-    //   const paymentStatus = await axios.get(
-    //     `https://api.mercadopago.com/v1/payments/${req.body.data.id}`,
-    //     {
-    //       headers: {
-    //         "Content-Type": "aplication/json",
-    //         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-    //       },
-    //     }
-    //   );
+  //   // if (action === "payment.updated") {
+  //   //   const paymentStatus = await axios.get(
+  //   //     `https://api.mercadopago.com/v1/payments/${req.body.data.id}`,
+  //   //     {
+  //   //       headers: {
+  //   //         "Content-Type": "aplication/json",
+  //   //         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+  //   //       },
+  //   //     }
+  //   //   );
 
-    //   if (!paymentStatus) throw new Error('No payment order was found')
-    //   const shoppingOrder = await ShoppingOrder.findOne({where:{
-    //     merchant_id: paymentStatus.data.order.id
-    //   }})
-    //   if (!shoppingOrder) throw new Error("No shopping order was found");
+  //   //   if (!paymentStatus) throw new Error('No payment order was found')
+  //   //   const shoppingOrder = await ShoppingOrder.findOne({where:{
+  //   //     merchant_id: paymentStatus.data.order.id
+  //   //   }})
+  //   //   if (!shoppingOrder) throw new Error("No shopping order was found");
       
-    //   const updated = shoppingOrder.set({
-    //     payment_id: paymentStatus.data.id,
-    //     paymentReceived: paymentStatus.data.status === "approved" ? true : false,
-    //     state: paymentStatus.data.status,
-    //   })
-    //   return res.json(updated)
-    // }
-  } catch (error) {
-    res.status(400).json(error.message)
-  }
+  //   //   const updated = shoppingOrder.set({
+  //   //     payment_id: paymentStatus.data.id,
+  //   //     paymentReceived: paymentStatus.data.status === "approved" ? true : false,
+  //   //     state: paymentStatus.data.status,
+  //   //   })
+  //   //   return res.json(updated)
+  //   // }
+  // } catch (error) {
+  //   res.status(400).json(error.message)
+  // }
 
   // topic: 'merchant_order'
   // action: 'payment.updated',
