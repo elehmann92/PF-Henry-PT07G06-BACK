@@ -62,7 +62,7 @@ router.post("/:cartId", async (req, res) => {
       }
     })
     const html = ordenCreada(user, newShoppingOrder, productDetail)
-    // await sendEmail(user, 'Nueva orden de compra', html)
+    await sendEmail(user, 'Nueva orden de compra', html)
 
     res.json(newShoppingOrder);
   } catch (error) {
