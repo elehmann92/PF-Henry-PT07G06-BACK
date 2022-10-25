@@ -55,26 +55,32 @@ const productoPublicado = (user, product) => {
         `
 }
 
-const ordenCreada = (user, order) => {
+const ordenCreada = (user, order, products) => {
     return `
         <p>¡<strong>${user.name}</strong>, felicidades por tu compra!</p>
         <p>Se ha creado una nueva orden de compra.</p>
         <p>Aquí te mostramos los detalles de tu compra:</p>
         <p><strong>Orden No.</strong> ${order.id}</p>
-        <p><strong>Productos:</strong> {order.products}</p>
-        <p><strong>Monto:</strong> ${order.total}</p>
+        <p><strong>Productos:</strong></p>
+        <ul>
+            ${products.map( p => `<li> 1 ${p.name} x $ ${p.price}</li>`)}
+        </ul>
+        <p><strong>Total:</strong> ${order.total}</p>
         <p><strong>Estatus:</strong> ${order.state}</p>
    `
 }
 
-const ordenPagada = (user, order) => {
+const ordenPagada = (user, order, products) => {
     return `
         <p>¡<strong>${user.name}</strong>, el estatus de compra ha cambiado!</p>
 
         <p>Aquí te mostramos los detalles de tu orden de compra:</p>
         <p><strong>Orden No.</strong> ${order.id}</p>
-        <p><strong>Productos:</strong> ${order.products}</p>
-        <p><strong>Monto:</strong> ${order.total}</p>
+        <p><strong>Productos:</strong></p>
+        <ul>
+            ${products.map( p => `<li> 1 ${p.name} x $ ${p.price}</li>`)}
+        </ul>
+        <p><strong>Total:</strong> ${order.total}</p>
         <p><strong>Número de confirmación:</strong> ${order.payment_id}</p>
         <p><strong>Estatus:</strong> ${order.state ? 'Pagado' : 'Pendiente por pagar'}</p>
    `
