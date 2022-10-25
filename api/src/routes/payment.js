@@ -69,10 +69,10 @@ router.post("/response", async (req, res) => {
   //   return res.status(400).json(error.message)
   // }
 
-  console.log("entro succes", req.body);
-  console.log("RESCATO EL ID ", req.body?.data?.id || "no lo encontre");
+  // console.log("entro succes", req.body);
+  // console.log("RESCATO EL ID ", req.body?.data?.id || "no lo encontre");
 
-  res.send(req.body);
+  res.send("ACA VAN A SALIR LOS BODIES DEL POST /PAYMENT/RESPONSE");
 });
 
 router.get("/idStatus/:id", async (req, res) => {
