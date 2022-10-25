@@ -41,30 +41,30 @@ router.post("/response", async (req, res) => {
       return res.json(updated)
     }
 
-    if (action === "payment.updated") {
-      const paymentStatus = await axios.get(
-        `https://api.mercadopago.com/v1/payments/${req.body.data.id}`,
-        {
-          headers: {
-            "Content-Type": "aplication/json",
-            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-          },
-        }
-      );
+    // if (action === "payment.updated") {
+    //   const paymentStatus = await axios.get(
+    //     `https://api.mercadopago.com/v1/payments/${req.body.data.id}`,
+    //     {
+    //       headers: {
+    //         "Content-Type": "aplication/json",
+    //         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    //       },
+    //     }
+    //   );
 
-      if (!paymentStatus) throw new Error('No payment order was found')
-      const shoppingOrder = await ShoppingOrder.findOne({where:{
-        merchant_id: paymentStatus.data.order.id
-      }})
-      if (!shoppingOrder) throw new Error("No shopping order was found");
+    //   if (!paymentStatus) throw new Error('No payment order was found')
+    //   const shoppingOrder = await ShoppingOrder.findOne({where:{
+    //     merchant_id: paymentStatus.data.order.id
+    //   }})
+    //   if (!shoppingOrder) throw new Error("No shopping order was found");
       
-      const updated = shoppingOrder.set({
-        payment_id: paymentStatus.data.id,
-        paymentReceived: paymentStatus.data.status === "approved" ? true : false,
-        state: paymentStatus.data.status,
-      })
-      return res.json(updated)
-    }
+    //   const updated = shoppingOrder.set({
+    //     payment_id: paymentStatus.data.id,
+    //     paymentReceived: paymentStatus.data.status === "approved" ? true : false,
+    //     state: paymentStatus.data.status,
+    //   })
+    //   return res.json(updated)
+    // }
   } catch (error) {
     res.status(400).json(error.message)
   }
