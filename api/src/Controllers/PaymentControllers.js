@@ -13,6 +13,7 @@ class PaymentController {
           const preference_id = payment.id
   
           const shoppingOrder = await ShoppingOrder.findByPk(id)
+          console.log("SHOPPING ORDER!! --> ",shoppingOrder)
           if(preference_id) {
             await shoppingOrder.update({preference_id: preference_id})
             await shoppingOrder.save()
