@@ -1,6 +1,17 @@
 const { Router } = require("express");
-const { Transaction, User, ShoppingOrder } = require("../db");
+const { Transaction, User, ShoppingOrder, Product } = require("../db");
 const { getCartById, getProductById, updateProduct, getShoppingOrderListWithDetails, getShoppingOrderById } = require("../handlers");
+const { 
+  sendEmail,
+  ordenCreada,
+  ordenPagada,
+ } = require("../mail/index");
+ 
+const user = {
+  name: 'Usuario',
+  email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+} 
+
 
 const router = Router();
 
@@ -42,6 +53,17 @@ router.post("/:cartId", async (req, res) => {
     });
     await cart.setProducts([]);
     await cart.update({total: 0});
+
+    const orderDetail = await getShoppingOrderById(newShoppingOrder.id)
+    const products = orderDetail.transactionList.map( p => p.productId)
+    const productDetail = await Product.findAll({
+      where: {
+        id: products
+      }
+    })
+    const html = ordenCreada(user, newShoppingOrder, productDetail)
+    // await sendEmail(user, 'Nueva orden de compra', html)
+
     res.json(newShoppingOrder);
   } catch (error) {
     res.status(404).json(error.message);
@@ -87,6 +109,16 @@ router.post("/:cartId", async (req, res) => {
       })
       await shoppingOrder.save()
 
+      const orderDetail = await getShoppingOrderById(shoppingOrder.id)
+      const products = orderDetail.transactionList.map( p => p.productId)
+      const productDetail = await Product.findAll({
+        where: {
+          id: products
+        }
+      })
+      const html = ordenPagada(user, updated, productDetail)
+      await sendEmail(user, 'Cambio de estatus en tu orden de compra', html)
+
       res.json(updated)
     } catch (error) {
       res.status(400).json(error.message)
@@ -101,6 +133,7 @@ router.post("/:cartId", async (req, res) => {
       const shoppingOrderToUpdate = await getShoppingOrderById(id)
       const updated = shoppingOrderToUpdate.set(body)
       await shoppingOrderToUpdate.save()
+
       res.json(updated)
 
     } catch (error) {
