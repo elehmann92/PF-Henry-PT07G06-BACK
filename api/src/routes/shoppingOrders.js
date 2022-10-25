@@ -39,7 +39,7 @@ router
       //   return totalCart += ele.price
       // })
 
-      console.log("TOTAL CARRITO DE COMPRAS -->",totalCart)
+      // console.log("TOTAL CARRITO DE COMPRAS -->",totalCart)
 
       const newShoppingOrder = await ShoppingOrder.create({
         cartId: cartId,
