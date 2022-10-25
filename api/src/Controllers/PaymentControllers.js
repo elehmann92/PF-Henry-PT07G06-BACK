@@ -12,7 +12,14 @@ class PaymentController {
         if(payment) {
           const preference_id = payment.id
   
-          const shoppingOrder = await ShoppingOrder.findByPk(id)
+          const shoppingOrder = await ShoppingOrder.findByPk(id,{include: {
+            model: Transaction, 
+            as:"transactionList",
+            include: {
+              model: Product,
+              as: "product"
+            } 
+          }})
           console.log("SHOPPING ORDER!! --> ",shoppingOrder)
           if(preference_id) {
             await shoppingOrder.update({preference_id: preference_id})
