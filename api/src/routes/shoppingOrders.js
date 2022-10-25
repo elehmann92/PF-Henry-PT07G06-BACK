@@ -33,18 +33,19 @@ router
           );
       });
 
-      let totalCart = 0
-      cartJSON.products.forEach(ele => {
-        console.log("ELE.PRICE --->",ele.price)
-        return totalCart += ele.price
-      })
+      // let totalCart = 0
+      // cartJSON.products.forEach(ele => {
+      //   console.log("ELE.PRICE --->",ele.price)
+      //   return totalCart += ele.price
+      // })
 
       console.log("TOTAL CARRITO DE COMPRAS -->",totalCart)
 
       const newShoppingOrder = await ShoppingOrder.create({
         cartId: cartId,
         state: "pending",
-        total: totalCart,
+        // total: totalCart,
+        total: cartJSON.total,
         paymentReceived: false,
       });
 
