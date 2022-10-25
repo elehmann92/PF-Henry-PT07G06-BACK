@@ -22,6 +22,7 @@ router
       const { cartId } = req.params;
       const cart = await getCartById(cartId);
       const cartJSON = cart.toJSON();
+      console.log("CARRITO DE COMPRAS ->",cartJSON)
       if (!cartJSON.products?.length) {
         return res.status(404).json("There are no products listed to confirm");
       }
@@ -70,9 +71,11 @@ router
           id: products,
         },
       });
-      console.log("PRODUCT DETAIL PARA MAIL ->",productDetail)
+      // console.log("PRODUCT DETAIL PARA MAIL ->",productDetail)
       const html = ordenCreada(user, newShoppingOrder, productDetail);
       await sendEmail(user, "Nueva orden de compra", html);
+
+      newShoppingOrder
 
       res.json(newShoppingOrder);
     } catch (error) {
