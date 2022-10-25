@@ -33,7 +33,11 @@ router
           );
       });
 
-      const totalCart = cartJSON.products.reduce((acc,ele) => acc + ele.price)
+      let totalCart = 0
+      cartJSON.forEach(ele => {
+        console.log("ELE.PRICE --->",ele.price)
+        return totalCart += ele.price
+      })
 
       console.log("TOTAL CARRITO DE COMPRAS -->",totalCart)
 
