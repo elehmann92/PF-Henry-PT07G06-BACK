@@ -34,7 +34,7 @@ router
       });
 
       let totalCart = 0
-      cartJSON.forEach(ele => {
+      cartJSON.products.forEach(ele => {
         console.log("ELE.PRICE --->",ele.price)
         return totalCart += ele.price
       })
