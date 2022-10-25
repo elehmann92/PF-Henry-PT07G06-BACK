@@ -16,7 +16,7 @@ class PaymentController {
             model: Transaction,
             as: "transactionList"
           }})
-          console.log("SHOPPING ORDER!! --> ",shoppingOrder)
+          console.log("SHOPPING ORDER!! --> ",shoppingOrder.toJSON())
           if(preference_id) {
             await shoppingOrder.update({preference_id: preference_id})
             await shoppingOrder.save()
