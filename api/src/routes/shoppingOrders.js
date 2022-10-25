@@ -67,6 +67,31 @@ router.post("/:cartId", async (req, res) => {
   }
  })
 
+ .put("/mpresponse", async(req,res) => {
+    const {status,payment_id,merchant_order_id,preference_id} = req.body
+    try {
+      
+      if (!preference_id) throw new Error('Missing preference ID')
+      
+      const shoppingOrder = await ShoppingOrder.findOne({where:{
+        preference_id
+      }})
+
+      if(!shoppingOrder) throw new Error('No shopping order was found accordint to the provided preference ID')
+
+      const updated = shoppingOrder.set({
+        payment_id: parseInt(payment_id), 
+        merchant_id: parseInt(merchant_order_id),
+        paymentReceived: status === "approved" ? true : false
+      })
+      await shoppingOrder.save()
+
+      res.json(updated)
+    } catch (error) {
+      res.status(400).json(error.message)
+    }
+  })
+
  .put('/:id', async(req,res) => {
     const {id} = req.params;
     const body = req.body
@@ -81,5 +106,7 @@ router.post("/:cartId", async (req, res) => {
       res.status(400).json(error.message)
     }
  })
+
+
 
 module.exports = router;
