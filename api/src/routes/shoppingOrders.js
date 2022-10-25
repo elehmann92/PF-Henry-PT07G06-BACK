@@ -59,6 +59,7 @@ router
 
       await Promise.all(transaccionCreate);
       await Promise.all(updateProductState);
+
       await cart.setProducts([]);
       await cart.update({ total: 0 });
 
@@ -69,6 +70,7 @@ router
           id: products,
         },
       });
+      console.log("PRODUCT DETAIL PARA MAIL ->",productDetail)
       const html = ordenCreada(user, newShoppingOrder, productDetail);
       await sendEmail(user, "Nueva orden de compra", html);
 

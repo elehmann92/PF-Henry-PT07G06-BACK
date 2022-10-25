@@ -1,4 +1,4 @@
-const { ShoppingOrder } = require("../db");
+const { ShoppingOrder, Transaction } = require("../db");
 
 class PaymentController {
     constructor(subscriptionService) {
@@ -12,7 +12,10 @@ class PaymentController {
         if(payment) {
           const preference_id = payment.id
   
-          const shoppingOrder = await ShoppingOrder.findByPk(id)
+          const shoppingOrder = await ShoppingOrder.findByPk(id, {include:{
+            model: Transaction,
+            as: "transactionList"
+          }})
           console.log("SHOPPING ORDER!! --> ",shoppingOrder)
           if(preference_id) {
             await shoppingOrder.update({preference_id: preference_id})
