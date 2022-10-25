@@ -35,6 +35,8 @@ router
 
       const totalCart = cartJSON.products.reduce((acc,ele) => acc + ele.price)
 
+      console.log("TOTAL CARRITO DE COMPRAS -->",totalCart)
+
       const newShoppingOrder = await ShoppingOrder.create({
         cartId: cartId,
         state: "pending",
