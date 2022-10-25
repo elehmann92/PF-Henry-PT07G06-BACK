@@ -1,5 +1,15 @@
 const { Router } = require("express");
 
+const { 
+  sendEmail,
+  productoPublicado,
+ } = require("../mail/index");
+
+const user = {
+  name: 'Usuario',
+  email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+} 
+
 const {
   searchByQuery,
   getProductsWithCategories,
@@ -48,6 +58,8 @@ router
     try {
       newProductBodyIsValid(data);
       const newProduct = await createProduct(data);
+      const html = productoPublicado(user, data) //get personalized html template
+      await sendEmail(user, 'Producto Publicado', html)
       res.status(201).json(`${data.name} successfully created`);
     } catch (error) {
       res.status(400).json(error.message);

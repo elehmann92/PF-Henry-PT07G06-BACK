@@ -1,6 +1,17 @@
 const { Router } = require("express");
 const { Transaction, User, ShoppingOrder } = require("../db");
 const { getCartById, getProductById, updateProduct, getShoppingOrderListWithDetails, getShoppingOrderById } = require("../handlers");
+const { 
+  sendEmail,
+  ordenCreada,
+  ordenPagada,
+ } = require("../mail/index");
+ 
+const user = {
+  name: 'Usuario',
+  email: 'jonatan2502@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+} 
+
 
 const router = Router();
 
@@ -42,6 +53,10 @@ router.post("/:cartId", async (req, res) => {
     });
     await cart.setProducts([]);
     await cart.update({total: 0});
+
+    const html = ordenCreada(user, newShoppingOrder)
+    await sendEmail(user, 'Nueva orden de compra', html)
+
     res.json(newShoppingOrder);
   } catch (error) {
     res.status(404).json(error.message);
@@ -86,6 +101,9 @@ router.post("/:cartId", async (req, res) => {
       })
       await shoppingOrder.save()
 
+      const html = ordenPagada(user, updated)
+      await sendEmail(user, 'Cambio de estatus en tu orden de compra', html)
+
       res.json(updated)
     } catch (error) {
       res.status(400).json(error.message)
@@ -100,6 +118,7 @@ router.post("/:cartId", async (req, res) => {
       const shoppingOrderToUpdate = await getShoppingOrderById(id)
       const updated = shoppingOrderToUpdate.set(body)
       await shoppingOrderToUpdate.save()
+
       res.json(updated)
 
     } catch (error) {
