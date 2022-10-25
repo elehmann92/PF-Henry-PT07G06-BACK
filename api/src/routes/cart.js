@@ -35,7 +35,7 @@ router
       if (exists) throw new Error('Product already exists in cart')
 
       await cartToAddTo.addProduct(productId);
-      const price = await productToAdd.toJSON().price
+      const price = productToAdd.toJSON().price
       await cartToAddTo.update({total:  cartToAddTo.toJSON().total + price});
       res.json("Successfully added");
     } catch (error) {
