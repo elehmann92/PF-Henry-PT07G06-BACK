@@ -22,7 +22,6 @@ router
       const { cartId } = req.params;
       const cart = await getCartById(cartId);
       const cartJSON = cart.toJSON();
-      console.log("CARRITO DE COMPRAS ->",cartJSON)
       if (!cartJSON.products?.length) {
         return res.status(404).json("There are no products listed to confirm");
       }
@@ -34,10 +33,12 @@ router
           );
       });
 
+      const totalCart = cartJSON.products.reduce((acc,ele) => acc + ele.price)
+
       const newShoppingOrder = await ShoppingOrder.create({
         cartId: cartId,
         state: "pending",
-        total: cartJSON.total,
+        total: totalCart,
         paymentReceived: false,
       });
 
