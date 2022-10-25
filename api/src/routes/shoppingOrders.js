@@ -9,7 +9,7 @@ const {
  
 const user = {
   name: 'Usuario',
-  email: 'jonatan2502@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+  email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
 } 
 
 
