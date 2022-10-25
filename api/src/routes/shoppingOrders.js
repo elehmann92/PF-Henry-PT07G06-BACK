@@ -80,8 +80,8 @@ router.post("/:cartId", async (req, res) => {
       if(!shoppingOrder) throw new Error('No shopping order was found accordint to the provided preference ID')
 
       const updated = shoppingOrder.set({
-        payment_id: parseInt(payment_id), 
-        merchant_id: parseInt(merchant_order_id),
+        payment_id: payment_id,
+        merchant_id: merchant_order_id,
         paymentReceived: status === "approved" ? true : false
       })
       await shoppingOrder.save()

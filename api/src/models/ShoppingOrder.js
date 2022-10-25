@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
         allowNull: false
       },
       payment_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true
       },
       preference_id: {
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
         allowNull: true
       },
       merchant_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true
       },
     },
