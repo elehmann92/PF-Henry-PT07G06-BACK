@@ -1,5 +1,9 @@
 const { Router } = require("express");
 
+const {
+  isAuthenticated
+} = require("../handlers/routeProtection")
+
 const { 
   sendEmail,
   productoPublicado,
@@ -23,7 +27,7 @@ const {
 const router = Router();
 
 router
-  .get("/", async (req, res) => {
+  .get("/", isAuthenticated, async (req, res) => {
     const { name = "", status = "", condition = "" } = req.query;
     const where = {
       name,
