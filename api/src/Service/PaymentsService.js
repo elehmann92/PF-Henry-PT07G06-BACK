@@ -52,9 +52,9 @@ class PaymentService {
     const body = {
       items,
       back_urls: {
-        success: "https://juira-market-drkc9hz2u-elehmann92.vercel.app/juira/order",
-        failure: "https://juira-market-drkc9hz2u-elehmann92.vercel.app/juira/order",
-        pending: "https://juira-market-drkc9hz2u-elehmann92.vercel.app/juira/order",
+        success: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
+        failure: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
+        pending: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
       },
       notification_url: "https://pf-henry-pt07g06-back-production.up.railway.app/payment/response",
       auto_return: "all",       
