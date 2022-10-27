@@ -55,6 +55,7 @@ const productoPublicado = (user, product) => {
         `
 }
 
+
 const ordenCreada = (user, order, products) => {
     return `
         <p>¡<strong>${user.name}</strong>, felicidades por tu compra!</p>
@@ -83,6 +84,7 @@ const ordenPagada = (user, order, products) => {
         <p><strong>Total:</strong> ${order.total}</p>
         <p><strong>Número de confirmación:</strong> ${order.payment_id}</p>
         <p><strong>Estatus:</strong> ${order.state ? 'Pagado' : 'Pendiente por pagar'}</p>
+
    `
 }
 
@@ -97,7 +99,9 @@ const ordenDespachada = (user, order) => {
 module.exports = {
     sendEmail,
     ordenDespachada,
+
     ordenCreada,
+
     ordenPagada,
     productoPublicado,
     bienvenida
