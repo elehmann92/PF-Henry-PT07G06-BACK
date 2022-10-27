@@ -30,14 +30,13 @@ async function creatCategories() {
 async function createProducts() {
   dataP.products.forEach(async el => 
     {const [entry , created] = await Product.findOrCreate({where: {
-      name: el.name,
-    }, defaults: {
-      price: el.price,
-      description: el.description,
-      condition: el.condition,
-      image: el.image,
-      ownerId: el.owner,
-      status: el.status
+    name: el.name,
+    price: el.price,
+    description: el.description,
+    condition: el.condition,
+    image: el.image,
+    ownerId: el.owner,
+    status: el.status
     }})
     if(created){
     el.categories.forEach(async el => {id = await Category.findAll({where: {name : el} });

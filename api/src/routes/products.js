@@ -9,16 +9,6 @@ const user = {
   email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
 } 
 
-const { 
-  sendEmail,
-  productoPublicado,
- } = require("../mail/index");
-
-const user = {
-  name: 'Usuario',
-  email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
-} 
-
 const {
   searchByQuery,
   getProductsWithCategories,

@@ -21,19 +21,7 @@ module.exports = (sequelize) => {
       paymentReceived: {
         type: DataTypes.BOOLEAN,
         allowNull: false
-      },
-      payment_id: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      preference_id: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      merchant_id: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
+      }
     },
     { sequelize, modelName: "shoppingOrder"}
   );

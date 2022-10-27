@@ -65,7 +65,6 @@ router
     try {
       const cartToClear = await getCartById(cartId);
       await cartToClear.setProducts([]);
-      await cartToClear.update({total: 0});
       res.json(`Cart ${cartId} successfully cleared`);
     } catch (error) {
       res.status(400).json(error.message);
