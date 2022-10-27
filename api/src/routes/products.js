@@ -1,5 +1,15 @@
 const { Router } = require("express");
 
+const { 
+  sendEmail,
+  productoPublicado,
+ } = require("../mail/index");
+
+const user = {
+  name: 'Usuario',
+  email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+} 
+
 const {
   searchByQuery,
   getProductsWithCategories,
@@ -7,6 +17,7 @@ const {
   createProduct,
   newProductBodyIsValid,
   findProductAndCategories,
+  updateProduct,
 } = require("../handlers");
 
 const router = Router();
@@ -47,6 +58,8 @@ router
     try {
       newProductBodyIsValid(data);
       const newProduct = await createProduct(data);
+      const html = productoPublicado(user, data) //get personalized html template
+      await sendEmail(user, 'Producto Publicado', html)
       res.status(201).json(`${data.name} successfully created`);
     } catch (error) {
       res.status(400).json(error.message);
@@ -57,15 +70,7 @@ router
     const { id } = req.params;
     const body = req.body;
     try {
-      if (!body || !Object.keys(body).length) {
-        throw new Error("No data provided. Nothing to update");
-      }
-      const productToUpdate = await getProductById(id);
-      if (!productToUpdate)
-        return res.status(404).json("No product matches the provided id");
-
-      const updated = productToUpdate.set(body);
-      await productToUpdate.save();
+      const updated = await updateProduct(id, body);
 
       res.status(200).json(updated);
     } catch (error) {
@@ -87,7 +92,7 @@ router
       res.status(400).json(error.message);
     }
   })
-  
+
   .delete("/removecategories/:id", async (req, res) => {
     // ** param id refers to product id **
     const { id } = req.params;
@@ -101,8 +106,6 @@ router
     } catch (error) {
       res.status(400).json(error.message);
     }
-  })
-
-
+  });
 
 module.exports = router;

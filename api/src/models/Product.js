@@ -1,4 +1,4 @@
-const { DataTypes, condition, Model } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 
 class Product extends Model {}
 
@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10000),
         allowNull: false,
       },
       price: {
@@ -27,10 +27,6 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      owner: {
-        type: DataTypes.INTEGER,
         allowNull: false,
       },
       status: {
