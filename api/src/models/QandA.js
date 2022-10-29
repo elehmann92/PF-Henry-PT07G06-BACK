@@ -10,8 +10,13 @@ module.exports= (sequelize)=>{
             primaryKey:true,
         },
         questionary:{
-            type: DataTypes.ENUM("¿Qué opinas de este producto?","¿Qué crees que se pueda mejorar en el producto?", "¿Recomendarías este vendedor?", "¿Cómo fue la calidad de atención por parte del vendedor?"),
-            allowNull:false,
+            type: DataTypes.STRING,
+            allowNull:true,
+        },
+        answers:{
+            type: DataTypes.STRING,
+            allowNull:true,
+            defaultValue:""
         }
     },
     {

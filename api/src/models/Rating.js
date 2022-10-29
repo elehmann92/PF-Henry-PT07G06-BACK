@@ -11,7 +11,7 @@ module.exports= (sequelize)=>{
         },
         ratingAverage:{
             type: DataTypes.FLOAT,
-            allowNull: false,
+            allowNull: true,
         },
     },{
         sequelize, modelName: "rating", timestamps: false,
