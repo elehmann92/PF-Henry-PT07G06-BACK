@@ -82,9 +82,13 @@ Favorites.belongsToMany(Product, {through: "favorites_product"})
  User.hasMany(QandA, {as: "userQ&A", foreignKey:"userQ&AId"});
  QandA.belongsTo(User, {as: "userQ&A"});
 
+ //Relación de Product y Q&A 1 a N
+ Product.hasMany(QandA, {as: "productQ&A", foreignKey: "productQ&AId"});
+ QandA.belongsTo(Product, {as:"prodcutQ&A"});
+
  //Relación de Transaction y Rating 1 to 1
- Transaction.hasOne(Rating, {as: "transactionRated", foreignKey:"transactionRatedId"});
- Rating.belongsTo(Transaction, {as:"transactionRated"});
+ User.hasOne(Rating, {as: "transactionRated", foreignKey:"transactionRatedId"});
+ Rating.belongsTo(User, {as:"transactionRated"});
 
  module.exports = {
     Product,
