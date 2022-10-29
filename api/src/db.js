@@ -27,7 +27,7 @@ fs.readdirSync(path.join(__dirname, '/models'))
  let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase()+entry[0].slice(1), entry[1]]);
  sequelize.models = Object.fromEntries(capsEntries);
 
- const { Product , Category, User, Cart, Favorites, ShoppingOrder , Transaction} = sequelize.models;
+ const { Product , Category, User, Cart, Favorites, ShoppingOrder , Transaction, Reviews} = sequelize.models;
 
  //Relaciones entre usuarios y carts 1-1
 User.hasOne(Cart, {as:'cartUser', foreignKey:"cartUserId"})
@@ -70,6 +70,14 @@ Favorites.belongsToMany(Product, {through: "favorites_product"})
  Product.belongsToMany(Category, {through: "product_category"})
  Category.belongsToMany(Product, {through: "product_category"})
 
+ //Relación de user y reviews 1 a N
+ User.hasMany(Reviews, {as: "userReview", foreignKey:"userReviewId"});
+ Reviews.belongsTo(User, {as:"userReview"});
+
+ //Relación de Product y review 1 a 1
+ Product.hasOne(Reviews, {as:"productReview" ,foreignKey:"productReviewId"});
+ Reviews.belongsTo(Product, {as: "productReview"}); 
+
  module.exports = {
     Product,
     Category,
@@ -78,5 +86,6 @@ Favorites.belongsToMany(Product, {through: "favorites_product"})
     Favorites,
     Transaction,
     ShoppingOrder,
+    Reviews,
     conn: sequelize,
  }
