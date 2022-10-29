@@ -1,0 +1,50 @@
+{
+    "qanda":
+    [
+        {
+            "id":1,
+            "questionary": "¿Qué significa esta compra para ti?",
+            "answers": ""
+        },{
+            "id":2,
+            "questionary": "¿Cómo evalúas el potencial de nuevos productos o servicios?",
+            "answers": ""
+        },{
+            "id":3,
+            "questionary": "¿Dónde pondrías el énfasis con respecto al precio, la calidad y el servicio?",
+            "answers": ""
+        },{
+            "id":4,
+            "questionary": "¿Qué es lo que más te gusta de tu vendedor actual?",
+            "answers": ""
+        },{
+            "id":5,
+            "questionary": " ¿Qué es lo que no te gusta de tu actual vendedor?",
+            "answers": ""
+        },{
+            "id":6,
+            "questionary": "¿Cuáles son tus necesidades y qué tan importantes son?",
+            "answers": ""
+        },{
+            "id":7,
+            "questionary": "¿Podrías decirnos por qué no nos elegiste?",
+            "answers": ""
+        },{
+            "id":8,
+            "questionary": "¿Qué hicimos en la última venta que te impresionó más?",
+            "answers": ""
+        },{
+            "id":9,
+            "questionary": "¿Qué es lo buscas en una relación con tu vendedor?",
+            "answers": ""
+        },{
+            "id":10,
+            "questionary": "¿Cuál fue el mejor vendedor con el que hablaste?",
+            "answers": ""
+        },{
+            "id":11,
+            "questionary":"¿Qué es lo que menos te interesa de nuestro servicio?",
+            "answers":""
+        }
+]
+}

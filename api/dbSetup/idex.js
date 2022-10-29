@@ -1,7 +1,10 @@
-const data = require('./categories.json')
-const dataP = require('./products.json')
-const dataU = require('./users.json')
-const {Category, Product, User} = require('../src/db.js')
+const data = require('./categories.json');
+const dataP = require('./products.json');
+const dataU = require('./users.json');
+const dataR = require("./reviews.json");
+const dataQA= require("./qanda.json");
+
+const {Category, Product, User, Reviews, QandA} = require('../src/db.js')
 
 // funcion para setear los datos iniciales a la tabla Categories
 async function createUsers() {
@@ -21,6 +24,21 @@ async function createUsers() {
 })
 };
 
+async function createReviews(){
+  dataR.reviews.forEach(el=> 
+    Reviews.findOrCreate({where:{stars : el.stars}}))
+}
+
+async function createQA(){
+  dataQA.qanda.forEach(el=>{
+    QandA.findOrCreate({where:
+      {
+        questionary: el.questionary,
+        answers:el.answers,
+      }
+    })
+  })
+}
 
 async function creatCategories() {
   data.categories.forEach(async el => 
@@ -47,5 +65,7 @@ async function createProducts() {
 module.exports = {
     createUsers,
     creatCategories,
-    createProducts
+    createProducts,
+    createReviews,
+    createQA,
   };
