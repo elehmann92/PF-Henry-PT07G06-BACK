@@ -8,7 +8,6 @@ async function createUsers() {
   dataU.users.forEach(async el =>
     { const [entry , created] = await User.findOrCreate({where:{
       name: el.username,
-      password: el.password,
       image: el.image,
       emailAddress: el.emailAddress,
       homeAddress: el.homeAddress,

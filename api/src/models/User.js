@@ -11,11 +11,7 @@ class User extends Model{}
             },
             name:{
                 type: DataTypes.STRING,
-                allowNull: false,
-            },
-            password:{
-                type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             image:{
                 type: DataTypes.STRING,
@@ -31,15 +27,15 @@ class User extends Model{}
             },
             region:{
                 type: DataTypes.STRING,
-                allowNull:false,
+                allowNull:true,
             },
             city:{
                 type:DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             phoneNumber:{
                 type:DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             lastTransaction:{
                 type: DataTypes.STRING,

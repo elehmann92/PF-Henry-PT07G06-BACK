@@ -2,7 +2,6 @@
     "users": [
     {
         "username": "elehmann92",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "equilehmann92@gmail.com",
         "homeAddress" : "Yerbal 2333",
@@ -15,7 +14,6 @@
     },  
     {
         "username": "arturoUrgel",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "arturourgel@juira.com",
         "homeAddress" : "España 1565",
@@ -28,7 +26,6 @@
     },  
     {
         "username": "jdcm182",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "jerocardozzo@juira.com",
         "homeAddress" : "Achával 1234",
@@ -41,7 +38,6 @@
     },  
     {
         "username": "jonatan2502",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "jonapiedra@juira.com",
         "homeAddress" : "Alsina 1434",
@@ -54,7 +50,6 @@
     },  
     {
         "username": "KeyzerSose",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "churtadoh92@gmail.com",
         "homeAddress" : "San Luis 398",
@@ -67,7 +62,6 @@
     },
     {
         "username": "MarianaSalez",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "marisalez@juira.com",
         "homeAddress" : "Sarmiento 603",
@@ -80,7 +74,6 @@
     },
     {
         "username": "Pedrox20",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "pedromoran@juira.com",
         "homeAddress" : "Faustino Allende 699",
@@ -93,7 +86,6 @@
     },
     {
         "username": "General",
-        "password" : "DB-Pf-6-henry",
         "image" : "",
         "emailAddress" : "juiraMarket@gmail.com",
         "homeAddress" : "Faustino Allende 754",
