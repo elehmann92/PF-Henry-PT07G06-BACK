@@ -7,6 +7,7 @@ const favoritesRouter = require("./favorites");
 const shoppingOrdersRouter = require("./shoppingOrders")
 const transactionsRouter = require("./transactions")
 const paymentRoute = require("./payment")
+const sessionLoginRouter = require("./sessionLogin")
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use("/favorites", favoritesRouter);
 router.use("/shoppingOrders", shoppingOrdersRouter);
 router.use("/transactions", transactionsRouter)
 router.use("/payment", paymentRoute);
+router.use("/sessionLogin" , sessionLoginRouter)
 
 module.exports = router;

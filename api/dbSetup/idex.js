@@ -15,7 +15,9 @@ async function createUsers() {
       region: el.region,
       city: el.city,
       phoneNumber: el.phoneNumber,
-      lastTransaction: el.lastTransaction
+      lastTransaction: el.lastTransaction,
+      status: el.status,
+      isAdmin: el.isAdmin
     }})
     if(created) { await entry.createCartUser({total: 0}); await entry.createFavoritesUser() }
 })

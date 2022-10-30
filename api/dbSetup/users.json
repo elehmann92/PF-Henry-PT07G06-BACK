@@ -9,7 +9,9 @@
         "city" : "Buenos Aires",
         "region" : "Capital Federal",
         "phoneNumber" : "5491155790833",
-        "lastTransaction" : "elehmann92-0"
+        "lastTransaction" : "elehmann92-0",
+        "status" : "active",
+        "isAdmin": true
     },  
     {
         "username": "arturoUrgel",
@@ -20,7 +22,9 @@
         "city" : "Tucumán",
         "region" : "San Miguel de Tucumán",
         "phoneNumber" : "5493815500083",
-        "lastTransaction" : "arturoUrgel-0"
+        "lastTransaction" : "arturoUrgel-0",
+        "status" : "active",
+        "isAdmin": false
     },  
     {
         "username": "jdcm182",
@@ -31,7 +35,9 @@
         "city" : "Chapadmalal",
         "region" : "Buenos Aires",
         "phoneNumber" : "5492236330088",
-        "lastTransaction" : "jdcm182-0"
+        "lastTransaction" : "jdcm182-0",
+        "status" : "active",
+        "isAdmin": false
     },  
     {
         "username": "jonatan2502",
@@ -42,18 +48,22 @@
         "city" : "Tandil",
         "region" : "Buenos Aires",
         "phoneNumber" : "5492236338394",
-        "lastTransaction" : "jonatan2502-0"
+        "lastTransaction" : "jonatan2502-0",
+        "status" : "active",
+        "isAdmin": false
     },  
     {
         "username": "KeyzerSose",
         "password" : "12345678",
         "image" : "",
-        "emailAddress" : "camihurtado@juira.com",
+        "emailAddress" : "churtadoh92@gmail.com",
         "homeAddress" : "San Luis 398",
         "city" : "Gualeguaychú",
         "region" : "Entre Ríos",
         "phoneNumber" : "549344603049",
-        "lastTransaction" : "KeyzerSose-0"
+        "lastTransaction" : "KeyzerSose-0",
+        "status" : "active",
+        "isAdmin": true
     },
     {
         "username": "MarianaSalez",
@@ -64,7 +74,9 @@
         "city" : "La Falda",
         "region" : "Córdoba",
         "phoneNumber" : "5493513170851",
-        "lastTransaction" : "MarianaSalez-0"
+        "lastTransaction" : "MarianaSalez-0",
+        "status" : "active",
+        "isAdmin": false
     },
     {
         "username": "Pedrox20",
@@ -75,7 +87,9 @@
         "city" : "Ciudad de Córdoba",
         "region" : "Córdoba",
         "phoneNumber" : "5493584861971",
-        "lastTransaction" : "Pedrox20-0"
+        "lastTransaction" : "Pedrox20-0",
+        "status" : "active",
+        "isAdmin": false
     },
     {
         "username": "General",
@@ -86,7 +100,9 @@
         "city" : "Ciudad de Córdoba",
         "region" : "Córdoba",
         "phoneNumber" : "5493584862514",
-        "lastTransaction" : "General-0"
+        "lastTransaction" : "General-0",
+        "status" : "active",
+        "isAdmin": false
     }
 ]}
 

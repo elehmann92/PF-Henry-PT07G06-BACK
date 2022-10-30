@@ -1,10 +1,14 @@
 const { Router } = require("express");
 const { getUsersDb, getUserById } = require("../handlers");
+const {
+  isAuthenticated,
+  onlyAdmin
+} = require("../handlers/routeProtection");
 
 const router = Router();
 
 router
-  .get("/", async (req, res) => {
+  .get("/", onlyAdmin, async (req, res) => {
     try {
       const usersDb = await getUsersDb();
       res.json(usersDb);

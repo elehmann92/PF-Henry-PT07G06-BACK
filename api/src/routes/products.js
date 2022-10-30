@@ -1,7 +1,8 @@
 const { Router } = require("express");
 
 const {
-  isAuthenticated
+  isAuthenticated,
+  onlyAdmin
 } = require("../handlers/routeProtection")
 
 const { 
@@ -27,7 +28,7 @@ const {
 const router = Router();
 
 router
-  .get("/", isAuthenticated, async (req, res) => {
+  .get("/", async (req, res) => {
     const { name = "", status = "", condition = "" } = req.query;
     const where = {
       name,

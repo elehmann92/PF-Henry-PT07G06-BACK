@@ -329,6 +329,14 @@ async function getInstanceById(table,id){
   return instance
 }
 
+async function getRole(emailAddress){
+  const user = await User.findOne({where:{emailAddress: emailAddress}})
+  const status = user.toJSON().status
+  if(status !== "active") throw new Error('Usuario no activo')
+  const role = user.toJSON().isAdmin? "admin" : "usuario"
+  return role
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
@@ -349,5 +357,6 @@ module.exports = {
   getShoppingOrderListWithDetails,
   getShoppingOrderById,
   getTransactions,
-  getInstanceById
+  getInstanceById,
+  getRole
 };

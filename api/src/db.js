@@ -45,7 +45,6 @@ Transaction.belongsTo(Product, {as: 'product'} )
 ShoppingOrder.hasMany(Transaction, {as: "transactionList", foreignKey: "shoppingOrderId"})
 Transaction.belongsTo(ShoppingOrder, {as: "shoppingOrder"})
 
-
 //Relaciones entre usuarios y productos 1-N
 User.hasMany(Product, {as: "productsOwner", foreignKey: "ownerId"})
 Product.belongsTo(User, {as: "owner"})

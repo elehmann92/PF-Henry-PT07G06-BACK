@@ -45,6 +45,14 @@ class User extends Model{}
                 type: DataTypes.STRING,
                 allowNull:true,
             },
+            status:{
+                type: DataTypes.STRING,
+                allowNull:false,
+            },
+            isAdmin:{
+                type: DataTypes.BOOLEAN,
+                allowNull:false,
+            },
         },{ sequelize, modelName: "user", timestamps: false }
         )
     }
