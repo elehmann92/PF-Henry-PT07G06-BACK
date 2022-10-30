@@ -7,7 +7,7 @@ const favoritesRouter = require("./favorites");
 const shoppingOrdersRouter = require("./shoppingOrders")
 const transactionsRouter = require("./transactions")
 const paymentRoute = require("./payment")
-const sessionLoginRouter = require("./sessionLogin")
+const {sessionLoginRouter} = require("./sessionLogin")
 
 const router = Router();
 

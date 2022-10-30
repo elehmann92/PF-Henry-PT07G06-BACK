@@ -1,36 +1,37 @@
 const { Router } = require("express");
-const {getAuth, signInWithEmailAndPassword } = require("firebase/auth");
-const { initializeApp } = require("firebase/app");
 const { getRole } = require("../handlers");
+const admin = require('firebase-admin');
+const serviceAccount = require("../../serviceAccountKey.json");
+const { User } = require("../db");
 
-const router = Router();
+const sessionLoginRouter = Router();
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBjNyOJoOVqZHo4zSOtthyDp1nBn6K2NWU",
-    authDomain: "juira-server-auth.firebaseapp.com",
-    projectId: "juira-server-auth",
-    storageBucket: "juira-server-auth.appspot.com",
-    messagingSenderId: "150763589801",
-    appId: "1:150763589801:web:c16f61befbb1ca1f2a99b8"
-  };
+const app = admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://juira-server-auth-default-rtdb.firebaseio.com"
+  });
 
-const app = initializeApp(firebaseConfig)
-
-router
+sessionLoginRouter
 .post('/', async (req,res) => {
-    const {emailAddress, password} = req.body
+    const {token} = req.body
     
     try {
-        const auth = getAuth(app)
-        const role = await getRole(emailAddress)
-        const  {user}  = await signInWithEmailAndPassword(auth, emailAddress, password)
-        const idToken = await user.getIdToken()
-        res.json({role: role , idToken:idToken})
+        const user = await app.auth().verifyIdToken(token)
+        const [dbUser, created] = await User.findOrCreate({where:{emailAddress: user.email}})
+        if(created)  {
+            await dbUser.createCartUser({total: 0}); 
+            await dbUser.createFavoritesUser();
+            await dbUser.update({status: "active", isAdmin: false})
+        } 
+        const dbUserObj = dbUser.toJSON() 
+        const role = await getRole(dbUserObj.emailAddress)
+        res.json({role: role, user:dbUserObj})
     } catch (error) {
         res.status(401).json({error: error.message})
     }  
 });
 
-
-
-module.exports = router;
+module.exports = {
+    sessionLoginRouter ,
+    app
+};

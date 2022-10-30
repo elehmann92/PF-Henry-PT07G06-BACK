@@ -1,11 +1,7 @@
 const admin = require('firebase-admin');
 const serviceAccount = require("../../serviceAccountKey.json");
 const { User } = require("../db");
-
-const app = admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://juira-server-auth-default-rtdb.firebaseio.com"
-  });
+const {app} = require("../routes/sessionLogin")
 
 const isAuthenticated = async (req,res,next) => {
   try {

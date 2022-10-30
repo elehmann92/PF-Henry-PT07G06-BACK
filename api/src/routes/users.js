@@ -8,7 +8,7 @@ const {
 const router = Router();
 
 router
-  .get("/", onlyAdmin, async (req, res) => {
+  .get("/", async (req, res) => {
     try {
       const usersDb = await getUsersDb();
       res.json(usersDb);
