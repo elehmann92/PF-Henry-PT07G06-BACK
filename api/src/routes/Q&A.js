@@ -1,6 +1,7 @@
 const { Router } = require("express");
 
 const { QandA } = require("../db");
+const { getInstanceById } = require("../handlers");
 
 const router = Router();
 
@@ -12,6 +13,16 @@ router
       return res.status(200).json(qA);
     } catch (error) {
       return res.status(404).json(error);
+    }
+  })
+
+  .get("/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const qAndABlock = await getInstanceById(QandA, id);
+      res.json(qAndABlock);
+    } catch (error) {
+      res.status(400).json(error.message);
     }
   })
 
@@ -33,6 +44,20 @@ router
       await newQAndABlock.setProductQAndA(productQAndAId);
 
       res.json(newQAndABlock);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  })
+
+  .put("/updateAnswer/:id", async (req, res) => {
+    const { id } = req.params;
+    const { answer } = req.body;
+    try {
+      if (!answer)
+        throw new Error("Update failed. No answer text was received");
+      const qAndABlock = await getInstanceById(QandA, id);
+      const updated = await qAndABlock.update({ answer });
+      res.json(updated);
     } catch (error) {
       res.status(400).json(error.message);
     }
