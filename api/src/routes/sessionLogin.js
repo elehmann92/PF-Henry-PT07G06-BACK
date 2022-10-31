@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { getRole } = require("../handlers");
 const admin = require('firebase-admin');
 const serviceAccount = require("../../serviceAccountKey.json");
-const { User } = require("../db");
+const { User, Cart, Favorites, Product } = require("../db");
 
 const sessionLoginRouter = Router();
 
@@ -23,9 +23,24 @@ sessionLoginRouter
             await dbUser.createFavoritesUser();
             await dbUser.update({status: "active", isAdmin: false})
         } 
-        const dbUserObj = dbUser.toJSON() 
-        const role = await getRole(dbUserObj.emailAddress)
-        res.json({role: role, user:dbUserObj})
+        const userWithCart = await User.findOne({where: 
+            {emailAddress: user.email},
+            include : [{
+                model: Cart,
+                as: "cartUser",
+                include: {
+                    model: Product
+                }
+            },{
+                model: Favorites,
+                as: "favoritesUser",
+                include: {
+                    model: Product
+                }
+            }]
+        });
+        const role = await getRole(userWithCart.toJSON().emailAddress)
+        res.json({role: role, user:userWithCart.toJSON()})
     } catch (error) {
         res.status(401).json({error: error.message})
     }  
