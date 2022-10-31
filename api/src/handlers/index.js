@@ -8,10 +8,11 @@ const {
   Favorites,
   ShoppingOrder,
   Transaction,
+  Reviews,
 } = require("../db");
 
 const upperCasedConditions = ["USADO", "COMO NUEVO", "CLAROS SIGNOS DE USO"];
-const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
+const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO", "NO DISPONIBLE"];
 
 async function getUsersDb() {
   return await User.findAll({
@@ -29,6 +30,10 @@ async function getUsersDb() {
         model: Favorites,
         as: "favoritesUser",
       },
+      {
+        model: Reviews,
+        as: "userReviewed" 
+      }
     ],
   });
 }
