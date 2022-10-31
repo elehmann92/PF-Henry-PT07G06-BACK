@@ -71,20 +71,20 @@ Favorites.belongsToMany(Product, {through: "favorites_product"})
  Category.belongsToMany(Product, {through: "product_category"})
 
  //Relación de user y reviews 1 a N
- User.hasMany(Reviews, {as: "userReview", foreignKey:"userReviewId"});
- Reviews.belongsTo(User, {as:"userReview"});
+ User.hasMany(Reviews, {as: "userReviewed", foreignKey:"userReviewedId"});
+ Reviews.belongsTo(User, {as:"userReviewed"});
 
  //Relación de Product y review 1 a 1
- Product.hasOne(Reviews, {as:"productReview" ,foreignKey:"productReviewId"});
- Reviews.belongsTo(Product, {as: "productReview"}); 
+ Product.hasOne(Reviews, {as:"productReviewed" ,foreignKey:"productReviewedId"});
+ Reviews.belongsTo(Product, {as: "productReviewed"}); 
 
  //Relación de User y QandA 1 a N
- User.hasMany(QandA, {as: "userQ&A", foreignKey:"userQ&AId"});
- QandA.belongsTo(User, {as: "userQ&A"});
+ User.hasMany(QandA, {as: "asker", foreignKey:"askerId"});
+ QandA.belongsTo(User, {as: "asker"});
 
- //Relación de Product y Q&A 1 a N
- Product.hasMany(QandA, {as: "productQ&A", foreignKey: "productQ&AId"});
- QandA.belongsTo(Product, {as:"prodcutQ&A"});
+ //Relación de Product y QAndA 1 a N
+ Product.hasMany(QandA, {as: "productQAndA", foreignKey: "productQAndAId"});
+ QandA.belongsTo(Product, {as:"productQAndA"});
 
  //Relación de Transaction y Rating 1 to 1
  User.hasOne(Rating, {as: "transactionRated", foreignKey:"transactionRatedId"});
