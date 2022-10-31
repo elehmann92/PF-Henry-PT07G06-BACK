@@ -357,6 +357,18 @@ async function getRole(emailAddress){
   return role
 }
 
+async function updateUserRating(userId){
+  const user = await getUserById(userId)
+  const ratings = user.toJSON().userReviewed
+  if (ratings.length) {
+    let sum = 0;
+    ratings.forEach((ele) => sum += ele.stars)
+    await user.update({rating: sum/ratings.length})
+    return true
+  }
+  return false
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
@@ -378,5 +390,6 @@ module.exports = {
   getShoppingOrderById,
   getTransactions,
   getInstanceById,
-  getRole
+  getRole,
+  updateUserRating
 };
