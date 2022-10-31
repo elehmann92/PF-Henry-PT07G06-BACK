@@ -11,5 +11,5 @@ const {createUsers, creatCategories, createProducts, createReviews, createQA} = 
 .then(() => createUsers())
 .then(() => creatCategories())
 .then(() => createProducts())
-.then(()=> createReviews())
-.then(()=> createQA())
+// .then(()=> createReviews())
+// .then(()=> createQA())
