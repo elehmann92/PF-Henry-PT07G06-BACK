@@ -9,12 +9,12 @@ module.exports= (sequelize)=>{
             autoIncrement:true,
             primaryKey:true,
         },
-        questionary:{
-            type: DataTypes.STRING,
-            allowNull:true,
+        question:{
+            type: DataTypes.TEXT,
+            allowNull:false,
         },
-        answers:{
-            type: DataTypes.STRING,
+        answer:{
+            type: DataTypes.TEXT,
             allowNull:true,
             defaultValue:""
         }
