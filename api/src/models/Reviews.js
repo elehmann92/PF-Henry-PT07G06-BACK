@@ -15,6 +15,10 @@ module.exports= (sequelize)=>{
             minValue:1,
             maxValue:5,
         },
+        reviewerId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
     },{
         sequelize, modelName: "reviews", timestamps: false,
     })
