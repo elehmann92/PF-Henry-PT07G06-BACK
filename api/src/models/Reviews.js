@@ -12,9 +12,11 @@ module.exports = (sequelize) => {
       },
       stars: {
         type: DataTypes.INTEGER,
-        allowNull: true,
-        minValue: 1,
-        maxValue: 5,
+        allowNull: false,
+        validate: {
+            min: 1,
+            max: 5
+        }
       },
       reviewerId: {
         type: DataTypes.INTEGER,

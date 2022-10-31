@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const { Reviews } = require("../db");
-const { getProductById } = require("../handlers");
+const { getProductById, updateUserRating } = require("../handlers");
 
 const router = Router();
 
@@ -31,6 +31,8 @@ router
 
       await review.setProductReviewed(productReviewed);
       await review.setUserReviewed(owner);
+
+      await updateUserRating(owner)
 
       res.json(review);
     } catch (error) {
