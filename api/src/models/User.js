@@ -49,6 +49,10 @@ class User extends Model{}
                 type: DataTypes.BOOLEAN,
                 allowNull:true,
             },
+            rating: {
+                type: DataTypes.REAL,
+                allowNull: true
+            }
         },{ sequelize, modelName: "user", timestamps: false }
         )
     }

@@ -8,10 +8,12 @@ const {
   Favorites,
   ShoppingOrder,
   Transaction,
+  Reviews,
+  QandA,
 } = require("../db");
 
 const upperCasedConditions = ["USADO", "COMO NUEVO", "CLAROS SIGNOS DE USO"];
-const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO"];
+const upperCasedStatus = ["PUBLICADO", "VENDIDO", "EN PAUSA", "ELIMINADO", "NO DISPONIBLE"];
 
 async function getUsersDb() {
   return await User.findAll({
@@ -29,6 +31,10 @@ async function getUsersDb() {
         model: Favorites,
         as: "favoritesUser",
       },
+      {
+        model: Reviews,
+        as: "userReviewed" 
+      }
     ],
   });
 }
@@ -61,6 +67,10 @@ async function getUserById(id) {
           },
         },
       },
+      {
+        model: Reviews,
+        as: "userReviewed" 
+      }
     ],
   });
   if (!user) throw new Error("No user matches the provided ID");
@@ -74,22 +84,32 @@ async function getProductDb() {
 async function getProductsWithCategories() {
   return await Product.findAll({
     order: ["id"],
-    include: {
+    include: [{
       model: Category,
       through: {
         attributes: [],
       },
     },
+    {
+      model: QandA,
+      as: "productQAndA"
+    }],
   });
 }
 
 async function getProductById(id) {
   if (!id) throw new Error("Missing ID");
   const product = await Product.findByPk(id, {
-    include: {
+    include: [{
       model: Category,
-      through: { attributes: [] },
+      through: {
+        attributes: [],
+      },
     },
+    {
+      model: QandA,
+      as: "productQAndA"
+    }]
   });
 
   if (!product) throw new Error("No product matches the provided ID");
