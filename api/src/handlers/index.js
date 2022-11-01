@@ -369,6 +369,12 @@ async function updateUserRating(userId){
   return false
 }
 
+function throwError(message, number) {
+  let error = new Error(message)
+  error.number = number
+  throw error
+}
+
 module.exports = {
   getProductDb,
   getProductsWithCategories,
@@ -391,5 +397,6 @@ module.exports = {
   getTransactions,
   getInstanceById,
   getRole,
-  updateUserRating
+  updateUserRating,
+  throwError
 };
