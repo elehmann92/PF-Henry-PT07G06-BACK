@@ -1,8 +1,7 @@
 const { Router } = require("express");
 
 const {
-  isAuthenticated,
-  onlyAdmin
+  getRole
 } = require("../handlers/routeProtection")
 
 const { 

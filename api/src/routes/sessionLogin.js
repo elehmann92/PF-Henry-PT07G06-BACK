@@ -40,7 +40,7 @@ sessionLoginRouter
             }]
         });
         const role = await getRole(userWithCart.toJSON().emailAddress)
-        res.json({role: role, user:userWithCart.toJSON()})
+        res.json({role: role, user: userWithCart.toJSON()})
     } catch (error) {
         res.status(401).json({error: error.message})
     }  

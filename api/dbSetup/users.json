@@ -94,7 +94,7 @@
         "phoneNumber" : "5493584862514",
         "lastTransaction" : "General-0",
         "status" : "active",
-        "isAdmin": false
+        "isAdmin": true
     }
 ]}
 
