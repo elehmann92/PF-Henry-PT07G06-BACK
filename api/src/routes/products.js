@@ -22,7 +22,9 @@ const {
   newProductBodyIsValid,
   findProductAndCategories,
   updateProduct,
+  throwError,
 } = require("../handlers");
+const { Product } = require("../db");
 
 const router = Router();
 
@@ -57,16 +59,22 @@ router
     }
   })
 
-  .post("/", async (req, res) => {
+  .post("/", getRole,async (req, res) => {
     const data = req.body;
+    const {role, id} = req
     try {
+      if (role === 'guest') throwError("You are not signed in",401)
       newProductBodyIsValid(data);
-      const newProduct = await createProduct(data);
+      data.status = "Publicado"
+      const newProduct = await Product.create(data)
+      if(!newProduct) throwError('Something went wrong at product creation', 400)
+      await newProduct.setOwner(id);
+      await newProduct.setCategories(data.categories)
       const html = productoPublicado(user, data) //get personalized html template
       await sendEmail(user, 'Producto Publicado', html)
       res.status(201).json(`${data.name} successfully created`);
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message);
     }
   })
 
@@ -86,6 +94,7 @@ router
     // ** param id refers to product id **
     const { id } = req.params;
     const { categories } = req.body;
+
     try {
       const { productToModify, categoriesToModify } =
         await findProductAndCategories(id, categories);

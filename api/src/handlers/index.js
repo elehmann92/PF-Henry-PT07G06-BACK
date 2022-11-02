@@ -229,14 +229,13 @@ async function createProduct(newProduct) {
     image,
     categories = [],
   } = newProduct;
-  const owner = 1;
+
   const newP = await Product.create({
     name: name,
     price: price,
     description: description,
     condition: condition,
     image: image,
-    ownerId: owner,
     status: "Publicado",
   });
   newP.setCategories(categories);
