@@ -1,8 +1,10 @@
 const { Router } = require("express");
 
+
 const {
   getRole
 } = require("../handlers/routeProtection")
+
 
 const { 
   sendEmail,
@@ -13,6 +15,9 @@ const user = {
   name: 'Usuario',
   email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
 } 
+
+
+
 
 const {
   searchByQuery,
