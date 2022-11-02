@@ -2,91 +2,99 @@
     "users": [
     {
         "username": "elehmann92",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "equilehmann92@gmail.com",
         "homeAddress" : "Yerbal 2333",
         "city" : "Buenos Aires",
         "region" : "Capital Federal",
         "phoneNumber" : "5491155790833",
-        "lastTransaction" : "elehmann92-0"
+        "lastTransaction" : "elehmann92-0",
+        "status" : "active",
+        "isAdmin": true
     },  
     {
         "username": "arturoUrgel",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "arturourgel@juira.com",
         "homeAddress" : "España 1565",
         "city" : "Tucumán",
         "region" : "San Miguel de Tucumán",
         "phoneNumber" : "5493815500083",
-        "lastTransaction" : "arturoUrgel-0"
+        "lastTransaction" : "arturoUrgel-0",
+        "status" : "active",
+        "isAdmin": false
     },  
     {
         "username": "jdcm182",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "jerocardozzo@juira.com",
         "homeAddress" : "Achával 1234",
         "city" : "Chapadmalal",
         "region" : "Buenos Aires",
         "phoneNumber" : "5492236330088",
-        "lastTransaction" : "jdcm182-0"
+        "lastTransaction" : "jdcm182-0",
+        "status" : "active",
+        "isAdmin": false
     },  
     {
         "username": "jonatan2502",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "jonapiedra@juira.com",
         "homeAddress" : "Alsina 1434",
         "city" : "Tandil",
         "region" : "Buenos Aires",
         "phoneNumber" : "5492236338394",
-        "lastTransaction" : "jonatan2502-0"
+        "lastTransaction" : "jonatan2502-0",
+        "status" : "active",
+        "isAdmin": false
     },  
     {
         "username": "KeyzerSose",
-        "password" : "12345678",
         "image" : "",
-        "emailAddress" : "camihurtado@juira.com",
+        "emailAddress" : "churtadoh92@gmail.com",
         "homeAddress" : "San Luis 398",
         "city" : "Gualeguaychú",
         "region" : "Entre Ríos",
         "phoneNumber" : "549344603049",
-        "lastTransaction" : "KeyzerSose-0"
+        "lastTransaction" : "KeyzerSose-0",
+        "status" : "active",
+        "isAdmin": true
     },
     {
         "username": "MarianaSalez",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "marisalez@juira.com",
         "homeAddress" : "Sarmiento 603",
         "city" : "La Falda",
         "region" : "Córdoba",
         "phoneNumber" : "5493513170851",
-        "lastTransaction" : "MarianaSalez-0"
+        "lastTransaction" : "MarianaSalez-0",
+        "status" : "active",
+        "isAdmin": false
     },
     {
         "username": "Pedrox20",
-        "password" : "12345678",
         "image" : "",
         "emailAddress" : "pedromoran@juira.com",
         "homeAddress" : "Faustino Allende 699",
         "city" : "Ciudad de Córdoba",
         "region" : "Córdoba",
         "phoneNumber" : "5493584861971",
-        "lastTransaction" : "Pedrox20-0"
+        "lastTransaction" : "Pedrox20-0",
+        "status" : "active",
+        "isAdmin": false
     },
     {
         "username": "General",
-        "password" : "DB-Pf-6-henry",
         "image" : "",
         "emailAddress" : "juiraMarket@gmail.com",
         "homeAddress" : "Faustino Allende 754",
         "city" : "Ciudad de Córdoba",
         "region" : "Córdoba",
         "phoneNumber" : "5493584862514",
-        "lastTransaction" : "General-0"
+        "lastTransaction" : "General-0",
+        "status" : "active",
+        "isAdmin": true
     }
 ]}
 
