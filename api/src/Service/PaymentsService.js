@@ -4,8 +4,6 @@ const {ShoppingOrder, Transaction, Product} = require("../db");
 class PaymentService {
   async createPayment(id) {
 
-    console.log(id)
-
     const products = await ShoppingOrder.findByPk(id , {include: {
       model: Transaction, 
       as:"transactionList",
@@ -13,7 +11,7 @@ class PaymentService {
         model: Product,
         as: "product"
       } 
-    }})
+    }});
 
     const productsList = products.toJSON().transactionList
 

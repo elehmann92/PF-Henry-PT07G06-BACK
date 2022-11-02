@@ -1,75 +1,102 @@
 const { Router } = require("express");
 const { Cart, Product } = require("../db");
-const { getCartsDb, getCartById, findCartAndProduct } = require("../handlers");
+const { getCartsDb, getCartById, findCartAndProduct, throwError, getUserById } = require("../handlers");
+const { getRole } = require("../handlers/routeProtection");
 
 const router = Router();
 
 router
-  .get("/", async (req, res) => {
+  .get("/", getRole,async (req, res) => {
     try {
+      if (req.role !== 'admin') throwError('You are not Admin', 401)
       const cartsDb = await getCartsDb();
       res.json(cartsDb);
     } catch (error) {
-      res.status(404).json(error.message);
+      res.status(error.number || 400).json(error.message);
     }
   })
 
-  .get("/:id", async (req, res) => {
-    const { id } = req.params;
+  .get('/byToken', getRole, async (req,res) => {
+    const {id, role} = req
     try {
-      const singleCart = await getCartById(id);
-      res.json(singleCart);
+      if(role === 'guest') throwError('You are not signed in', 401);
+      const user = await getUserById(id)
+      if (!user) throwError('User not found', 404)
+      const singleCart = await getCartById(user.toJSON().cartUser.id);
+      res.json(singleCart)
     } catch (error) {
-      res.status(404).json(error.message);
-    }
-  })
-
-  .put("/addProductToCart/:cartId/:productId", async (req, res) => {
-    const { cartId, productId } = req.params;
-    try {
-      const { cartToAddTo, productToAdd } = await findCartAndProduct(cartId, productId);
-
-      if (productToAdd.toJSON()?.status !== "Publicado") throw new Error('Selected product is not available for purchasing at the moment')
-
-      const exists = await cartToAddTo.hasProducts(productToAdd)
-      if (exists) throw new Error('Product already exists in cart')
-
-      await cartToAddTo.addProduct(productId);
-      const price = productToAdd.toJSON().price
-      await cartToAddTo.update({total:  cartToAddTo.toJSON().total + price});
-      res.json("Successfully added");
-    } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message)
     }
   })
   
-  .delete("/removeProductFromCart/:cartId/:productId", async (req, res) => {
-    const { cartId, productId } = req.params;
+  .get("/:id", getRole,async (req, res) => {
+    const { id } = req.params;
+    const {role} = req
     try {
-      const { cartToAddTo , productToAdd} = await findCartAndProduct(cartId, productId);
+      if (role !== 'admin') throwError('You are not Admin', 401)
+      const singleCart = await getCartById(id);
+      res.json(singleCart);
+    } catch (error) {
+      res.status(error.number || 400).json(error.message)
+    }
+  })
+  
+  .put('/addProductToCart/byToken/:productId', getRole, async (req,res) => {
+    const {role, id} = req;
+    const {productId} = req.params
+    try {
+      if (role === 'guest') throwError('You are not signed in', 401);
+      const user = await getUserById(id);
+      if (!user) throwError('User not found', 404);
+      const { cartToModify, productToModify } = await findCartAndProduct(user.toJSON().cartUser.id, productId);
+
+      if (productToModify.toJSON()?.status !== "Publicado") throwError('Selected product is not available for purchasing at the moment',400)
+
+      const exists = await cartToModify.hasProducts(productToModify)
+      if (exists) throwError('Product already exists in cart',400)
+
+      await cartToModify.addProduct(productId);
+      const price = productToModify.toJSON().price
+      await cartToModify.update({total:  cartToModify.toJSON().total + price});
+      res.json("Successfully added");
+    } catch (error) {
+      res.status(error.number || 400).json(error.message)
+    }
+  })
+  
+  .delete("/removeProductFromCart/byToken/:productId", getRole, async (req, res) => {
+    const {role, id} = req;
+    const {productId} = req.params
+    try {
+      if (role === 'guest') throwError('You are not signed in', 401);
+      const user = await getUserById(id);
+      if (!user) throwError('User not found', 404);
+      const { cartToModify, productToModify } = await findCartAndProduct(user.toJSON().cartUser.id, productId);
       
-      const exists = await cartToAddTo.hasProducts(productToAdd)
-      if (!exists) throw new Error('Product wasn`t found in cart')
+      const exists = await cartToModify.hasProducts(productToModify)
+      if (!exists) throwError('Product wasn`t found in cart',400)
       
-      await cartToAddTo.removeProduct(productId);
-      const price = productToAdd.toJSON().price
-      await cartToAddTo.update({total:  cartToAddTo.toJSON().total - price})
+      await cartToModify.removeProduct(productId);
+      const price = productToModify.toJSON().price
+      await cartToModify.update({total: cartToModify.toJSON().total - price})
       res.json("Successfully removed");
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message)
     }
   })
 
-  .delete("/clearCart/:cartId", async (req, res) => {
-    const { cartId } = req.params;
+  .delete("/clearCart/byToken", getRole,async (req, res) => {
+    const {role, id} = req;
     try {
-      const cartToClear = await getCartById(cartId);
+      if (role === 'guest') throwError('You are not signed in', 401);
+      const user = await getUserById(id);
+      if (!user) throwError('User not found', 404);
+      const cartToClear = await getCartById(user.toJSON().cartUser.id);
       await cartToClear.setProducts([]);
-      await cartToClear.update({total: 0});
-      res.json(`Cart ${cartId} successfully cleared`);
+      res.json(`Cart successfully cleared`);
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message)
     }
-  });
+  })
 
 module.exports = router;

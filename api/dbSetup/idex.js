@@ -8,14 +8,15 @@ async function createUsers() {
   dataU.users.forEach(async el =>
     { const [entry , created] = await User.findOrCreate({where:{
       name: el.username,
-      password: el.password,
       image: el.image,
       emailAddress: el.emailAddress,
       homeAddress: el.homeAddress,
       region: el.region,
       city: el.city,
       phoneNumber: el.phoneNumber,
-      lastTransaction: el.lastTransaction
+      lastTransaction: el.lastTransaction,
+      status: el.status,
+      isAdmin: el.isAdmin
     }})
     if(created) { await entry.createCartUser({total: 0}); await entry.createFavoritesUser() }
 })
