@@ -5,7 +5,6 @@ const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const cors= require('cors')
 const admin = require('firebase-admin')
-const serviceAccount = require('../serviceAccountKey.json')
 
 require("./db");
 
