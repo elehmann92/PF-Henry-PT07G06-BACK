@@ -28,6 +28,7 @@ const {
   findProductAndCategories,
   updateProduct,
   throwError,
+  getUserById,
 } = require("../handlers");
 const { Product } = require("../db");
 
@@ -83,15 +84,27 @@ router
     }
   })
 
-  .put("/:id", async (req, res) => {
-    const { id } = req.params;
+  .put("/:productId", getRole,async (req, res) => {
+    const { productId } = req.params;
     const body = req.body;
+    const { categories } = req.body;
+    const {id, role} = req
     try {
-      const updated = await updateProduct(id, body);
+      if (role === 'guest') throwError("You are not signed in", 401)
+      const user = (await getUserById(id)).toJSON()
+      const ownsProduct = user.productsOwner.some((ele) => ele.id === parseInt(productId))
+      if (role === 'user' && !ownsProduct) throwError("You cannot change a product which you do not own", 401)
+      let updated = await updateProduct(productId, body);
+      if(categories) {
+        const { productToModify, categoriesToModify } =
+        await findProductAndCategories(productId, categories);
+
+        await productToModify.setCategories(categoriesToModify);
+      }
 
       res.status(200).json(updated);
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message);
     }
   })
 
