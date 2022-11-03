@@ -57,6 +57,7 @@ router
 
       await cartToModify.addProduct(productId);
       const price = productToModify.toJSON().price
+      console.log(cartToModify.toJSON())
       await cartToModify.update({total:  cartToModify.toJSON().total + price});
       res.json("Successfully added");
     } catch (error) {
