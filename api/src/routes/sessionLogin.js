@@ -1,12 +1,15 @@
 const { Router } = require("express");
 const { getRole } = require("../handlers");
 const admin = require('firebase-admin');
+const {GOOGLE_CREDENTIALS} = require('../config')
 const { User, Cart, Favorites, Product } = require("../db");
+
+const serviceAccount = JSON.parse(GOOGLE_CREDENTIALS)
 
 const sessionLoginRouter = Router();
 
 const app = admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
+    credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://juira-server-auth-default-rtdb.firebaseio.com"
   });
 
