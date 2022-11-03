@@ -1,11 +1,14 @@
 const { Router } = require("express");
-const { Transaction, User, ShoppingOrder, Product } = require("../db");
+const { Transaction, User, ShoppingOrder, Product, Cart } = require("../db");
+const { getRole } = require("../handlers/routeProtection");
 const {
   getCartById,
   getProductById,
   updateProduct,
   getShoppingOrderListWithDetails,
   getShoppingOrderById,
+  getUserById,
+  throwError
 } = require("../handlers");
 const { sendEmail, ordenCreada, ordenPagada } = require("../mail/index");
 
@@ -17,9 +20,12 @@ const user = {
 const router = Router();
 
 router
-  .post("/:cartId", async (req, res) => {
+  .post("/byToken", getRole, async (req, res) => {
+    const {role, id} = req;
     try {
-      const { cartId } = req.params;
+      if(role === 'guest') throwError('You are not Authorized', 401)
+      const dbCart = await Cart.findOne({where: {cartUserId: id}})
+      const cartId = dbCart.toJSON().id
       const cart = await getCartById(cartId);
       const cartJSON = cart.toJSON();
       if (!cartJSON.products?.length) {
