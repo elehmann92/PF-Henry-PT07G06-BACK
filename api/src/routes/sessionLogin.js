@@ -1,8 +1,10 @@
 const { Router } = require("express");
 const { getRole } = require("../handlers");
 const admin = require('firebase-admin');
-const serviceAccount = require("../../serviceAccountKey.json");
+const {GOOGLE_CREDENTIALS} = require('../config')
 const { User, Cart, Favorites, Product } = require("../db");
+
+const serviceAccount = JSON.parse(GOOGLE_CREDENTIALS)
 
 const sessionLoginRouter = Router();
 
