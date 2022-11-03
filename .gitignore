@@ -107,6 +107,6 @@ dist
 package-lock.json
 
 # firebase
-# serviceAccountKey.json
+serviceAccountKey.json
 
 
