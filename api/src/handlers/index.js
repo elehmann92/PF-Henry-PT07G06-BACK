@@ -136,6 +136,7 @@ async function updateProduct(productId, body) {
   const productInstance = await getProductById(productId);
 
   const updated = productInstance.set(body);
+  
   await productInstance.save();
 
   return updated;
