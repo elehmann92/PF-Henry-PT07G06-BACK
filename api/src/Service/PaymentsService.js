@@ -47,12 +47,22 @@ class PaymentService {
 
     const url = "https://api.mercadopago.com/checkout/preferences";
 
+    // const body = {
+    //   items,
+    //   back_urls: {
+    //     success: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
+    //     failure: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
+    //     pending: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
+    //   },
+    //   notification_url: "https://pf-henry-pt07g06-back-production.up.railway.app/payment/response",
+    //   auto_return: "all",       
+    // };
     const body = {
       items,
       back_urls: {
-        success: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
-        failure: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
-        pending: "https://juira-market-git-production-elehmann92.vercel.app/juira/order",
+        success: "https://juira-market-git-developmentv2-elehmann92.vercel.app/juira/order",
+        failure: "https://juira-market-git-developmentv2-elehmann92.vercel.app/juira/order",
+        pending: "https://juira-market-git-developmentv2-elehmann92.vercel.app/juira/order",
       },
       notification_url: "https://pf-henry-pt07g06-back-production.up.railway.app/payment/response",
       auto_return: "all",       
