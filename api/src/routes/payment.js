@@ -1,16 +1,23 @@
 const { Router } = require("express");
 const { Category, ShoppingOrder } = require("../db");
+const { getRole } = require("../handlers/routeProtection");
 const axios = require("axios");
 
 const router = Router();
 const PaymentController = require("../Controllers/PaymentControllers");
 const PaymentService = require("../Service/PaymentsService");
+const { throwError } = require("../handlers");
 const PaymentInstance = new PaymentController(new PaymentService());
 
-router.get("/", async (req, res) => {
-  const id = req.query.id;
-
-  PaymentInstance.getPaymentLink(req, res, id);
+router.get("/", getRole, async (req, res) => {
+  try {
+    const id = req.query.id;
+    if(!id) throwError('There is no shopping order created')
+    if(req.role === 'guest') throwError('You are not Authorized', 401)
+    PaymentInstance.getPaymentLink(req, res, id);
+  } catch (error) {
+    res.status(error.number || 400).json(error.message);
+  }
 });
 
 router.post("/response", async (req, res) => {
