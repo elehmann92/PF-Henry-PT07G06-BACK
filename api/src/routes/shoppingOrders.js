@@ -97,12 +97,25 @@ router
     }
   })
 
-  .get("/", async (req, res) => {
+  .get("/", getRole,async (req, res) => {
+    const {role, id} = req
     try {
+      if (role !== 'admin') throwError('You are not an admin', 401)
       const shoppingOrderList = await getShoppingOrderListWithDetails();
       res.json(shoppingOrderList);
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message);
+    }
+  })
+
+  .get('/byToken', getRole, async(req, res) => {
+    const {role, id} = req
+    try {
+      if (role === 'guest') throwError('You are not signed in', 401)
+      const user =  (await getUserById(id)).toJSON()
+      res.json(user?.cart || [])   
+    } catch (error) {
+      res.status(error.number || 400).json(error.message)
     }
   })
 
@@ -116,9 +129,11 @@ router
     }
   })
 
-  .put("/mpresponse", async (req, res) => {
+  .put("/mpresponse",getRole, async (req, res) => {
     const { status, payment_id, merchant_order_id, preference_id } = req.body;
+    const {role, id} = req
     try {
+      if (role === 'guest') throwError('You are not signed in', 401)
       if (!preference_id) throw new Error("Missing preference ID");
 
       const shoppingOrder = await ShoppingOrder.findOne({
@@ -129,7 +144,7 @@ router
 
       if (!shoppingOrder)
         throw new Error(
-          "No shopping order was found accordint to the provided preference ID"
+          "No shopping order was found according to the provided preference ID"
         );
 
       const updated = shoppingOrder.set({
@@ -152,7 +167,7 @@ router
 
       res.json(updated);
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message);
     }
   })
 
