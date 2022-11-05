@@ -1,11 +1,14 @@
 const { Router } = require("express");
-const { Transaction } = require("../db");
-const { getTransactions, getInstanceById } = require("../handlers");
+const { Transaction, Balance } = require("../db");
+const { getTransactions, getInstanceById} = require("../handlers");
+const { getRole } = require("../handlers/routeProtection");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", getRole, async (req, res) => {
   try {
+    const {role} = req
+    if(role !== 'admin') throwError('You are not Authorized', 401)
     const transactions = await getTransactions()
     res.json(transactions)
   } catch (error) {
@@ -23,13 +26,23 @@ router.get("/", async (req, res) => {
   }
 })
 
-.put("/:id", async (req,res) => {
+.put("/:id", getRole, async (req,res) => {
   const {id} = req.params;
   const body = req.body
   try {
-    const transactionToUpdate = await getInstanceById(Transaction,id);
+    const {role} = req
+    if(role !== 'admin') throwError('You are not Authorized', 401)
+    const transactionToUpdate = await getInstanceById(Transaction,'1');
+    
     const updated = transactionToUpdate.set(body)
+    
     await transactionToUpdate.save()
+
+    if(body.state === "closed"){
+      const balance = await Balance.findByPk('1')
+      const total = transactionToUpdate.toJSON().total
+      await balance.update({total:  balance.toJSON().total - total});
+    }
     res.json(updated)
 
   } catch (error) {

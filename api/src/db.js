@@ -27,7 +27,7 @@ fs.readdirSync(path.join(__dirname, '/models'))
  let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase()+entry[0].slice(1), entry[1]]);
  sequelize.models = Object.fromEntries(capsEntries);
 
- const { Product , Category, User, Cart, Favorites, ShoppingOrder , Transaction, QandA, Reviews} = sequelize.models;
+ const { Product , Category, User, Cart, Favorites, ShoppingOrder , Transaction, QandA, Reviews, Balance} = sequelize.models;
 
  //Relaciones entre usuarios y carts 1-1
 User.hasOne(Cart, {as:'cartUser', foreignKey:"cartUserId"})
@@ -100,5 +100,6 @@ Favorites.belongsToMany(Product, {through: "favorites_product"})
     QandA,
     // Rating,
     Reviews,
+    Balance,
     conn: sequelize,
  }

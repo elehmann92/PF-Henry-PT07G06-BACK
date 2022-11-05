@@ -1,7 +1,8 @@
 const data = require('./categories.json')
 const dataP = require('./products.json')
 const dataU = require('./users.json')
-const {Category, Product, User} = require('../src/db.js')
+const dataB = require('./initialBalance.json')
+const {Category, Product, User, Balance} = require('../src/db.js')
 
 // funcion para setear los datos iniciales a la tabla Categories
 async function createUsers() {
@@ -46,8 +47,13 @@ async function createProducts() {
     })}
 })};
 
+async function initialBalance() {
+  Balance.create(dataB)
+}
+
 module.exports = {
     createUsers,
     creatCategories,
-    createProducts
+    createProducts,
+    initialBalance
   };

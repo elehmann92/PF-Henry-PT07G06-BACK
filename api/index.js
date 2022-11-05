@@ -2,7 +2,7 @@ const server = require('./src/app.js')
 const {PORT}= require('./src/config')
 
 const {conn} = require('./src/db.js')
-const {createUsers, creatCategories, createProducts} = require('./dbSetup/idex')
+const {createUsers, creatCategories, createProducts, initialBalance} = require('./dbSetup/idex')
 // // Syncing all the models at once.
 
  conn.sync({ force: true }).then(() => {
@@ -12,5 +12,6 @@ const {createUsers, creatCategories, createProducts} = require('./dbSetup/idex')
 })
 .then(() => createUsers())
 .then(() => creatCategories())
-.then(() => createProducts());
+.then(() => createProducts())
+.then(() => initialBalance());
   
