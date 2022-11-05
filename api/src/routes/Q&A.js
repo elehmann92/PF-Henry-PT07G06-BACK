@@ -28,7 +28,7 @@ router
         model: Product,
         as: "productQAndA"
       }})
-      
+
       const asAsker = qAndAs.filter(ele => ele.askerId === id);
       const asOwner = qAndAs.filter(ele => ele.productQAndA?.ownerId === id);
     
@@ -72,7 +72,7 @@ router
       await newQAndABlock.setAsker(id);
       await newQAndABlock.setProductQAndA(productQAndAId);
 
-      // **PENDIENTE** -> DESPACHAR MAIL CON PREGUNTA AL USUARIO
+      // **PENDIENTE** -> DESPACHAR MAIL AL OWNER AVISANDO QUE LE PREGUNTARON
 
       res.json(newQAndABlock);
     } catch (error) {
@@ -96,6 +96,7 @@ router
           401
         );
       const updated = await qAndABlock.update({ answer });
+      // **PENDIENTE** -> DESPACHAR MAIL AL ASKER AVISANDO QUE LE CONTESTARON
       res.json(updated);
     } catch (error) {
       res.status(error.number || 400).json(error.message);
