@@ -82,6 +82,14 @@ async function getUserById(id) {
       {
         model: Reviews,
         as: "userReviewed" 
+      },
+      {
+        model: ShoppingOrder,
+        as: "cart",
+        include: {
+          model: Transaction,
+          as: "transactionList"
+        }
       }
     ],
   });
