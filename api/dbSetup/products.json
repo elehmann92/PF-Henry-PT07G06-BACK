@@ -217,7 +217,7 @@
       "condition": "Claros signos de uso",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_847402-MLA51756227882_092022-F.webp",
       "owner": 1,
-      "categories": ["Muebles"],
+      "categories": ["Muebles","Organizadores"],
       "status": "Publicado"
     },
     {
@@ -272,7 +272,7 @@
       "condition": "Usado",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_978484-MLA51803005154_102022-F.webp",
       "owner": 5,
-      "categories": ["Muebles", "Jardín"],
+      "categories": ["Muebles", "Jardín","Mesas"],
       "status": "Publicado"
     },
     {
@@ -448,7 +448,7 @@
       "condition": "Como nuevo",
       "image": "https://www.lvzmuebles.com.ar/wp-content/uploads/2021/02/WhatsApp-Image-2021-02-01-at-11.45.35-AM.jpeg",
       "owner": 7,
-      "categories": ["Muebles"],
+      "categories": ["Muebles","Organizadores"],
       "status": "Publicado"
     },
     {
@@ -672,7 +672,7 @@
       "condition": "Como nuevo",
       "image":"https://www.lvzmuebles.com.ar/wp-content/uploads/2020/08/box-m-1.jpg",
       "owner":6,
-      "categories": ["Camas","Muebles"],
+      "categories": ["Camas","Muebles","Organizadores"],
       "status":"Publicado"
   },{
       "id": 64,
@@ -784,6 +784,266 @@
       "owner":5,
       "categories": ["Plomería"],
       "status":"Publicado"
+},{
+  "id": 75,
+    "name": "Sellador para acrílicos Sapp",
+    "description":"Sellador de 5lts maraca Sapp! Para tratamientos de superficies muy porosas o desgastadas, lajas, mosaicos, baldosas pulidas o sin pulir, pisos deportivos",
+    "price": 4300,
+    "condition": "Como nuevo",
+    "image":"https://www.coversol.com.ar/media/2022/01/sapp.jpg",
+    "owner":4,
+    "categories": ["Pisos"],
+    "status":"Publicado"
+},{
+  "id": 76,
+    "name": "Piso autoadhesivo Dual Cover",
+    "description":"Piso para revestimiento Dual Cover en baldosas de 10m^2 en excelente estado!",
+    "price": 25000,
+    "condition": "Como nuevo",
+    "image":"https://muresco.com/wp-content/uploads/img-1029-scaled.jpg",
+    "owner":6,
+    "categories": ["Pisos"],
+    "status":"Publicado"
+},{
+  "id": 77,
+    "name": "Microcemento Sinteplast",
+    "description":"Mortero cementicio de 20kg para revestimiento decorativo de pisos y paredes en capa delgada de excepcional resistencia al desgaste!",
+    "price": 11500,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_839401-MLA45305592712_032021-O.webp",
+    "owner":6,
+    "categories": ["Pisos"],
+    "status":"Publicado"
+},{
+  "id": 78,
+    "name": "Pulidora para Pisos Hipoerfloor Husqvarna",
+    "description":"El diseño de este robusto sistema garantiza la máxima protección y vida útil de sus herramientas de diamante. Posición de trabajo ergonómica. El manillar ajustable permite una posición de trabajo ergonómica de una manera más sencilla",
+    "price": 1000000,
+    "condition": "Claros signos de uso",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_866702-MLA28200779496_092018-O.webp",
+    "owner":6,
+    "categories": ["Pisos"],
+    "status":"Publicado"
+},{
+  "id": 79,
+    "name": "Cera Blem Rojo",
+    "description":"Prepare el piso dejandolo limpio y seco .Vierta BLEM autobrillo sobre la superficie a tratar. Extiendalo de forma uniforme y pareja .dejelo secar y obtendrá un brillo sin necesidad de lustrar.",
+    "price": 970,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_601353-MLA31116014713_062019-O.webp",
+    "owner":6,
+    "categories": ["Pisos"],
+    "status":"Publicado"
+},{
+  "id": 80,
+    "name": "Pistola de Pintura Gadnic PG1000 400w Regulable",
+    "description":"El compresor de pintura de Gadnic PG1000 realmente le ahorrará tiempo y hará cualquier proyecto de pintura por usted.",
+    "price": 7300,
+    "condition": "Como nuevo",
+    "image":"https://images.bidcom.com.ar/resize?src=https://www.bidcom.com.ar/publicacionesML/productos/PAINTG01/1000x1000-PAINTG01.jpg&w=500&q=100",
+    "owner":7,
+    "categories": ["Pinturas","Paredes"],
+    "status":"Publicado"
+},{
+  "id": 81,
+    "name": "Revestimiento texturado Venier Beige de 30kg",
+    "description":"Venier Texturas es una mezcla cremosa, permite aplicar sobre paños grandes con alto rendimiento, menor desperdicio y más limpieza. Es la nueva opción en revestimientos texturados de alto espesor, lo que permite disimular imperfecciones o vicios de obra.",
+    "price": 12000,
+    "condition": "Como nuevo",
+    "image":"https://arcencohogar.vtexassets.com/arquivos/ids/276022-800-800?v=637651592978200000&width=800&height=800&aspect=true",
+    "owner":7,
+    "categories": ["Pinturas","Paredes"],
+    "status":"Publicado"
+},{
+  "id": 82,
+    "name": "Mezclador Batidor De Pintura Cemento Yeso Enduido Tc-mx 1200",
+    "description":"El agitador de mortero y pintura de Einhell TC-MX 1200 E ofrece a los manitas más exigentes en el área de las nuevas construcciones, los trabajos de proyectos, renovación y reacondicionamiento, un potente motor de 1200V para un alto rendimiento de mezcla.",
+    "price": 15000,
+    "condition": "Claros signos de uso",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_646281-MLA44775855893_022021-O.webp",
+    "owner":7,
+    "categories": ["Pinturas"],
+    "status":"Publicado"
+},{
+  "id": 83,
+    "name": "Pack 6 Pintura a la Tiza EQ Arte x 200ml",
+    "description":"Terminación ultramate. Capacidad cubritiva y de adherencia a múltiples soportes. Fácil de lijar, no se oxida. Soluble en agua. NO TÓXICO. Se recomienda finalizar el trabajo con Barniz Extra Mate o con Cera Incolora Mate.",
+    "price": 3600,
+    "condition": "Como nuevo",
+    "image":"https://d3ugyf2ht6aenh.cloudfront.net/stores/893/990/products/eq-tiza-21-a70ac4696c7f51fb4715977661275092-480-0.jpeg",
+    "owner":7,
+    "categories": ["Pinturas","Decoración"],
+    "status":"Publicado"
+},{
+  "id": 84,
+    "name": "Pintura Asfáltica",
+    "description":"Es una solución de asfalto en un solvente volátil derivado del petróleo, dejando una película flexible de excelente comportamiento. Tiene inmejorable adherencia, y además, es altamente resistente a la acción de los ácidos, álcalis y sales.",
+    "price": 15000,
+    "condition": "Como nuevo",
+    "image":"https://www.resol.com.ar/images/productos/especiales/especiala.jpg",
+    "owner":1,
+    "categories": ["Pinturas"],
+    "status":"Publicado"
+},{
+  "id": 85,
+    "name": "Tarquini Revestimiento Paredes Interiores Exteriores",
+    "description":"Colores claros disponibles:Arena, Bianchino, Frente Antiguo, Travertino, Gris Cemento, Natural; Rendimiento:Rinde 10 mt2 en textura fina y 8 mt2 en mediana. El balde es de 20 kg.",
+    "price": 14450,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_876452-MLA31581328596_072019-O.webp",
+    "owner":1,
+    "categories": ["Paredes"],
+    "status":"Publicado"
+},{
+  "id": 86,
+    "name": "Cinta Doble Faz Ultrafuerte Tesa Tape Powerbond",
+    "description":"Ideal para su uso en interiores y exteriores, sujeción fuerte; Soporta hasta 10kg por cada 10cm de cinta",
+    "price": 990,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_651976-MLA44768128057_012021-O.webp",
+    "owner":1,
+    "categories": ["Paredes"],
+    "status":"Publicado"
+},{
+  "id": 87,
+    "name": "Kit Mecha Copa Hormigon Pared Widia 65 Mm + Soporte 320mm",
+    "description":"Sierra copa 65mm+ centro SDS PLUS 320mm + broca centradora para instalador de aire acondicionado!",
+    "price": 3500,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_969610-MLA32478801427_102019-O.webp",
+    "owner":1,
+    "categories": ["Paredes"],
+    "status":"Publicado"
+},{
+  "id": 88,
+    "name": "Recipientes Herméticos de Plástico Electrolux x 4u",
+    "description":"El juego de recipientes herméticos Electrolux tiene 4 tamaños diferentes que son ideales para almacenar alimentos de manera conveniente y segura, ya que no contienen BPA.",
+    "price": 1200,
+    "condition": "Claros signos de uso",
+    "image":"https://electroluxar.vtexassets.com/arquivos/ids/157652-800-800?v=637030415833900000&width=800&height=800&aspect=true",
+    "owner":1,
+    "categories": ["Organizadores"],
+    "status":"Publicado"
+},{
+  "id": 89,
+    "name": "Organizador Porta Escobas Escobero Gadnic 5 Palos 6 Ganchos",
+    "description":"Nuestro propósito es facilitar el acceso a productos innovadores y de interés, brindando una experiencia extraordinaria!!",
+    "price": 1111,
+    "condition": "Claros signos de uso",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_934597-MLA50231581827_062022-O.webp",
+    "owner":1,
+    "categories": ["Organizadores"],
+    "status":"Publicado"
+},{
+  "id": 90,
+    "name": "Sillón Jeffrey",
+    "description":"Emulando al modelo Aluminum, esta versión busca lograr no solo diseño, sino también un amplio confort. Este modelo cuenta con un sistema regulable en altura y basculante que hacen que su confort sea único.",
+    "price": 35500,
+    "condition": "Como nuevo",
+    "image":"https://desillas.com/img/productos/RPLJFO_4.jpg",
+    "owner":6,
+    "categories": ["Muebles"],
+    "status":"Publicado"
+},{
+  "id": 91,
+    "name": "Vajillero Aparador Organizador Mueble Living Comedor 180cm",
+    "description":"Trata de una excelente Vajillero con 12 estantes fijos + 2 cajones con gran capacidad de guardado. Incluyen correderas metálicas para su mejor deslizamiento.",
+    "price": 42350,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_875426-MLA41247558557_032020-O.webp",
+    "owner":6,
+    "categories": ["Muebles"],
+    "status":"Publicado"
+},{
+  "id": 92,
+    "name": "Escritorio Roma",
+    "description":"Escritorio de melamina de un tamaño ideal para ubicarlo en cualquier rincón de la casa. Contiene un cajón y una gabeta para organizar tus apuntes o material de trabajo.",
+    "price": 12000,
+    "condition": "Como nuevo",
+    "image":"https://tienda.centroestant.com.ar/media/2022/03/1_SC109w_Fondo-Blanco_1_1000x1000.webp",
+    "owner":6,
+    "categories": ["Mesas"],
+    "status":"Publicado"
+},{
+  "id": 93,
+    "name": "Mesas Asia Nórdica",
+    "description":"La mesa Asia es fácil de limpiar, y resistente a los liquidos y a la manchas, de diseño sencillo, es fácil de combinar en cualquier ambiente.",
+    "price": 43000,
+    "condition": "Como nuevo",
+    "image":"https://d3ugyf2ht6aenh.cloudfront.net/stores/238/796/products/asiaparisbl_11-fbc2f6b229c93d0d9515882560954619-1024-1024.jpg",
+    "owner":6,
+    "categories": ["Mesas"],
+    "status":"Publicado"
+},{
+  "id": 94,
+    "name": "Mesa Flat con banco y 2 sillas Eames",
+    "description":"Mesa con banco en hierro y madera incluyéndole 2 sillas. Madera: enchapado en Paraíso",
+    "price": 105000,
+    "condition": "Como nuevo",
+    "image":"https://d3ugyf2ht6aenh.cloudfront.net/stores/337/959/products/73482855_10218490437265958_1111222813886251008_n11-0683bb8c9b73e304c415729843988430-640-0.jpg",
+    "owner":6,
+    "categories": ["Mesas"],
+    "status":"Publicado"
+},{
+  "id": 95,
+    "name": "Mesa de Algarrobo de 3 Metros Moderna con 6 Patas",
+    "description":"Hermosa mesa de algarrobo grande de 3,00 x 1,20 metros estilo moderna. Es una mesa maciza y muy firme dado que cuenta con 6 patas.Las patas pueden ser rectas como la de la foto o bien a pedido la podemos fabricar con patas torneadas.",
+    "price": 70000,
+    "condition": "Claros signos de uso",
+    "image":"https://www.dealgarrobo.com/img/upload/foto_234_523.jpg",
+    "owner":6,
+    "categories": ["Mesas"],
+    "status":"Publicado"
+},{
+  "id": 96,
+    "name": "Collar GPS Para Mascotas Gadnic Ubicación en Tiempo Real",
+    "description":"Incluye una función de historial de seguimiento y ubicación en vivo de tu amigo peludo cuando más importa y ve la historia de los lugares que tu mascota ha visitado.",
+    "price": 15000,
+    "condition": "Como nuevo",
+    "image":"https://images.bidcom.com.ar/resize?src=https://www.bidcom.com.ar/publicacionesML/productos/PETGPS01/1000x1000-PETGPS01.jpg&w=500&q=100",
+    "owner":3,
+    "categories": ["Mascotas"],
+    "status":"Publicado"
+},{
+  "id": 97,
+    "name": "Set De Comedero y Bebedero Dispenser Automático Perro Y Gato",
+    "description":"Capacidad de comedero: 0,5 kg. Capacidad del dispenser: 3 litros aprox. / 2 kg de alimento. Material: Plástico. Bebedero con dispenser automático para perros y gatos. El sistema es automático porque permite que el bebedero siempre se mantenga lleno.",
+    "price": 9000,
+    "condition": "Como nuevo",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_640133-MLA47574123616_092021-O.webp",
+    "owner":3,
+    "categories": ["Mascotas"],
+    "status":"Publicado"
+},{
+  "id": 98,
+    "name": "Jaula Canil Para Mascotas Tamaño M Doble Puerta Oferta",
+    "description":"TAMAÑO Mediano, de doble puerta con medidas de 75 el frente, 45 el ancho y 55 el alto. Fondo con reja y debajo bandeja plástica.",
+    "price": 7500,
+    "condition": "Usado",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_648478-MLA44397149414_122020-O.webp",
+    "owner":3,
+    "categories": ["Mascotas"],
+    "status":"Publicado"
+},{
+  "id": 99,
+    "name": "Tratamiento dental intensivo",
+    "description":"La higiene dental ayuda a prevenir enfermedades y mejora el aliento de tu mascota. Como sabemos lo tedioso que es realizar cotidianamente la limpieza dental de tu perro, desarrollamos Mon Ami Dental, una solución para este problema",
+    "price": 2800,
+    "condition": "Como nuevo",
+    "image":"https://monami.com.ar/1430-large_default/tratamiento-dental-intensivo.jpg",
+    "owner":3,
+    "categories": ["Mascotas"],
+    "status":"Publicado"
+},{
+  "id": 100,
+    "name": "ZooZoo Tapete de tazón",
+    "description":"Tazón de comida larga para perros de raza grande, bandeja de agua de silicona suave de acero inoxidable para alimentos que evita la hinchazón, antidesbordamiento, antideslizante, divertido interactivo para gatos, accesorio para mascotas!",
+    "price": 3000,
+    "condition": "Como nuevo",
+    "image":"https://m.media-amazon.com/images/I/81XAMW9WljL._AC_SX679_.jpg",
+    "owner":3,
+    "categories": ["Mascotas"],
+    "status":"Publicado"
 }
-  ]
+]
 }
