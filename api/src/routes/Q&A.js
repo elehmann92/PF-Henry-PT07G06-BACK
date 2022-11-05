@@ -8,8 +8,15 @@ const router = Router();
 
 router
   .get("/", async (req, res) => {
+    const {productQAndAId} = req.query
+    let where = {}
     try {
-      const qA = await QandA.findAll({ order: ["id"] , include:{
+      if (productQAndAId) {
+        where = {
+          productQAndAId,
+        }
+      }
+      const qA = await QandA.findAll({ order: ["id"] , where, include:{
         model: Product,
         as: "productQAndA"
       }});
