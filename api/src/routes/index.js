@@ -9,6 +9,7 @@ const transactionsRouter = require("./transactions");
 const paymentRoute = require("./payment");
 const qAndARouter = require("./Q&A");
 const reviewsRouter = require("./reviews");
+const balanceRouter = require("./balance")
 const { sessionLoginRouter } = require("./sessionLogin");
 
 const router = Router();
@@ -24,5 +25,6 @@ router.use("/payment", paymentRoute);
 router.use("/sessionLogin", sessionLoginRouter);
 router.use("/Q&A", qAndARouter);
 router.use("/reviews", reviewsRouter);
+router.use("/balance" , balanceRouter)
 
 module.exports = router;
