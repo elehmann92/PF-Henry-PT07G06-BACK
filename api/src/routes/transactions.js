@@ -32,7 +32,7 @@ router.get("/", getRole, async (req, res) => {
   try {
     const {role} = req
     if(role !== 'admin') throwError('You are not Authorized', 401)
-    const transactionToUpdate = await getInstanceById(Transaction,'1');
+    const transactionToUpdate = await getInstanceById(Transaction,id);
     
     const updated = transactionToUpdate.set(body)
     
