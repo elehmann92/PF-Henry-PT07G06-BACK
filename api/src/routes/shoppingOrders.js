@@ -119,13 +119,17 @@ router
     }
   })
 
-  .get("/:id", async (req, res) => {
-    const { id } = req.params;
+  .get("/:shoppingOrderId", async (req, res) => {
+    const { shoppingOrderId } = req.params;
+    const {role, id} = req
     try {
-      const shoppingOrder = await getShoppingOrderById(id);
+      if (role === 'guest') throwError('You are not signed in', 401)
+      const shoppingOrder = await getShoppingOrderById(shoppingOrderId);
+      const buyer = shoppingOrder.toJSON().transactionList[0].buyerId
+      if (role === 'user' && parseInt(id) !== parseInt(buyer)) throwError('You can not request a shopping order which you do not own', 401)
       res.json(shoppingOrder);
     } catch (error) {
-      res.status(400).json(error.message);
+      res.status(error.number || 400).json(error.message);
     }
   })
 
@@ -171,12 +175,16 @@ router
     }
   })
 
-  .put("/:id", async (req, res) => {
-    const { id } = req.params;
+  .put("/:shoppingOrderid", getRole,async (req, res) => {
+    const { shoppingOrderid } = req.params;
     const body = req.body;
+    const {role, id} = req
     try {
-      if (!id) throw new Error("Missing ID");
-      const shoppingOrderToUpdate = await getShoppingOrderById(id);
+      if (role === 'guest') throwError('You are not signed in', 401)
+      const shoppingOrderToUpdate = await getShoppingOrderById(shoppingOrderid);
+      const buyer = shoppingOrderToUpdate.toJSON().transactionList[0].buyerId
+      if (role === 'user' && parseInt(id) !== parseInt(buyer)) throwError('You can not update a shopping order which you do not own', 401)
+
       const updated = shoppingOrderToUpdate.set(body);
       await shoppingOrderToUpdate.save();
 
