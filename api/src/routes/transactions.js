@@ -17,6 +17,35 @@ router.get("/", getRole, async (req, res) => {
   }
 })
 
+.get('/byToken', getRole, async (req, res) => {
+  const { role } = req;
+  const id = parseInt(req.id);
+  try {
+    if (role === "guest") throwError("You are not Authorized", 401);
+    const userTrasactions = await Transaction.findAll({
+      where: {
+        [Op.or]: [
+          { buyerId: id },
+          { sellerId: id }
+        ],
+      },
+    });
+
+    const asBuyer = userTrasactions.filter(ele => ele.buyerId === id)
+    const asSeller = userTrasactions.filter(ele => ele.sellerId === id)
+
+    res.json({
+      transactions: {
+        asBuyer,
+        asSeller,
+      },
+    });
+  } catch (error) {
+    res.status(error.number || 400).json(error.message)
+  }
+  
+})
+
 .get('/:transactionId', getRole,async (req, res) => {
   const {transactionId} = req.params;
   const {role, id} = req
@@ -32,27 +61,6 @@ router.get("/", getRole, async (req, res) => {
     res.status(error.number || 400).json(error.message)
   }
 })
-
-// .get('/byToken', getRole, async (req, res) => {
-//   /* RESPONDER CON UN OBJETO JSON
-//   const transactions = {
-//     asBuyer: [{},{}],
-//     asSeller: [{},{}]
-//   }; */
-//   const {role} = req;
-//   const id = parseInt(req.id)
-//   try {
-//     if (role === 'guest') throwError('You are not Authorized', 401)
-//     const userTrasactions = await Transaction.findAll({where:{
-//       [Op.or]:{
-//         buyerId: id
-//       }
-//     }})
-//   } catch (error) {
-    
-//   }
-  
-// })
 
 
 .put("/:transactionId", getRole, async (req,res) => {
