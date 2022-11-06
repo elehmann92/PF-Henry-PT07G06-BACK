@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Transaction, User, ShoppingOrder, Product, Cart } = require("../db");
+const { Transaction, User, ShoppingOrder, Product, Cart, Balance } = require("../db");
 const { getRole } = require("../handlers/routeProtection");
 const {
   getCartById,
@@ -155,9 +155,15 @@ router
         payment_id,
         merchant_id: merchant_order_id,
         paymentReceived: status === "approved" ? true : false,
-        state: status,
+        state: status === "approved" ? "in process": "pending",
       });
       await shoppingOrder.save();
+
+      if(status === "approved"){
+        const balance = await Balance.findByPk('1')
+        const total = shoppingOrder.toJSON().total
+        await balance.update({total:  balance.toJSON().total + total});
+      }
 
       const orderDetail = await getShoppingOrderById(shoppingOrder.id);
       const products = orderDetail.transactionList.map((p) => p.productId);
