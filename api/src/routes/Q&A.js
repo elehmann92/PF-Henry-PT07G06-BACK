@@ -4,6 +4,17 @@ const { QandA, Product } = require("../db");
 const { getInstanceById, throwError } = require("../handlers");
 const { getRole } = require("../handlers/routeProtection");
 
+const { 
+  sendEmail,
+  preguntaPublicada,
+  respuestaPublicada,
+ } = require("../mail/index");
+
+const user = {
+name: 'Usuario',
+email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+} 
+
 const router = Router();
 
 router
@@ -80,6 +91,8 @@ router
       await newQAndABlock.setProductQAndA(productQAndAId);
 
       // **PENDIENTE** -> DESPACHAR MAIL AL OWNER AVISANDO QUE LE PREGUNTARON
+      const html = preguntaPublicada(user, question) //user: {name: ownerId , email: ownerId}
+      await sendEmail(user, 'Tienes una nueva pregunta sobre tu producto en Juira', html)
 
       res.json(newQAndABlock);
     } catch (error) {
@@ -104,6 +117,9 @@ router
         );
       const updated = await qAndABlock.update({ answer });
       // **PENDIENTE** -> DESPACHAR MAIL AL ASKER AVISANDO QUE LE CONTESTARON
+      const html = respuestaPublicada(user, answer) //user: {name: askerId , email: askerId}
+      await sendEmail(user, 'Respondieron tu pregunta', html)
+
       res.json(updated);
     } catch (error) {
       res.status(error.number || 400).json(error.message);

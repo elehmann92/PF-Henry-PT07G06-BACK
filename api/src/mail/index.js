@@ -96,6 +96,35 @@ const ordenDespachada = (user, order) => {
     `
 }
 
+const preguntaPublicada = (user, question) => {
+    return `
+        <p>¡<strong>${user.name}</strong>, tienes una nueva pregunta en tu publicación!</p>
+        <p>Un usuario preguntó: "${question}"</p>
+        <p>Ve a tu perfil para responder.</p>
+    `
+}
+
+const respuestaPublicada = (user, answer) => {
+    return `
+        <p><strong>${user.name}</strong>, recibiste una respuesta en tu pregunta.</p>
+        <p>El vendedor respondió: "${answer}"</p>
+    `
+}
+
+const productoEnviado = (user) => {
+    return `
+        <p><strong>${user.name}</strong>, tu producto ha sido enviado."</p>
+        <p>El vendedor nos ha informado que ya realizó el envío de tu producto. Una vez hayas recibido el producto ve a tu perfil y confirma la recepción del mismo.</p>
+    `
+}
+
+const productoRecibido = (user) => {
+    return `
+        <p><strong>${user.name}</strong>, "</p>
+        <p>El comprador ha confirmado que recibió el producto sin novedades. Nuestro equipo se pondrá en contacto contigo para gestionar la liberación de los fondos.</p>
+    `
+}
+
 module.exports = {
     sendEmail,
     ordenDespachada,
@@ -104,5 +133,9 @@ module.exports = {
 
     ordenPagada,
     productoPublicado,
-    bienvenida
+    bienvenida,
+    preguntaPublicada,
+    respuestaPublicada,
+    productoEnviado,
+    productoRecibido,
 }
