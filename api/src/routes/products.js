@@ -30,7 +30,7 @@ const {
   throwError,
   getUserById,
 } = require("../handlers");
-const { Product } = require("../db");
+const { Product, Category, QandA } = require("../db");
 
 const router = Router();
 
@@ -52,6 +52,32 @@ router
       res.json(allProductsWithCategories);
     } catch (error) {
       res.status(404).json(error.message);
+    }
+  })
+
+  .get('/byToken', getRole, async(req,res) => {
+    const {role, id} = req
+    try {
+      if (role === 'guest') throwError('You are not signed in', 401)
+      const userProducts = await Product.findAll({
+        where: {
+          ownerId: id,
+        },
+        order: ["id"],
+        include: [{
+          model: Category,
+          through: {
+            attributes: [],
+          },
+        },
+        {
+          model: QandA,
+          as: "productQAndA"
+        }],
+      })
+      res.json(userProducts)
+    } catch (error) {
+      res.status(error.number || 400).json(error.message)
     }
   })
 
