@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const { Op } = require("sequelize");
-const { Transaction, Balance, User } = require("../db");
+const { Op , Model} = require("sequelize");
+const { Transaction, Balance, User, ShoppingOrder} = require("../db");
 const { getTransactions, getInstanceById, throwError} = require("../handlers");
 const { getRole } = require("../handlers/routeProtection");
 
@@ -35,6 +35,10 @@ router.get("/", getRole, async (req, res) => {
           { sellerId: id }
         ],
       },
+      include: {
+        model: ShoppingOrder,
+        as: "shoppingOrder",
+      } 
     });
 
     const asBuyer = userTrasactions.filter(ele => ele.buyerId === id)
