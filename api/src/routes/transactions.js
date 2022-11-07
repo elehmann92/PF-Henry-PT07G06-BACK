@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { Op } = require("sequelize");
-const { Transaction, Balance } = require("../db");
+const { Transaction, Balance, User } = require("../db");
 const { getTransactions, getInstanceById, throwError} = require("../handlers");
 const { getRole } = require("../handlers/routeProtection");
 
@@ -77,11 +77,17 @@ router.get("/", getRole, async (req, res) => {
     
     await transactionToUpdate.save()
 
+    const buyerWithInfo = (await User.findByPk(buyerId)).toJSON()
+    const sellerWithInfo = (await User.findByPk(sellerId)).toJSON()
+
     if(body.state === "closed"){
       const balance = await Balance.findByPk('1')
       const total = transactionToUpdate.toJSON().total
-      await balance.update({total:  balance.toJSON().total - total});
+      await balance.update({total:  balance.toJSON().total - total})
     }
+
+    // ** PENDIENTE -> ENVIAR UN CORREO AL COMPRADOR CUANDO EL PRODUCTO SE DESPACHA Y ENVIAR UN CORREO AL VENDEDOR CUANDO EL PRODUCTO SE RECIBE**
+
     res.json(updated)
 
   } catch (error) {
