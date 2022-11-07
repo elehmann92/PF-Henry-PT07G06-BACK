@@ -4,6 +4,12 @@ const { Transaction, Balance, User } = require("../db");
 const { getTransactions, getInstanceById, throwError} = require("../handlers");
 const { getRole } = require("../handlers/routeProtection");
 
+const { 
+  sendEmail,
+  productoEnviado,
+  productoRecibido,
+ } = require("../mail/index");
+
 const router = Router();
 
 router.get("/", getRole, async (req, res) => {
@@ -87,6 +93,22 @@ router.get("/", getRole, async (req, res) => {
     }
 
     // ** PENDIENTE -> ENVIAR UN CORREO AL COMPRADOR CUANDO EL PRODUCTO SE DESPACHA Y ENVIAR UN CORREO AL VENDEDOR CUANDO EL PRODUCTO SE RECIBE**
+    if (body.state === 'sent') {
+      const user = {
+        name: buyerWithInfo.name ? buyerWithInfo.name : buyerWithInfo.emailAddress, //en caso de que no haya nombre registrado, usar el mail como nombre
+        email: buyerWithInfo.emailAddress,
+      }
+      const html = productoEnviado(user)
+      await sendEmail(user, `Tu producto ha sido enviado`, html)
+    } else {
+      const user = {
+        name: sellerWithInfo.name ? sellerWithInfo.name : sellerWithInfo.emailAddress, //en caso de que no haya nombre registrado, usar el mail como nombre
+        email: sellerWithInfo.emailAddress,
+      }
+      const html = productoRecibido(user)
+      await sendEmail(user, `El producto que vendiste ya fue recibido`, html)
+    }
+
 
     res.json(updated)
 

@@ -4,6 +4,17 @@ const { QandA, Product, User } = require("../db");
 const { getInstanceById, throwError } = require("../handlers");
 const { getRole } = require("../handlers/routeProtection");
 
+const { 
+  sendEmail,
+  preguntaPublicada,
+  respuestaPublicada,
+ } = require("../mail/index");
+
+// const user = {
+// name: 'Usuario',
+// email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
+// } 
+
 const router = Router();
 
 router
@@ -111,6 +122,12 @@ router
       // }
 
       // **PENDIENTE** -> DESPACHAR MAIL AL OWNER AVISANDO QUE LE PREGUNTARON
+      const user = {
+        name: productWithUserInfo.owner.name ? productWithUserInfo.owner.name : productWithUserInfo.owner.emailAddress, //en caso de que no haya nombre registrado, usar el mail como nombre
+        email: productWithUserInfo.owner.emailAddress,
+      }
+      const html = preguntaPublicada(user, question)
+      await sendEmail(user, `Tienes una nueva pregunta sobre tu producto ${productWithUserInfo.description}`, html)
 
       res.json(newQAndABlock);
     } catch (error) {
@@ -136,7 +153,7 @@ router
       const updated = await qAndABlock.update({ answer });
 
       const userAsker = (await User.findByPk(qAndABlock.askerId)).toJSON()
-      console.log(userAsker)
+
       // Esto devuelve así:
       // {
       //   id: 9,
@@ -154,6 +171,13 @@ router
       // }
 
       // **PENDIENTE** -> DESPACHAR MAIL AL ASKER AVISANDO QUE LE CONTESTARON
+      const user = {
+        name: userAsker.name ? userAsker.name : userAsker.emailAddress,
+        email: userAsker.emailAddress
+      }
+      const html = respuestaPublicada(user, answer)
+      await sendEmail(user, 'Respondieron tu pregunta', html)
+
       res.json(updated);
     } catch (error) {
       res.status(error.number || 400).json(error.message);
