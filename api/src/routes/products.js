@@ -11,13 +11,6 @@ const {
   productoPublicado,
  } = require("../mail/index");
 
-const user = {
-  name: 'Usuario',
-  email: 'juiraMarket@gmail.com' //para probar, estos datos deberian obtenerse desde la db
-} 
-
-
-
 
 const {
   searchByQuery,
@@ -30,7 +23,7 @@ const {
   throwError,
   getUserById,
 } = require("../handlers");
-const { Product, Category, QandA } = require("../db");
+const { Product, Category, QandA, User } = require("../db");
 
 const router = Router();
 
@@ -102,6 +95,13 @@ router
       if(!newProduct) throwError('Something went wrong at product creation', 400)
       await newProduct.setOwner(id);
       await newProduct.setCategories(data.categories)
+      const fullUser = (await User.findByPk(id)).toJSON()
+      
+      const user = {
+        name: fullUser.name,
+        email: fullUser.emailAddress //para probar, estos datos deberian obtenerse desde la db
+      } 
+      
       const html = productoPublicado(user, data) //get personalized html template
       await sendEmail(user, 'Producto Publicado', html)
       res.status(201).json(`${data.name} successfully created`);

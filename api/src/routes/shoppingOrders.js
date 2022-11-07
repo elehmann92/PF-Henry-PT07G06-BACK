@@ -12,11 +12,6 @@ const {
 } = require("../handlers");
 const { sendEmail, ordenCreada, ordenPagada } = require("../mail/index");
 
-const user = {
-  name: "Usuario",
-  email: "juiraMarket@gmail.com", //para probar, estos datos deberian obtenerse desde la db
-};
-
 const router = Router();
 
 router
@@ -86,6 +81,14 @@ router
         },
       });
       // console.log("PRODUCT DETAIL PARA MAIL ->",productDetail)
+
+      const fullUser = (await User.findByPk(id)).toJSON()
+      
+      const user = {
+        name: fullUser.name,
+        email: fullUser.emailAddress //para probar, estos datos deberian obtenerse desde la db
+      } 
+
       const html = ordenCreada(user, newShoppingOrder, productDetail);
       await sendEmail(user, "Nueva orden de compra", html);
 
@@ -172,6 +175,14 @@ router
           id: products,
         },
       });
+
+      const fullUser = (await User.findByPk(id)).toJSON()
+      
+      const user = {
+        name: fullUser.name,
+        email: fullUser.emailAddress //para probar, estos datos deberian obtenerse desde la db
+      } 
+
       const html = ordenPagada(user, updated, productDetail);
       await sendEmail(user, "Cambio de estatus en tu orden de compra", html);
 
