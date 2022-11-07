@@ -113,14 +113,14 @@ const respuestaPublicada = (user, answer) => {
 
 const productoEnviado = (user) => {
     return `
-        <p><strong>${user.name}</strong>, tu producto ha sido enviado."</p>
+        <p><strong>${user.name}</strong>, tu producto ha sido enviado.</p>
         <p>El vendedor nos ha informado que ya realizó el envío de tu producto. Una vez hayas recibido el producto ve a tu perfil y confirma la recepción del mismo.</p>
     `
 }
 
 const productoRecibido = (user) => {
     return `
-        <p><strong>${user.name}</strong>, "</p>
+        <p><strong>${user.name}</strong>, </p>
         <p>El comprador ha confirmado que recibió el producto sin novedades. Nuestro equipo se pondrá en contacto contigo para gestionar la liberación de los fondos.</p>
     `
 }
