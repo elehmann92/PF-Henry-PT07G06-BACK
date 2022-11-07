@@ -45,20 +45,21 @@ router
     const {role, id} = req;
     const {productId} = req.params
     try {
-      if (role === 'guest') throwError('You are not signed in', 401);
+      if (role === 'guest') throwError('No iniciaste sesión', 401);
       const user = await getUserById(id);
-      if (!user) throwError('User not found', 404);
+      if (!user) throwError('Usuario no encontrado', 404);
       const { cartToModify, productToModify } = await findCartAndProduct(user.toJSON().cartUser.id, productId);
 
-      if (productToModify.toJSON()?.status !== "Publicado") throwError('Selected product is not available for purchasing at the moment',400)
+      if (productToModify.toJSON()?.status !== "Publicado") throwError('El producto seleccionado no está disponible para la compra',400)
+      if (productToModify.toJSON()?.ownerId === id) throwError('No podés comprar un producto propio!',400)
 
       const exists = await cartToModify.hasProducts(productToModify)
-      if (exists) throwError('Product already exists in cart',400)
+      if (exists) throwError('El producto ya se encuentra en el carrito',400)
 
       await cartToModify.addProduct(productId);
       const price = productToModify.toJSON().price
       await cartToModify.update({total:  cartToModify.toJSON().total + price});
-      res.json("Successfully added");
+      res.json("Agregado con éxito!");
     } catch (error) {
       res.status(error.number || 400).json(error.message)
     }
