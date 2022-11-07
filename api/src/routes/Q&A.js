@@ -153,7 +153,7 @@ router
       const updated = await qAndABlock.update({ answer });
 
       const userAsker = (await User.findByPk(qAndABlock.askerId)).toJSON()
-      console.log('update answer',userAsker)
+
       // Esto devuelve así:
       // {
       //   id: 9,
