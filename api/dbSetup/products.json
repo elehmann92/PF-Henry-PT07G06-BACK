@@ -20,7 +20,7 @@
       "image": "https://www.mylshop.com.ar/wp-content/uploads/2022/03/apple-iphone-12-128gb-verde.jpg",
       "owner": 4,
       "categories": ["Tecnología"],
-      "status": "Vendido"
+      "status": "Publicado"
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "image": "https://hiperlibertad.vteximg.com.br/arquivos/ids/198093-1000-1000/CELULAR-SAMSUNG-GALAXY-A03-BLACK-32-GB-1-33472.jpg?v=637910122039200000",
       "owner": 7,
       "categories": ["Tecnología"],
-      "status": "Eliminado"
+      "status": "Publicado"
     },
     {
       "id": 4,
@@ -41,8 +41,8 @@
       "condition": "Claros signos de uso",
       "image": "https://http2.mlstatic.com/D_NQ_NP_818059-MLA32029904978_082019-O.jpg",
       "owner": 5,
-      "categories": ["Aire Libre"],
-      "status": "En pausa"
+      "categories": ["Aire Libre", "Juegos"],
+      "status": "Publicado"
     },
     {
       "id": 5,
@@ -68,7 +68,7 @@
     },
     {
       "id": 7,
-      "name": "Mesa de comedor.",
+      "name": "Mesa de comedor",
       "description": "Mesa de comedor excelente estado. Con vidrio. Medidas estándar.",
       "price": 30000,
       "condition": "Como nuevo",
@@ -107,7 +107,7 @@
       "condition": "Como nuevo",
       "image": "https://http2.mlstatic.com/D_NQ_NP_659365-MLA49866707984_052022-O.webp",
       "owner": 5,
-      "categories": ["Herramientas"],
+      "categories": ["Herramientas", "Plomería"],
       "status": "Publicado"
     },
     {
@@ -118,7 +118,7 @@
       "condition": "Como nuevo",
       "image": "https://http2.mlstatic.com/D_NQ_NP_797566-MLA43565663415_092020-O.jpg",
       "owner": 6,
-      "categories": ["Pinturas"],
+      "categories": ["Pinturas", "Paredes"],
       "status": "Publicado"
     },
     {
@@ -217,7 +217,7 @@
       "condition": "Claros signos de uso",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_847402-MLA51756227882_092022-F.webp",
       "owner": 1,
-      "categories": ["Muebles"],
+      "categories": ["Muebles", "Organizadores"],
       "status": "Publicado"
     },
     {
@@ -239,7 +239,7 @@
       "condition": "Usado",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_649238-MLA47385331667_092021-F.webp",
       "owner": 2,
-      "categories": ["Tecnología"],
+      "categories": ["Tecnología", "Juegos"],
       "status": "Publicado"
     },
     {
@@ -250,7 +250,7 @@
       "condition": "Como nuevo",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_778254-MLA40242429179_122019-F.webp",
       "owner": 3,
-      "categories": ["Electrodomesticos"],
+      "categories": ["Electrodomesticos", "Cocina"],
       "status": "Publicado"
     },
     {
@@ -261,7 +261,7 @@
       "condition": "Usado",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_811382-MLA50770753912_072022-F.webp",
       "owner": 4,
-      "categories": ["Cocina"],
+      "categories": ["Cocina", "Electrodomesticos"],
       "status": "Publicado"
     },
     {
@@ -272,7 +272,7 @@
       "condition": "Usado",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_978484-MLA51803005154_102022-F.webp",
       "owner": 5,
-      "categories": ["Muebles", "Jardín"],
+      "categories": ["Muebles", "Jardín", "Mesas"],
       "status": "Publicado"
     },
     {
@@ -294,7 +294,7 @@
       "condition": "Usado",
       "image": "https://http2.mlstatic.com/D_NQ_NP_2X_963730-MLA48008616183_102021-F.webp",
       "owner": 7,
-      "categories": ["Electrodomesticos"],
+      "categories": ["Electrodomesticos", "Cocina"],
       "status": "Publicado"
     },
     {
@@ -316,7 +316,7 @@
       "condition": "Claros signos de uso",
       "image": "https://www.accesorios.com.ar/923-thickbox_default/parlante-portatil-stromberg-bent-bluetooth-tws-frente-tela.jpg",
       "owner": 4,
-      "categories": ["Tecnología"],
+      "categories": ["Tecnología", "Aire Libre"],
       "status": "Publicado"
     },
     {
@@ -343,13 +343,13 @@
     },
     {
       "id": 32,
-      "name": "Llave inglesa",
+      "name": "Llave inglesa ajustable",
       "description": "Llave Inglesa Ajustable de 10 es apta para uso profesional.",
       "price": 2050,
       "condition": "Claros signos de uso",
       "image": "https://www.jbmcamp.com/media/cache/resolve/sylius_shop_product_original/6d/04/663e7cb7ab5fe2442d831fa47250.jpeg",
       "owner": 2,
-      "categories": ["Plomería"],
+      "categories": ["Plomería", "Herramientas"],
       "status": "Publicado"
     },
     {
@@ -360,7 +360,7 @@
       "condition": "Como nuevo",
       "image": "https://www.deplano.com.ar/27959-thickbox_default/tijera-corta-tubos-%C3%B8-20-a-%C3%B8-40-ips.jpg",
       "owner": 1,
-      "categories": ["Plomería"],
+      "categories": ["Plomería", "Herramientas"],
       "status": "Publicado"
     },
     {
@@ -391,7 +391,7 @@
       "description": "Balde con escurridor integrado para reducir el agua de la mopa de manera práctica",
       "price": 2500,
       "condition": "Como nuevo",
-      "image": "https://www.soscomputacion.com.ar/12934-large_default/trapeador-de-piso.jpg",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/802/500/products/whatsapp-image-2020-06-26-at-15-34-361-3f53c358e78c49193915932821290965-1024-1024.jpeg",
       "owner": 6,
       "categories": ["Pisos"],
       "status": "Publicado"
@@ -448,16 +448,16 @@
       "condition": "Como nuevo",
       "image": "https://www.lvzmuebles.com.ar/wp-content/uploads/2021/02/WhatsApp-Image-2021-02-01-at-11.45.35-AM.jpeg",
       "owner": 7,
-      "categories": ["Muebles"],
+      "categories": ["Muebles", "Organizadores"],
       "status": "Publicado"
     },
     {
       "id": 42,
       "name": "Mesa Auxiliar Triángulo",
-      "description": "Mesa ratonera auxiliar con patas de madera de paraíso lustradas en color ébano.",
+      "description": "Mesa ratonera auxiliar con patas de madera de paraíso lustradas en color tabaco.",
       "price": 25000,
       "condition": "Como nuevo",
-      "image": "https://www.lvzmuebles.com.ar/wp-content/uploads/2021/02/WhatsApp-Image-2021-02-01-at-11.45.35-AM.jpeg",
+      "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/056/361/products/triangulo-tabaco-baltico-1-600x6001-011d6e1c182b5f398716023438181437-640-0.jpg",
       "owner": 7,
       "categories": ["Muebles", "Mesas"],
       "status": "Publicado"
@@ -481,7 +481,7 @@
       "condition": "Como nuevo",
       "image": "https://aquihaydragones.com.ar/wp-content/uploads/2020/02/nltup-500x500.jpg",
       "owner": 3,
-      "categories": ["Juegos"],
+      "categories": ["Juegos", "Aire Libre"],
       "status": "Publicado"
     },
     {
@@ -492,7 +492,551 @@
       "condition": "Como nuevo",
       "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/159/765/products/tijera-de-poda-santa-juana-01-a2f0bd25c016503c4f15874169666386-640-0.jpg",
       "owner": 6,
-      "categories": ["Jardín"],
+      "categories": ["Jardín", "Herramientas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 46,
+      "name": "Smartwatch Nictom KW37 Sumergible",
+      "description": "El SmartWatch KW37 de @somosnictom tiene una pantalla táctil de 1,3″, ideal para recibir notificaciones de tus apps favoritas: Facebook, Twitter y Whatsapp!",
+      "price": 44000,
+      "condition": "Como nuevo",
+      "image": "https://dxelectronica.com.ar/wp-content/uploads/2021/06/KW37-10.jpg",
+      "owner": 7,
+      "categories": ["Tecnología"],
+      "status": "Publicado"
+    },
+    {
+      "id": 47,
+      "name": "Reloj CasiO Oro",
+      "description": "Detalles: Iluminación por LED - Cronómetro de 1/100 segundos Capacidad de medición: 59'59,99'' ",
+      "price": 30000,
+      "condition": "Como nuevo",
+      "image": "https://static.dafiti.com.ar/p/casio-5837-486906-1-product.jpg",
+      "owner": 7,
+      "categories": ["Tecnología"],
+      "status": "Publicado"
+    },
+    {
+      "id": 48,
+      "name": "Pelotas para perro indestructibles",
+      "description": "Divertida pelota con pinchos fabricada en goma resistente y flexible. Especialmente indicada para los más jóvenes, a los cachorros les encantará morderla.",
+      "price": 450,
+      "condition": "Usado",
+      "image": "https://static.miscota.com/media/1/photos/products/132374/juguete-para-perros-pequenos-pelota-con-pinchos-azul_1_g.jpeg",
+      "owner": 7,
+      "categories": ["Mascotas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 49,
+      "name": "Alimento Dog Selection",
+      "description": "Alimento premium Dog Selection de 21 kg para adultos; sabor Carne y Pollo.",
+      "price": 4500,
+      "condition": "Como nuevo",
+      "image": "https://glotonpets.com.ar/wp-content/uploads/2020/10/dog-selection-criadores-21-kg.jpg",
+      "owner": 1,
+      "categories": ["Mascotas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 50,
+      "name": "Remera Enjoy Aorus Negra L",
+      "description": "Remera deportiva en excelentes condiciones!!",
+      "price": 3200,
+      "condition": "Como nuevo",
+      "image": "https://app.contabilium.com/files/explorer/20302/Productos-Servicios/concepto-4852471.jpeg",
+      "owner": 4,
+      "categories": ["Indumentaria"],
+      "status": "Publicado"
+    },
+    {
+      "id": 51,
+      "name": "Campera para egresados",
+      "description": "Vendo campera en buenas condiciones!",
+      "price": 5500,
+      "condition": "Claros signos de uso",
+      "image": "https://i.pinimg.com/564x/a1/22/5f/a1225f2a7f4fc0ae16cd19ae83b8265b.jpg",
+      "owner": 4,
+      "categories": ["Indumentaria"],
+      "status": "Publicado"
+    },
+    {
+      "id": 52,
+      "name": "Jeans para mujer",
+      "description": "Jean en excelentes condiciones! Poco uso",
+      "price": 7000,
+      "condition": "Como nuevo",
+      "image": "https://static.dafiti.com.ar/p/system-5582-405229-1-product.jpg",
+      "owner": 4,
+      "categories": ["Indumentaria"],
+      "status": "Publicado"
+    },
+    {
+      "id": 53,
+      "name": "Bolsa de Cemento Portland",
+      "description": "Bolsa de Cemento Portland CPC40 marca Cementos Avellaneda. Presentación en bolsa de 50 kg. Norma IRAM 50000.",
+      "price": 1450,
+      "condition": "Como nuevo",
+      "image": "https://grupocanarias.com.ar/wp-content/uploads/2020/07/bolsa-50kg-cemento-avellaneda.jpg",
+      "owner": 6,
+      "categories": ["Construcción"],
+      "status": "Publicado"
+    },
+    {
+      "id": 54,
+      "name": "ZooZoo Tapete de tazón",
+      "description": "Tazón de comida larga para perros de raza grande, bandeja de agua de silicona suave de acero inoxidable para alimentos que evita la hinchazón, antidesbordamiento, antideslizante, divertido interactivo para gatos, accesorio para mascotas!",
+      "price": 3000,
+      "condition": "Como nuevo",
+      "image": "https://m.media-amazon.com/images/I/81XAMW9WljL._AC_SX679_.jpg",
+      "owner": 3,
+      "categories": ["Mascotas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 55,
+      "name": "Zapatillas Mujer Negra Adidas DURAMO 10",
+      "description": "Hecho con una serie de materiales reciclados, el exterior incorpora al menos un 50 % de contenido reciclado.",
+      "price": 22000,
+      "condition": "Como nuevo",
+      "image": "https://static.dafiti.com.ar/p/adidas-0434-952259-1-product.jpg",
+      "owner": 7,
+      "categories": ["Calzado"],
+      "status": "Publicado"
+    },
+    {
+      "id": 56,
+      "name": "Zapatillas Hombre Topper/Negra",
+      "description": "Zapatillas Topper de color negro en buenas condiciones!",
+      "price": 9000,
+      "condition": "Claros signos de uso",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/982/937/products/29770-41-5f937dfb1dbd1f91e216476141025807-640-0.jpg",
+      "owner": 7,
+      "categories": ["Calzado"],
+      "status": "Publicado"
+    },
+    {
+      "id": 57,
+      "name": "Ojotas deportivas unisex Nike/Azul",
+      "description": "Ojotas con abrojo Nike Benassi azul marino. Género: Unisex. Suela en Phylon inyectado.",
+      "price": 2800,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/145/898/products/11-0439e2bc4c83fd514b15475654735009-480-0.jpg",
+      "owner": 7,
+      "categories": ["Calzado"],
+      "status": "Publicado"
+    },
+    {
+      "id": 58,
+      "name": "Bicicleta BMX Glint Rodado 20- Color Verde",
+      "description": "Cuadro Glint talle unico 20.75 importado. Horquilla Glint eje 10mm. Manubrio glint negro 9″. Stem negro Freestyle ",
+      "price": 136500,
+      "condition": "Como nuevo",
+      "image": "https://hambike.com.ar/wp-content/uploads/2020/11/image-1-600x600.jpg",
+      "owner": 7,
+      "categories": ["Bicicletas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 59,
+      "name": "Jaula Canil Para Mascotas Tamaño M Doble Puerta Oferta",
+      "description": "TAMAÑO Mediano, de doble puerta con medidas de 75 el frente, 45 el ancho y 55 el alto. Fondo con reja y debajo bandeja plástica.",
+      "price": 7500,
+      "condition": "Usado",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_648478-MLA44397149414_122020-O.webp",
+      "owner": 3,
+      "categories": ["Mascotas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 60,
+      "name": "Lámpara Smart A60-Led RGB",
+      "description": "Las lámparas Smart vienen en varias versiones para cubrir diferentes posibles necesidades. La A60 LED RGB es una lámpara que ofrece la posibilidad de darle colores a tu ambientación.",
+      "price": 2600,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/143/704/products/a601-fc76532f11186230af16312784248682-640-0.png",
+      "owner": 6,
+      "categories": ["Iluminación", "Electricidad"],
+      "status": "Publicado"
+    },
+    {
+      "id": 61,
+      "name": "Lámpara T120 Forza Led 55W LD E40",
+      "description": "Watts: 55W. Alimentación: 100-240Vca 50/60Hz .Corriente: 250mA Casquillo: E40. Marca: Alic",
+      "price": 575,
+      "condition": "Claros signos de uso",
+      "image": "https://www.transelec.com.ar/post/wm/lam6899.jpg",
+      "owner": 6,
+      "categories": ["Iluminación", "Electricidad"],
+      "status": "Publicado"
+    },
+    {
+      "id": 62,
+      "name": "Colchón Megaforce de 200cmx90cm",
+      "description": "Tela Jackard. Núcleo de espuma de 26kg/m3. Capas externas de espuma hipersoft. Matelasseado: 85 kg. por lado",
+      "price": 57500,
+      "condition": "Como nuevo",
+      "image": "https://sp-ao.shortpixel.ai/client/q_glossy,ret_img,w_600/https://valenziana.com/wp-content/uploads/2022/06/mega-force-4-600x600.jpg",
+      "owner": 6,
+      "categories": ["Camas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 63,
+      "name": "Box de 160 Barrique",
+      "description": "Box multifunción para colchones de 1.40 x 1.90,  1.60 x 1.90 o 1.60 x 2.00; 3 cajones a cada lado con guías metálicas. Zapatero en la piecera. Sujetadores de colchón metálicos.",
+      "price": 120500,
+      "condition": "Como nuevo",
+      "image": "https://www.lvzmuebles.com.ar/wp-content/uploads/2020/08/box-m-1.jpg",
+      "owner": 6,
+      "categories": ["Camas", "Muebles", "Organizadores"],
+      "status": "Publicado"
+    },
+    {
+      "id": 64,
+      "name": "Bicicleta Venzo Rodado 29",
+      "description": "Cuadro aluminio 6061. Transmision 24 Velocidades. Cambio Trasero Shimano. Shifters Sensah Mx8. Descarrilador Sensah Mx8. Frenos hidraulicos. Suspension con bloqueo Suntour. Ruedas con mazas a rulemanes. Cubiertas Choyang Victory 29x2.0",
+      "price": 119000,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/251/926/products/venzo-primal-julio11-ac6fbf81e1744a770216563452241489-640-0.png",
+      "owner": 1,
+      "categories": ["Bicicletas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 65,
+      "name": "Set De Comedero y Bebedero Dispenser Automático Perro Y Gato",
+      "description": "Capacidad de comedero: 0,5 kg. Capacidad del dispenser: 3 litros aprox. / 2 kg de alimento. Material: Plástico. Bebedero con dispenser automático para perros y gatos. El sistema es automático porque permite que el bebedero siempre se mantenga lleno.",
+      "price": 9000,
+      "condition": "Como nuevo",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_640133-MLA47574123616_092021-O.webp",
+      "owner": 3,
+      "categories": ["Mascotas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 66,
+      "name": "Amoladora Bosch Angular GWS 850",
+      "description": "La Amoladora Angular Bosch GWS 850 tiene 850 Watts de potencia siendo esta una solución para realizar cortes y desbastes en materiales metálicos, como hierro y acero, y también puede ser utilizada para corte en albañilería y hormigón.",
+      "price": 35000,
+      "condition": "Claros signos de uso",
+      "image": "https://www.bosch-professional.com/ar/es/ocsmedia/293815-54/application-image/full/amoladora-angular-gws-850-06013775h0.webp",
+      "owner": 7,
+      "categories": ["Construcción", "Herramientas", "Electricidad"],
+      "status": "Publicado"
+    },
+    {
+      "id": 67,
+      "name": "Sierra Sensitiva Dewalt 2300W",
+      "description": "Trozadora para construcción color negro/amarillo de 4000RPM",
+      "price": 63000,
+      "condition": "Como nuevo",
+      "image": "https://arcencohogar.vtexassets.com/arquivos/ids/327033-800-800?v=637944645787400000&width=800&height=800&aspect=true",
+      "owner": 6,
+      "categories": [
+        "Construcción",
+        "Herramientas",
+        "Electricidad",
+        "Plomería"
+      ],
+      "status": "Publicado"
+    },
+    {
+      "id": 68,
+      "name": "Soldadora Monofásica Dogo",
+      "description": "Soldadora en buen estado! Posee una potencia de 230 amperios para soldar cualquier elemento de hierro!",
+      "price": 100000,
+      "condition": "Claros signos de uso",
+      "image": "https://indufer.com.ar/wp-content/uploads/2018/07/S_676111-MLA20482945142_112015-O-480x480.jpg",
+      "owner": 6,
+      "categories": ["Construcción", "Herramientas", "Electricidad"],
+      "status": "Publicado"
+    },
+    {
+      "id": 69,
+      "name": "Guinche Eléctrico FMT",
+      "description": "Guinche eléctrico de 220 voltios, con un alcance de 6/12mts, con un soporte de 250 a 500 Kg",
+      "price": 47000,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/952/936/products/1-t_763133_763133-e85b7abb4d57392f2315533096237340-480-0.jpg",
+      "owner": 4,
+      "categories": ["Construcción", "Herramientas", "Electricidad"],
+      "status": "Publicado"
+    },
+    {
+      "id": 70,
+      "name": "Lijadora Dewalt",
+      "description": "Lijadora Roto-Orbital de color amarillo/negro con potencia de 275W y un voltaje de 220V",
+      "price": 35000,
+      "condition": "Como nuevo",
+      "image": "https://arcencohogar.vtexassets.com/arquivos/ids/327049-800-800?v=637944650784730000&width=800&height=800&aspect=true",
+      "owner": 4,
+      "categories": ["Construcción", "Herramientas", "Electricidad"],
+      "status": "Publicado"
+    },
+    {
+      "id": 71,
+      "name": "Collar GPS Para Mascotas Gadnic Ubicación en Tiempo Real",
+      "description": "Incluye una función de historial de seguimiento y ubicación en vivo de tu amigo peludo cuando más importa y ve la historia de los lugares que tu mascota ha visitado.",
+      "price": 15000,
+      "condition": "Como nuevo",
+      "image": "https://images.bidcom.com.ar/resize?src=https://www.bidcom.com.ar/publicacionesML/productos/PETGPS01/1000x1000-PETGPS01.jpg&w=500&q=100",
+      "owner": 3,
+      "categories": ["Mascotas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 72,
+      "name": "Llave Grifa Stillson",
+      "description": "Llave de marca Stillson de 8 pulgadas para plomería en excelente estado!",
+      "price": 1800,
+      "condition": "Como nuevo",
+      "image": "https://madriferr.com/52789-large_default/llave-grifa-stillson-gran-resistencia-heavy-duty.jpg",
+      "owner": 5,
+      "categories": ["Plomería"],
+      "status": "Publicado"
+    },
+    {
+      "id": 73,
+      "name": "Llave de cadena Bahco",
+      "description": "Diseñada para trabajos en espacios reducidos; El diseño especial de las mordazas permite la operación en dos direcciones;Mordazas serradas templadas por inducción de larga duración",
+      "price": 2655,
+      "condition": "Como nuevo",
+      "image": "https://pimdatacdn.bahco.com/media/sub540/16a093e9a1edc83f.png",
+      "owner": 5,
+      "categories": ["Plomería"],
+      "status": "Publicado"
+    },
+    {
+      "id": 74,
+      "name": "Flexibleible Cobre Anillado Latynflex",
+      "description": "Flexibleible de color cromado con una dimensión de 2cm x 25cm",
+      "price": 1140,
+      "condition": "Como nuevo",
+      "image": "https://arcencohogar.vtexassets.com/arquivos/ids/299496-800-800?v=637665763937370000&width=800&height=800&aspect=true",
+      "owner": 5,
+      "categories": ["Plomería"],
+      "status": "Publicado"
+    },
+    {
+      "id": 75,
+      "name": "Sellador para acrílicos Sapp",
+      "description": "Sellador de 5lts maraca Sapp! Para tratamientos de superficies muy porosas o desgastadas, lajas, mosaicos, baldosas pulidas o sin pulir, pisos deportivos",
+      "price": 4300,
+      "condition": "Como nuevo",
+      "image": "https://www.coversol.com.ar/media/2022/01/sapp.jpg",
+      "owner": 4,
+      "categories": ["Pisos"],
+      "status": "Publicado"
+    },
+    {
+      "id": 76,
+      "name": "Piso autoadhesivo Dual Cover",
+      "description": "Piso para revestimiento Dual Cover en baldosas de 10m^2 en excelente estado!",
+      "price": 25000,
+      "condition": "Como nuevo",
+      "image": "https://muresco.com/wp-content/uploads/img-1029-scaled.jpg",
+      "owner": 6,
+      "categories": ["Pisos"],
+      "status": "Publicado"
+    },
+    {
+      "id": 77,
+      "name": "Microcemento Sinteplast",
+      "description": "Mortero cementicio de 20kg para revestimiento decorativo de pisos y paredes en capa delgada de excepcional resistencia al desgaste!",
+      "price": 11500,
+      "condition": "Como nuevo",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_839401-MLA45305592712_032021-O.webp",
+      "owner": 6,
+      "categories": ["Pisos"],
+      "status": "Publicado"
+    },
+    {
+      "id": 78,
+      "name": "Pulidora para Pisos Hipoerfloor Husqvarna",
+      "description": "El diseño de este robusto sistema garantiza la máxima protección y vida útil de sus herramientas de diamante. Posición de trabajo ergonómica. El manillar ajustable permite una posición de trabajo ergonómica de una manera más sencilla",
+      "price": 1000000,
+      "condition": "Claros signos de uso",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_866702-MLA28200779496_092018-O.webp",
+      "owner": 6,
+      "categories": ["Pisos"],
+      "status": "Publicado"
+    },
+    {
+      "id": 79,
+      "name": "Cera Blem Rojo",
+      "description": "Prepare el piso dejandolo limpio y seco .Vierta BLEM autobrillo sobre la superficie a tratar. Extiendalo de forma uniforme y pareja .dejelo secar y obtendrá un brillo sin necesidad de lustrar.",
+      "price": 970,
+      "condition": "Como nuevo",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_601353-MLA31116014713_062019-O.webp",
+      "owner": 6,
+      "categories": ["Pisos"],
+      "status": "Publicado"
+    },
+    {
+      "id": 80,
+      "name": "Pistola de Pintura Gadnic PG1000 400w Regulable",
+      "description": "El compresor de pintura de Gadnic PG1000 realmente le ahorrará tiempo y hará cualquier proyecto de pintura por usted.",
+      "price": 7300,
+      "condition": "Como nuevo",
+      "image": "https://images.bidcom.com.ar/resize?src=https://www.bidcom.com.ar/publicacionesML/productos/PAINTG01/1000x1000-PAINTG01.jpg&w=500&q=100",
+      "owner": 7,
+      "categories": ["Pinturas", "Paredes"],
+      "status": "Publicado"
+    },
+    {
+      "id": 81,
+      "name": "Revestimiento texturado Venier Beige de 30kg",
+      "description": "Venier Texturas es una mezcla cremosa, permite aplicar sobre paños grandes con alto rendimiento, menor desperdicio y más limpieza. Es la nueva opción en revestimientos texturados de alto espesor, lo que permite disimular imperfecciones o vicios de obra.",
+      "price": 12000,
+      "condition": "Como nuevo",
+      "image": "https://arcencohogar.vtexassets.com/arquivos/ids/276022-800-800?v=637651592978200000&width=800&height=800&aspect=true",
+      "owner": 7,
+      "categories": ["Pinturas", "Paredes"],
+      "status": "Publicado"
+    },
+    {
+      "id": 82,
+      "name": "Mezclador Batidor De Pintura Cemento Yeso Enduido Tc-mx 1200",
+      "description": "El agitador de mortero y pintura de Einhell TC-MX 1200 E ofrece a los manitas más exigentes en el área de las nuevas construcciones, los trabajos de proyectos, renovación y reacondicionamiento, un potente motor de 1200V para un alto rendimiento de mezcla.",
+      "price": 15000,
+      "condition": "Claros signos de uso",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_646281-MLA44775855893_022021-O.webp",
+      "owner": 7,
+      "categories": ["Pinturas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 83,
+      "name": "Pack 6 Pintura a la Tiza EQ Arte x 200ml",
+      "description": "Terminación ultramate. Capacidad cubritiva y de adherencia a múltiples soportes. Fácil de lijar, no se oxida. Soluble en agua. NO TÓXICO. Se recomienda finalizar el trabajo con Barniz Extra Mate o con Cera Incolora Mate.",
+      "price": 3600,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/893/990/products/eq-tiza-21-a70ac4696c7f51fb4715977661275092-480-0.jpeg",
+      "owner": 7,
+      "categories": ["Pinturas", "Decoración"],
+      "status": "Publicado"
+    },
+    {
+      "id": 84,
+      "name": "Pintura Asfáltica",
+      "description": "Es una solución de asfalto en un solvente volátil derivado del petróleo, dejando una película flexible de excelente comportamiento. Tiene inmejorable adherencia, y además, es altamente resistente a la acción de los ácidos, álcalis y sales.",
+      "price": 15000,
+      "condition": "Como nuevo",
+      "image": "https://www.resol.com.ar/images/productos/especiales/especiala.jpg",
+      "owner": 1,
+      "categories": ["Pinturas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 85,
+      "name": "Tarquini Revestimiento Paredes Interiores Exteriores",
+      "description": "Colores claros disponibles:Arena, Bianchino, Frente Antiguo, Travertino, Gris Cemento, Natural; Rendimiento:Rinde 10 mt2 en textura fina y 8 mt2 en mediana. El balde es de 20 kg.",
+      "price": 14450,
+      "condition": "Como nuevo",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_876452-MLA31581328596_072019-O.webp",
+      "owner": 1,
+      "categories": ["Paredes"],
+      "status": "Publicado"
+    },
+    {
+      "id": 86,
+      "name": "Mesa de Algarrobo de 3 Metros Moderna con 6 Patas",
+      "description": "Hermosa mesa de algarrobo grande de 3,00 x 1,20 metros estilo moderna. Es una mesa maciza y muy firme dado que cuenta con 6 patas.Las patas pueden ser rectas como la de la foto o bien a pedido la podemos fabricar con patas torneadas.",
+      "price": 70000,
+      "condition": "Claros signos de uso",
+      "image": "https://www.dealgarrobo.com/img/upload/foto_234_523.jpg",
+      "owner": 6,
+      "categories": ["Mesas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 87,
+      "name": "Kit Mecha Copa Hormigon Pared Widia 65 Mm + Soporte 320mm",
+      "description": "Sierra copa 65mm+ centro SDS PLUS 320mm + broca centradora para instalador de aire acondicionado!",
+      "price": 3500,
+      "condition": "Como nuevo",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_969610-MLA32478801427_102019-O.webp",
+      "owner": 1,
+      "categories": ["Paredes"],
+      "status": "Publicado"
+    },
+    {
+      "id": 88,
+      "name": "Recipientes Herméticos de Plástico Electrolux x 4u",
+      "description": "El juego de recipientes herméticos Electrolux tiene 4 tamaños diferentes que son ideales para almacenar alimentos de manera conveniente y segura, ya que no contienen BPA.",
+      "price": 1200,
+      "condition": "Claros signos de uso",
+      "image": "https://electroluxar.vtexassets.com/arquivos/ids/157652-800-800?v=637030415833900000&width=800&height=800&aspect=true",
+      "owner": 1,
+      "categories": ["Organizadores"],
+      "status": "Publicado"
+    },
+    {
+      "id": 89,
+      "name": "Organizador Porta Escobas Escobero Gadnic 5 Palos 6 Ganchos",
+      "description": "Nuestro propósito es facilitar el acceso a productos innovadores y de interés, brindando una experiencia extraordinaria!!",
+      "price": 1111,
+      "condition": "Claros signos de uso",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_934597-MLA50231581827_062022-O.webp",
+      "owner": 1,
+      "categories": ["Organizadores"],
+      "status": "Publicado"
+    },
+    {
+      "id": 90,
+      "name": "Sillón Jeffrey",
+      "description": "Emulando al modelo Aluminum, esta versión busca lograr no solo diseño, sino también un amplio confort. Este modelo cuenta con un sistema regulable en altura y basculante que hacen que su confort sea único.",
+      "price": 35500,
+      "condition": "Como nuevo",
+      "image": "https://desillas.com/img/productos/RPLJFO_4.jpg",
+      "owner": 6,
+      "categories": ["Muebles"],
+      "status": "Publicado"
+    },
+    {
+      "id": 91,
+      "name": "Vajillero Aparador Organizador Mueble Living Comedor 180cm",
+      "description": "Trata de una excelente Vajillero con 12 estantes fijos + 2 cajones con gran capacidad de guardado. Incluyen correderas metálicas para su mejor deslizamiento.",
+      "price": 42350,
+      "condition": "Como nuevo",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_875426-MLA41247558557_032020-O.webp",
+      "owner": 6,
+      "categories": ["Muebles"],
+      "status": "Publicado"
+    },
+    {
+      "id": 92,
+      "name": "Escritorio Roma",
+      "description": "Escritorio de melamina de un tamaño ideal para ubicarlo en cualquier rincón de la casa. Contiene un cajón y una gabeta para organizar tus apuntes o material de trabajo.",
+      "price": 12000,
+      "condition": "Como nuevo",
+      "image": "https://tienda.centroestant.com.ar/media/2022/03/1_SC109w_Fondo-Blanco_1_1000x1000.webp",
+      "owner": 6,
+      "categories": ["Mesas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 93,
+      "name": "Mesas Asia Nórdica",
+      "description": "La mesa Asia es fácil de limpiar, y resistente a los liquidos y a la manchas, de diseño sencillo, es fácil de combinar en cualquier ambiente.",
+      "price": 43000,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/238/796/products/asiaparisbl_11-fbc2f6b229c93d0d9515882560954619-1024-1024.jpg",
+      "owner": 6,
+      "categories": ["Mesas"],
+      "status": "Publicado"
+    },
+    {
+      "id": 94,
+      "name": "Mesa Flat con banco y 2 sillas Eames",
+      "description": "Mesa con banco en hierro y madera incluyéndole 2 sillas. Madera: enchapado en Paraíso",
+      "price": 105000,
+      "condition": "Como nuevo",
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/337/959/products/73482855_10218490437265958_1111222813886251008_n11-0683bb8c9b73e304c415729843988430-640-0.jpg",
+      "owner": 6,
+      "categories": ["Mesas"],
       "status": "Publicado"
     }
   ]
