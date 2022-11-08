@@ -16,7 +16,7 @@ const getRole = async (req,res,next) => {
         return next();
     }
   } catch (error) { 
-    res.json(error.message)
+    res.status(error.number || 400).json(error.message)
   }
 };
 
