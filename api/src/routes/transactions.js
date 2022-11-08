@@ -97,9 +97,23 @@ router.get("/", getRole, async (req, res) => {
     const sellerWithInfo = (await User.findByPk(sellerId)).toJSON()
 
     if(body.state === "closed"){
+      //restar balance
       const balance = await Balance.findByPk('1')
       const total = transactionToUpdate.toJSON().total
       await balance.update({total:  balance.toJSON().total - total})
+
+      //Cerrar shopping order si es la ultima transaction a cerrar
+      const shoppingOrderDb = await ShoppingOrder.findByPk(transactionToUpdate.toJSON().shoppingOrderId, {
+        include: { model: Transaction, as: "transactionList" },
+      })
+
+      const shoppingOrder = shoppingOrderDb.toJSON()
+
+      let check = shoppingOrder.transactionList.filter(el => el.state === 'closed')
+      if (check.length === shoppingOrder.transactionList.length) {
+        shoppingOrderDb.update({state: 'closed'})
+
+      }
     }
 
     // ** PENDIENTE -> ENVIAR UN CORREO AL COMPRADOR CUANDO EL PRODUCTO SE DESPACHA Y ENVIAR UN CORREO AL VENDEDOR CUANDO EL PRODUCTO SE RECIBE**
