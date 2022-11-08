@@ -340,6 +340,7 @@ async function findFavoritesAndProduct(favListId, productId) {
 
 async function getShoppingOrderListWithDetails() {
   return await ShoppingOrder.findAll({
+    order: ["id"],
     include: {
       model: Transaction,
       as: "transactionList",
