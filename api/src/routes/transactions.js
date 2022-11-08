@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { Op , Model} = require("sequelize");
-const { Transaction, Balance, User, ShoppingOrder} = require("../db");
+const { Transaction, Balance, User, ShoppingOrder, Product, Reviews} = require("../db");
 const { getTransactions, getInstanceById, throwError} = require("../handlers");
 const { getRole } = require("../handlers/routeProtection");
 
@@ -30,15 +30,21 @@ router.get("/", getRole, async (req, res) => {
     if (role === "guest") throwError("You are not Authorized", 401);
     const userTrasactions = await Transaction.findAll({
       where: {
-        [Op.or]: [
-          { buyerId: id },
-          { sellerId: id }
-        ],
+        [Op.or]: [{ buyerId: id }, { sellerId: id }],
       },
-      include: {
-        model: ShoppingOrder,
-        as: "shoppingOrder",
-      } 
+      include: [
+        {
+          model: ShoppingOrder,
+          as: "shoppingOrder",
+        },
+        { model: Product,
+          as: "product",
+          include: {
+            model: Reviews,
+            as:"productReviewed"
+          }
+        },
+      ],
     });
 
     const asBuyer = userTrasactions.filter(ele => ele.buyerId === id)
