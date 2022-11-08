@@ -5,7 +5,7 @@ const {conn} = require('./src/db.js')
 const {createUsers, creatCategories, createProducts, initialBalance} = require('./dbSetup/idex')
 // // Syncing all the models at once.
 
- conn.sync({ force: true }).then(() => {
+ conn.sync({ force: false }).then(() => {
      server.listen(PORT, () => {
        console.log('Server listening'); // eslint-disable-line no-console
      });
