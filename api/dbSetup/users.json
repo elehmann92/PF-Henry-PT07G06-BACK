@@ -95,6 +95,18 @@
         "lastTransaction" : "General-0",
         "status" : "active",
         "isAdmin": true
+    },
+    {
+        "username": "jonasbrothers",
+        "image" : "",
+        "emailAddress" : "jonatan2502@gmail.com",
+        "homeAddress" : "Faustino Allende 754",
+        "city" : "Ciudad de Córdoba",
+        "region" : "Córdoba",
+        "phoneNumber" : "5493584862514",
+        "lastTransaction" : "jonasbrothers-0",
+        "status" : "active",
+        "isAdmin": true
     }
 ]}
 
