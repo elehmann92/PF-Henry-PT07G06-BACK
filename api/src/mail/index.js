@@ -125,7 +125,7 @@ const productoRecibido = (user) => {
 const enviarContactoAlVendedor = (buyer, seller) => {
     return `
         <p><strong>${seller.name || 'Ey!'}</strong>, </p>
-        <p>Como vendedor, ponte en contacto con tu contraparte para que coordines la entrega de tu producto.</p>
+        <p>Ponte en contacto con tu contraparte para que coordines la entrega de tu producto.</p>
         <p>Email: ${buyer.email}</p>
     `
 }
@@ -133,7 +133,7 @@ const enviarContactoAlVendedor = (buyer, seller) => {
 const enviarContactoAlComprador = (buyer, sellers) => {
     return `
     <p><strong>${buyer.name || 'Ey!'}</strong>, </p>
-    <p>Como comprador, ponte en contacto con tu contraparte para que coordines la entrega de tu producto.</p>
+    <p>Ponte en contacto con tu contraparte para que coordines la entrega de tu producto.</p>
     <ul>
      ${sellers.map(e => `<li>Email: ${e.emailAddress}</li>`)}
     </ul>
