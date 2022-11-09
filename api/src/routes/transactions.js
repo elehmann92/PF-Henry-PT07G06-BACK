@@ -116,6 +116,11 @@ router.get("/", getRole, async (req, res) => {
       }
     }
 
+    if (body.state === 'cancelled') {
+      let product = await Product.findByPk(transactionToUpdate.toJSON().productId)
+      product.update({state: 'Publicado'})
+    }
+
     // ** PENDIENTE -> ENVIAR UN CORREO AL COMPRADOR CUANDO EL PRODUCTO SE DESPACHA Y ENVIAR UN CORREO AL VENDEDOR CUANDO EL PRODUCTO SE RECIBE**
     if (body.state === 'sent') {
       const user = {
