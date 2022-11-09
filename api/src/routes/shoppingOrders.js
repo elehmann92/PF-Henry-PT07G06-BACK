@@ -180,21 +180,18 @@ router
         const balance = await Balance.findByPk('1')
         const total = shoppingOrder.toJSON().total
         await balance.update({total:  balance.toJSON().total + total});
-
-        Promise.all(orderDetail.transactionList.map(async (p) => (await User.findByPk(p.sellerId)).toJSON()))
-        .then( sellers => {
-          sellers.forEach(async (seller) => {
-            const html = enviarContactoAlVendedor(user, seller);
-            await sendEmail(seller, "Vendedor. Coordina el envio de tu producto.", html);
-          })
-          const html = enviarContactoAlComprador(user, sellers);
-          sendEmail(user, "Comprador. Coordina el envio de tu producto.", html);
-        })
-          
-          //   sellers.forEach(async (seller) => {
-                // await sendEmail(seller, "Vendedor. Coordina el envio de tu producto.", html);
-            // })
-
+        
+        const sellers = await Promise.all(orderDetail.transactionList.map(async (p) => (await User.findByPk(p.sellerId)).toJSON()))
+        await Promise.all(sellers.map( async (seller) => {
+          const data = {
+            name: seller.name,
+            email: seller.emailAddress
+          }
+          const html = enviarContactoAlVendedor(user, seller);
+          await sendEmail(data, `Vendedor. Coordina el envio de tu producto.`, html); 
+        }))
+        const html = enviarContactoAlComprador(user, sellers);
+        await sendEmail(user, "Comprador. Coordina el envio de tu producto.", html);
       }
       
       const html = ordenPagada(user, updated, productDetail);
