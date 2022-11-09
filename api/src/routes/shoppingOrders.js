@@ -181,14 +181,20 @@ router
         const total = shoppingOrder.toJSON().total
         await balance.update({total:  balance.toJSON().total + total});
 
-        const sellers = orderDetail.transactionList.map(async (p) => ((await User.findByPk(p.sellerId)).toJSON()));
-        sellers.forEach(async (seller) => {
-          const html = enviarContactoAlVendedor(user, seller);
-          await sendEmail(user, "Coordina el envio de tu producto.", html);
-      })
+        Promise.all(orderDetail.transactionList.map(async (p) => (await User.findByPk(p.sellerId)).toJSON()))
+        .then( sellers => {
+          sellers.forEach(async (seller) => {
+            const html = enviarContactoAlVendedor(user, seller);
+            await sendEmail(seller, "Vendedor. Coordina el envio de tu producto.", html);
+          })
+          const html = enviarContactoAlComprador(user, sellers);
+          sendEmail(user, "Comprador. Coordina el envio de tu producto.", html);
+        })
+          
+          //   sellers.forEach(async (seller) => {
+                // await sendEmail(seller, "Vendedor. Coordina el envio de tu producto.", html);
+            // })
 
-        const html = enviarContactoAlComprador(user, seller);
-          await sendEmail(user, "Coordina el envio de tu producto.", html);
       }
       
       const html = ordenPagada(user, updated, productDetail);
