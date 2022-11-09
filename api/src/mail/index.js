@@ -3,7 +3,7 @@ const { EMAIL_ACCOUNT, EMAIL_PASSWORD } = process.env;
 
 const mail = {
     email: EMAIL_ACCOUNT || 'juiranotificaciones@gmail.com',
-    pass: EMAIL_PASSWORD || 'nvhievuzjgaesoce'
+    pass: EMAIL_PASSWORD || 'iahcnadrjrwrknzz'
 }
 
 const transporter = nodemailer.createTransport({
@@ -122,6 +122,22 @@ const productoRecibido = (user) => {
     `
 }
 
+const enviarContactoAlVendedor = (buyer, seller) => {
+    return `
+        <p><strong>${seller.name || 'Ey!'}</strong>, </p>
+        <p>Ponte en contacto con tu contraparte para que coordines la entrega de tu producto.</p>
+        <p>Email: ${buyer.email}</p>
+    `
+}
+
+const enviarContactoAlComprador = (buyer, seller) => {
+    return `
+    <p><strong>${buyer.name || 'Ey!'}</strong>, </p>
+    <p>Ponte en contacto con tu contraparte para que coordines la entrega de tu producto.</p>
+    <p>Email: ${seller.email}</p>
+`
+}
+
 module.exports = {
     sendEmail,
     ordenDespachada,
@@ -135,4 +151,6 @@ module.exports = {
     respuestaPublicada,
     productoEnviado,
     productoRecibido,
+    enviarContactoAlVendedor,
+    enviarContactoAlComprador,
 }
