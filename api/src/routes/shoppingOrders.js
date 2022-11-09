@@ -10,7 +10,7 @@ const {
   getUserById,
   throwError
 } = require("../handlers");
-const { sendEmail, ordenCreada, ordenPagada } = require("../mail/index");
+const { sendEmail, ordenCreada, ordenPagada, enviarContactoAlVendedor, enviarContactoAlComprador } = require("../mail/index");
 
 const router = Router();
 
@@ -161,13 +161,9 @@ router
         state: status === "approved" ? "in process": "pending",
       });
       await shoppingOrder.save();
-
-      if(status === "approved"){
-        const balance = await Balance.findByPk('1')
-        const total = shoppingOrder.toJSON().total
-        await balance.update({total:  balance.toJSON().total + total});
-      }
-
+      
+      const fullUser = (await User.findByPk(id)).toJSON()
+      
       const orderDetail = await getShoppingOrderById(shoppingOrder.id);
       const products = orderDetail.transactionList.map((p) => p.productId);
       const productDetail = await Product.findAll({
@@ -175,14 +171,29 @@ router
           id: products,
         },
       });
-
-      const fullUser = (await User.findByPk(id)).toJSON()
       
       const user = {
         name: fullUser.name,
-        email: fullUser.emailAddress //para probar, estos datos deberian obtenerse desde la db
+        email: fullUser.emailAddress 
       } 
-
+      if(status === "approved"){
+        const balance = await Balance.findByPk('1')
+        const total = shoppingOrder.toJSON().total
+        await balance.update({total:  balance.toJSON().total + total});
+        
+        const sellers = await Promise.all(orderDetail.transactionList.map(async (p) => (await User.findByPk(p.sellerId)).toJSON()))
+        await Promise.all(sellers.map( async (seller) => {
+          const data = {
+            name: seller.name,
+            email: seller.emailAddress
+          }
+          const html = enviarContactoAlVendedor(user, seller);
+          await sendEmail(data, `Vendedor. Coordina el envio de tu producto.`, html); 
+        }))
+        const html = enviarContactoAlComprador(user, sellers);
+        await sendEmail(user, "Comprador. Coordina el envio de tu producto.", html);
+      }
+      
       const html = ordenPagada(user, updated, productDetail);
       await sendEmail(user, "Cambio de estatus en tu orden de compra", html);
 
