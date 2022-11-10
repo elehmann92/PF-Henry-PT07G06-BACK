@@ -15,7 +15,7 @@
     {
         "username": "arturoUrgel",
         "image" : "",
-        "emailAddress" : "arturourgel@juira.com",
+        "emailAddress" : "arturo.urgel@gmail.com",
         "homeAddress" : "España 1565",
         "city" : "Tucumán",
         "region" : "San Miguel de Tucumán",
@@ -27,7 +27,7 @@
     {
         "username": "jdcm182",
         "image" : "",
-        "emailAddress" : "jerocardozzo@juira.com",
+        "emailAddress" : "jeronimo.cardozo@gmail.com",
         "homeAddress" : "Achával 1234",
         "city" : "Chapadmalal",
         "region" : "Buenos Aires",
@@ -58,7 +58,7 @@
         "phoneNumber" : "549344603049",
         "lastTransaction" : "KeyzerSose-0",
         "status" : "active",
-        "isAdmin": true
+        "isAdmin": false
     },
     {
         "username": "MarianaSalez",
