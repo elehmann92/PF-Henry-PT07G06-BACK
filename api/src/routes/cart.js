@@ -8,7 +8,7 @@ const router = Router();
 router
   .get("/", getRole,async (req, res) => {
     try {
-      if (req.role !== 'admin') throwError('You are not Admin', 401)
+      if (req.role !== 'admin') throwError('No tenés permisos de administrador', 401)
       const cartsDb = await getCartsDb();
       res.json(cartsDb);
     } catch (error) {
@@ -19,9 +19,9 @@ router
   .get('/byToken', getRole, async (req,res) => {
     const {id, role} = req
     try {
-      if(role === 'guest') throwError('You are not signed in', 401);
+      if(role === 'guest') throwError('No iniciaste sesión', 401);
       const user = await getUserById(id)
-      if (!user) throwError('User not found', 404)
+      if (!user) throwError('Usuario no encontrado', 404)
       const singleCart = await getCartById(user.toJSON().cartUser.id);
       res.json(singleCart)
     } catch (error) {
@@ -33,7 +33,7 @@ router
     const { id } = req.params;
     const {role} = req
     try {
-      if (role !== 'admin') throwError('You are not Admin', 401)
+      if (role !== 'admin') throwError('No tenés permisos de administrador', 401)
       const singleCart = await getCartById(id);
       res.json(singleCart);
     } catch (error) {
@@ -69,18 +69,18 @@ router
     const {role, id} = req;
     const {productId} = req.params
     try {
-      if (role === 'guest') throwError('You are not signed in', 401);
+      if (role === 'guest') throwError('No iniciaste Sesión', 401);
       const user = await getUserById(id);
-      if (!user) throwError('User not found', 404);
+      if (!user) throwError('Usuario no encontrado', 404);
       const { cartToModify, productToModify } = await findCartAndProduct(user.toJSON().cartUser.id, productId);
       
       const exists = await cartToModify.hasProducts(productToModify)
-      if (!exists) throwError('Product wasn`t found in cart',400)
+      if (!exists) throwError('El producto no se encontró en el carrito',400)
       
       await cartToModify.removeProduct(productId);
       const price = productToModify.toJSON().price
       await cartToModify.update({total: cartToModify.toJSON().total - price})
-      res.json("Successfully removed");
+      res.json("Quitado con éxito");
     } catch (error) {
       res.status(error.number || 400).json(error.message)
     }
@@ -89,12 +89,12 @@ router
   .delete("/clearCart/byToken", getRole,async (req, res) => {
     const {role, id} = req;
     try {
-      if (role === 'guest') throwError('You are not signed in', 401);
+      if (role === 'guest') throwError('No iniciaste Sesión', 401);
       const user = await getUserById(id);
-      if (!user) throwError('User not found', 404);
+      if (!user) throwError('Usuario no encontrado', 404);
       const cartToClear = await getCartById(user.toJSON().cartUser.id);
       await cartToClear.setProducts([]);
-      res.json(`Cart successfully cleared`);
+      res.json('Carrito limpiado con éxito');
     } catch (error) {
       res.status(error.number || 400).json(error.message)
     }
